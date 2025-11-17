@@ -1,0 +1,100 @@
+/* -------------------------------------------
+	WCFM vendor style
+---------------------------------------------- */
+@import '../../../assets/sass/config';
+@import '../../../assets/sass/mixins';
+@import '../../../assets/sass/direction';
+
+// Button & Link Element
+#wcfmmp-stores-wrap ul.wcfmmp-store-wrap li .store-wrapper .store-footer a.wcfmmp-visit-store,
+#wcfmmp-stores-wrap ul.wcfmmp-store-wrap li .store-wrapper .store-footer p.store-enquiry .wcfm_catalog_enquiry,
+#wcfmmp-store .bd_icon_box .wcfm_store_enquiry {
+	background-color: $border-color-light !important;
+	border-color: $border-color-light !important;
+	color: var(--wolmart-dark-color, $dark-color) !important;
+	transition: background-color .4s, color .4s, border-color .4s;
+	border-radius: 3px;
+	&:hover {
+		background-color: var(--wolmart-dark-color, $dark-color) !important;
+		color: #fff !important;
+		border-color: var(--wolmart-dark-color, $dark-color) !important;
+	}
+}
+
+// WCFM Store lists
+#wcfmmp-stores-wrap ul.wcfmmp-store-wrap li {
+	.store-footer .store-data h2 a {
+		color: #fff !important;
+		font-size: 2rem;
+		transition: color .4s;
+		text-shadow: rgb(0 0 0 / 80%) 0 1px 0;;
+		&:hover {
+			color: var(--wolmart-primary-color, $primary-color) !important;
+		}
+	}
+}
+
+// WCFM store
+#wcfmmp-store {
+	// Tabs
+	.tab_area {
+		.tab_links {
+			li {
+				&,
+				&:hover,
+				&.active {
+					border: 0 !important;
+					> a {
+						color: var(--wolmart-dark-color, $dark-color) !important;
+					}
+				}
+			}
+		}
+	}
+	.wcfm_policies_heading,
+	.reviews_heading {
+		color: var(--wolmart-dark-color, $dark-color) !important;
+	}
+
+	.reviews_count > a {
+		color: var(--wolmart-dark-color, $dark-color) !important;
+		&:hover {
+			color: var(--wolmart-primary-color, $primary-color) !important;
+		}
+	}
+
+	.add_review button {
+		display: inline-block;
+		padding: 1.4rem 2rem;
+		font-size: 1.4rem;
+		font-weight: 600;
+		color: var(--wolmart-dark-color, $dark-color) !important;
+		text-transform: uppercase;
+		transition: background-color .4s, border-color .4s, color .4s;
+		background-color: $border-color-light !important;
+		border: 1px solid $border-color-light !important;
+		height: auto;
+		border-radius: 3px;
+		line-height: 1;
+		&:hover,
+		&:focus,
+		&.active {
+			background-color: var(--wolmart-dark-color, $dark-color) !important;
+			color: #fff !important;
+			border-color: var(--wolmart-dark-color, $dark-color) !important;
+		}
+	}
+
+	// Rating Star
+	.rating_box {
+		i.selected,
+		ul > li.star.selected > i.wcfmfa {
+			color: var(--wolmart-secondary-color, $secondary-color) !important;
+		}
+	}
+}
+
+.sidebar .wcfmmp_store_hours
+.sidebar .wcfmmp_store_shipping_rules {
+	padding-top: 1.6rem;
+}

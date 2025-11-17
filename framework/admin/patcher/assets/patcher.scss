@@ -1,0 +1,118 @@
+.wolmart-patcher {
+    display: flex;
+    align-items: flex-start;
+    padding: 30px 40px;
+}
+
+.wolmart-patches-changelog-wrapper,
+.wolmart-patches-table-wrapper {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+@media (min-width: 992px) {
+    .wolmart-patches-changelog-wrapper,
+    .wolmart-patches-table-wrapper {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }    
+}
+
+.wolmart-patches-changelog-wrapper {
+    margin-left: 20px;
+    border: 1px solid #f2f3f5;
+
+    h4 {
+        margin: 0;
+        padding: 15px 20px;
+        font-size: 14px;
+        background-color: #f2f3f5;
+    }
+}
+
+.wolmart-patch-log {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 20px;
+    font-size: 13px;
+    background-color: #fff;
+    &:nth-child(2n+1) {
+        background-color: #f2f3f5;
+    }
+
+    .wolmart-patch-version-date {
+        margin-right: 10px;
+        min-width: 80px;
+        font-weight: 500;
+        color: #222;
+        &::after {
+            content: ':';
+        }
+    }
+
+    svg {
+        margin-top: -1px;
+        margin-right: 5px;
+    }
+
+    ul {
+        margin: 0;
+        color: #666;
+
+        li {
+            margin-bottom: 0;
+            &:not(:last-child) {
+                margin-bottom: 10px;    
+            }
+        }
+    }
+}
+
+.wolmart-patches-table-wrapper {
+    position: sticky;
+    top: 50px;
+
+    h4 {
+        margin: 0 0 10px;
+        text-align: left;
+    }
+
+    .apply-alert {
+        margin: 0 0 20px;
+    }
+}
+.wolmart-patch-table {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: left;
+    border: 1px solid #f2f3f5;
+    border-spacing: 0;
+
+    th {
+        padding: 15px;
+        background-color: #f2f3f5;
+    }
+    td {
+        padding: 15px;
+        font-size: 14px;
+    }
+    tr:nth-child(2n) {
+        background-color: #f2f3f5;
+    }
+
+    th:last-child {
+        width: 200px;
+    }
+}
+
+.wolmart-important-note {
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    border-radius: 3px;
+    background: #666;
+    color: #fff;
+}
+
+#patcher-tbody { position: relative; }
+#patcher-tbody i.wolmart-ajax-loader { left: 50%; width: 50px; height: 50px; border-radius: 50px; }
+#patcher-tbody.loading:before { content: ''; width: 100%; height: 100%; position: absolute; background-color: #ffffff8c; }

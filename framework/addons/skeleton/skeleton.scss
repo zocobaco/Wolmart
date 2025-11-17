@@ -1,0 +1,347 @@
+// Skeleton Styles
+.skeleton-body .widget-2,
+.skeleton-body .skel-pro,
+.skeleton-body .skel-pro-list,
+.skeleton-body .skel-pro-search,
+.skeleton-body .skel-pro-gallery,
+.skeleton-body .skel-pro-summary,
+.skeleton-body .skel-pro-tabs,
+.skeleton-body .skel-post,
+.skeleton-body .skel-post-list,
+.skeleton-body .skel-post-mask,
+.skeleton-body .skel-cat,
+.skel-menu,
+.skel-megamenu > li {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+
+	&:before {
+		content: '';
+		display: block;
+		width: 100%;
+		background-repeat: no-repeat;
+		background-image: linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0),
+						linear-gradient(#f4f4f4 100%, transparent 0);
+	}
+
+	&:after {
+		content: '';
+		position: absolute;
+		top: -50%;
+		left: -50%;
+		right: -50%;
+		bottom: -50%;
+		background-image: linear-gradient(90deg,rgba(255,255,255,0) 20%,rgba(255,255,255,0.8) 50%,rgba(255,255,255,0) 80%);
+		animation: skeletonloading 1.5s infinite;
+	}
+}
+
+.skeleton-body {
+	.widget-2:first-of-type {
+		padding-top: 0;
+		margin-top: 0;
+	}
+
+	.widget-2:before {
+		height: 630px;
+		background-size: 100% 30px,
+						70% 20px,
+						50% 20px,
+						80% 20px,
+						40% 20px,
+						30% 20px,
+						50% 20px,
+						100% 30px,
+						70% 20px,
+						50% 20px,
+						80% 20px,
+						40% 20px,
+						30% 20px,
+						50% 20px;
+		background-position: 0 10px,
+							0 65px,
+							0 105px,
+							0 145px,
+							0 185px,
+							0 225px,
+							0 265px,
+							0 325px,
+							0 380px,
+							0 420px,
+							0 460px,
+							0 500px,
+							0 540px,
+							0 580px;
+	}
+
+	.skel-pro:before {
+		padding-top: calc(100% + 180px);
+		background-size: 100% 58%,
+						55% 15px,
+						85% 20px,
+						55% 15px,
+						40% 25px;
+		background-position: 0 0,
+							0 calc(58% + 25px),
+							0 calc(58% + 55px),
+							0 calc(58% + 85px),
+							0 calc(58% + 120px);
+	}
+
+	.skel-pro-search {
+		padding: 1.5rem 0;
+		border-bottom: 1px solid #ebebeb;
+
+		&:before {
+			padding-top: 60px;
+			background-size: 60px 60px,60% 30%,30% 30%;
+			background-position: 0 0,75px 5px,75px 80%;
+		}
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+
+	.skel-pro-summary:before {
+		min-height: 500px;
+		background-size: 70% 30px, 60% 13px, 22% 13px, 25% 32px, 100% 1px, 30% 29px, 40% 15px, 100% 14px, 100% 14px, 100% 14px, 40% 14px, 100% 1px, 47% 35px, 47% 35px, 70% 45px;
+		background-position: 0 0, 0 60px, 0 80px, 86% 60px, 0 110px, 0 130px, 0 175px, 0 200px, 0 225px, 0 250px, 0 275px, 0 320px, 0 350px, 100% 350px, 0 410px;
+	}
+
+	.mfp-product & .skel-pro-summary:before {
+		background-size: 55% 25px, 70% 30px, 40% 18px, 30% 30px, 40% 15px, 100% 14px, 100% 14px, 100% 14px, 40% 14px, 100% 1px, 70% 45px, 100% 1px, 50% 30px;
+		background-position: 0 0, 0 34px, 0 75px, 0 115px, 0 155px, 0 190px, 0 215px, 0 240px, 0 265px, 0 300px, 0 320px, 0 385px, 0 406px;
+		min-height: 435px;
+	}
+
+	.skel-pro-tabs:before {
+		min-height: 200px;
+		background-size: 120px 25px, 200px 25px, 100px 25px, 100% 1px, 100% 15px, 100% 15px, 100% 15px, 80% 15px;
+		background-position: 0 0, 140px 0, 360px 0, 0 35px, 0 55px, 0 85px, 0 115px, 0 145px;
+	}
+
+	.skel-post:before,
+	.skel-post-list:before {
+		padding-top: calc(56.25% + 258px);
+		background-size: 100% calc(100% - 258px),
+						40% 20px,
+						60% 35px,
+						20% 20px,
+						100% 70px,
+						20% 20px;
+		background-position: 0 0,
+							0 calc(100% - 228px),
+							0 calc(100% - 178px),
+							0 calc(100% - 148px),
+							0 calc(100% - 68px),
+							0 calc(100% - 38px);
+	}
+
+	.skel-cat:before,
+	.skel-post-mask:before {
+		padding-top: 70%;
+		background-size: 100% 100%;
+		background-position: 0 0;
+	}
+	
+	// horizontal Layout
+	.skel-pro-gallery:before {
+		// padding-top: 112%;
+		padding-top: 141%;
+		background-size: 100% 80%, 23% 18%, 23% 18%, 23% 18%, 23% 18%;
+		background-position: 0 0, 0 100%, 33% 100%, 66% 100%, 100% 100%;
+	}
+	.mfp-offcanvas & .skel-pro-gallery:before {
+		padding-top: 136%;
+	}
+
+	// grid layout
+	.cols-sm-2 > .skel-pro-gallery {
+		max-width: none;
+		flex: 0 0 100%;
+
+		&:before {
+			background-size: calc(50% - 10px) calc(50% - 10px), calc(50% - 10px) calc(50% - 10px), calc(50% - 10px) calc(50% - 10px), calc(50% - 10px) calc(50% - 10px);
+			background-position: 0 0, 100% 0, 0 100%, 100% 100%;
+		}
+	}
+
+	// masonry layout
+	.product-masonry-type > .skel-pro-gallery {
+		&:before {
+			background-size: 100% calc(40% - 15px), calc(33.3333% - 10px) calc(15% - 15px), calc(66.6667% - 10px) calc(30% - 15px), calc(66.6667% - 10px) calc(30% - 15px), calc(33.3333% - 10px) calc(15% - 15px);
+			padding-top: 250%;
+			background-position: 0 0, 0 56%, 100% 57%, 0 100%, 100% 91%;
+		}
+	}
+
+	// sticky-info layout
+	.sticky-info .skel-pro-gallery:before {
+		background-size: 100% 100%;
+		background-position: 0 0;
+	}
+
+	// gallery carousel layout
+	& .pg-gallery .skel-pro-gallery:before {
+		padding-top: 0;
+		min-height: 400px;
+		background-size: 32% 100%, 32% 100%, 32% 100%;
+		background-position: 0 0, 50% 0, 100% 0;
+
+		.sidebar-fixed ~ .main-content &{
+			background-size: 49% 100%, 49% 100%;
+			background-position: 0 0, 100% 0;
+			padding-top: 55%;
+		}
+	}
+
+	// sticky both layout
+	&.sticky-both .skel-pro-gallery:before {
+		padding-top: 0;
+		min-height: 1200px;
+		background-size: 100% 50%,100% 50%;
+		background-position: 0 0, 0 calc(100% + 20px);
+	}
+}
+
+@keyframes skeletonloading {
+	0% {
+		transform: skewX(-45deg) translateX(-80%);
+	}
+	to {
+		transform: skewX(-45deg) translateX(80%);
+	}
+}
+
+.mfp-container .mfp-content .quickView-content .skel-pro-single {
+	margin-bottom: -2rem;
+}
+
+.post-mask.skeleton-body:before {
+	content: none;
+}
+
+@media (max-width:767px) {
+	// gallery carousel layout
+	.skeleton-body .pg-gallery .skel-pro-gallery:before {
+		background-size: 48% 100%, 48% 100%;
+		background-position: 0 0, 100% 0;
+	}
+	.skeleton-body .skel-pro-gallery {
+		margin-bottom: 2rem;
+	}
+	.mfp-product > :not(.mfp-s-error) > .mfp-preloader {
+		position: relative;
+		top: -100%;
+		transform: none;
+		width: 100%;
+		left: 0;
+	}
+}
+@media (min-width:767px) {
+	.skeleton-body .skel-post-list {
+		margin-bottom: 2.5rem;
+		&:before {
+			padding-top: 0;
+			min-height: 320px;
+			background-size: 44% 100%, 20% 20px, 30% 35px, 10% 20px, 53% 100px, 10% 20px;
+			background-position: 0 0, 
+								58.75% 30px,
+								67.14% 70px,
+								52.22% 110px,
+								100% 150px,
+								52.22% 270px;
+		}
+	}
+}
+
+@media (max-width:575px) {
+	// gallery carousel layout
+	.skeleton-body .pg-gallery .skel-pro-gallery:before {
+		background-size: 100% 100%;
+		background-position: 0 0;
+	}
+	// Grid Layout
+	.skeleton-body .cols-sm-2>.skel-pro-gallery:before {
+		padding-top: calc(200% + 20px);
+		background-size: 100% 50%,100% 50%;
+		background-position: 0 0, 0 calc(100% + 20px);
+	}
+}
+
+@media (min-width: 576px) {
+	.skeleton-body .skel-pro-list:before {
+		padding-top: 25%;
+		background-size: 26rem 100%,
+						20% 15px,
+						50% 20px,
+						25% 20px,
+						35% 15px,
+						calc(100% - 28rem) 70px,
+						123px 40px;
+		background-position: 0 0,
+							28rem calc(50% - 117px),
+							28rem calc(50% - 90px),
+							28rem calc(50% - 55px),
+							28rem calc(50% - 28px),
+							28rem calc(50% + 26px),
+							28rem calc(50% + 95px),
+	}
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+	.skeleton-body.sticky-both>:not(.col-md-6) .skel-pro-gallery::before {
+		padding-top: 100%;
+		min-height: 0;
+		background-size: calc(50% - 10px) calc(50% - 10px),calc(50% - 10px) calc(50% - 10px),calc(50% - 10px) calc(50% - 10px), calc(50% - 10px) calc(50% - 10px);
+		background-position: 0 0, 100% 0, 0 100%, 100% 100%;
+	}
+}
+@media (min-width:992px) {
+	// vertical layout for desktop
+	.skeleton-body .pg-vertical > .skel-pro-gallery:before {		
+		padding-top: 88%;
+		background-size: calc(100% - 100px) 100%,90px 25.33%,90px 25.33%,90px 25.33%, 90px 25.33%;
+		background-position: 100px 0,0 0,0 37.24%,0 74.48%,0 111.42%,;
+	}
+	// gallery-type
+	.skeleton-body.product-single > :not(.col-md-6) .skel-pro-summary:before {
+		min-height: 285px;
+		background-size: 30% 30px, 25% 18px,  20% 15px, 48% 14px, 48% 14px, 48% 14px, 20% 14px, // left side
+		30% 30px, 40% 30px, 40% 30px, 49.6% 1px, 40% 45px, 49.6% 1px, 30% 30px; //right side
+		background-position: 0 0, 0 40px, 0 65px, 0 100px, 0 125px, 0 150px, 0 175px, // left side
+		72% 0, 84% 50px, 84% 100px, 100% 150px, 84% 170px, 100% 235px, 72% 255px; // right side
+	}
+	// sticky both
+	.skeleton-body.sticky-both>:not(.col-md-6) .skel-pro-summary:before {
+		min-height: 1200px;
+		background-size: 20% 30px,24% 30px,15% 18px,19% 15px,22% 36px,24% 16px,24% 14px,24% 14px,15% 14px,24% 36px,24% 36px,24% 1px,15% 45px,24% 45px,24% 1px,24% 30px;
+		background-position: 0 0,0 40px,0 80px,0 105px,0 140px,0 195px,0 220px,0 245px,0 270px,100% 0,100% 50px,100% 100px,89.4% 120px,100% 185px,100% 250px,100% 270px;
+	}
+}
+
+.skel-menu::before,
+.skel-megamenu > li::before {
+	height: calc(100% - 30px);
+	margin: 15px 0;
+	background-size: 60% 20px,70% 20px,50% 20px,60% 20px,80% 20px,70% 20px,75% 20px;
+	background-position: 20px 0px,20px 16%,20px 33%,20px 50%,20px 66%,20px 83%,20px 100%;
+}

@@ -1,0 +1,858 @@
+/* Gutenberg Blocks */
+@if use_component(gutenberg) {
+
+    .editor-styles-wrapper .has-small-font-size,
+    .has-small-font-size {
+        font-size: 1.5rem;
+    }
+
+    .editor-styles-wrapper .has-normal-font-size,
+    .editor-styles-wrapper .has-regular-font-size,
+    .has-normal-font-size,
+    .has-regular-font-size {
+        font-size: 1.8rem;
+    }
+
+    .editor-styles-wrapper .has-medium-font-size,
+    .has-medium-font-size {
+        font-size: 2.4rem;
+    }
+
+    .editor-styles-wrapper .has-large-font-size,
+    .has-large-font-size {
+        font-size: 3rem;
+    }
+
+    .editor-styles-wrapper .has-huge-font-size,
+    .editor-styles-wrapper .has-larger-font-size,
+    .has-huge-font-size,
+    .has-larger-font-size {
+        font-size: 3.4rem;
+    }
+
+    .alignleft {
+        float: left;
+        clear: both;
+        margin-right: 1.5em
+    }
+
+    .alignright {
+        float: right;
+        clear: both;
+        margin-left: 1.5em
+    }
+
+    .aligncenter {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        clear: both
+    }
+
+    ul.aligncenter,
+    ol.aligncenter {
+        list-style-position: inside;
+        padding: 0;
+    }
+
+    .alignfull,
+    .alignwide {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .wp-caption {
+        max-width: 100%;
+        margin-bottom: 24px;
+    }
+
+    img.aligncenter,
+    .wp-caption.aligncenter {
+        display: block;
+        margin: 0 auto
+    }
+
+    .alignnone {
+        display: block
+    }
+
+    .has-primary-color {
+        color: var(--wolmart-primary-color, $primary-color);
+    }
+
+    .has-primary-background-color {
+        background-color: var(--wolmart-primary-color, $primary-color);
+    }
+
+    .has-secondary-color {
+        color: var(--wolmart-secondary-color, $secondary-color);
+    }
+
+    .has-secondary-background-color {
+        background-color: var(--wolmart-secondary-color, $secondary-color);
+    }
+
+    .has-dark-color {
+        color: var(--wolmart-dark-color, $dark-color);
+    }
+
+    .has-dark-background-color {
+        background-color: var(--wolmart-dark-color, $dark-color);
+    }
+
+    .has-light-color {
+        color: var(--wolmart-light-color, $light-color);
+    }
+
+    .has-light-background-color {
+        background-color: var(--wolmart-light-color, $light-color);
+    }
+
+    .has-success-color {
+        color: $success-color;
+    }
+
+    .has-success-background-color {
+        background-color: $success-color;
+    }
+
+    .has-info-color {
+        color: $info-color;
+    }
+
+    .has-info-background-color {
+        background-color: $info-color;
+    }
+
+    .has-warning-color {
+        color: $warning-color;
+    }
+
+    .has-warning-background-color {
+        background-color: $warning-color;
+    }
+
+    .has-danger-color {
+        color: $danger-color;
+    }
+
+    .has-danger-background-color {
+        background-color: $danger-color;
+    }
+
+    .has-white-color {
+        color: #fff;
+    }
+
+    .has-white-background-color {
+        background-color: #fff;
+    }
+
+    .has-transparent-color {
+        color: transparent;
+    }
+
+    .has-transparent-background-color {
+        background-color: transparent;
+    }
+
+    .wp-block-table {
+        display: table;
+    }
+
+    // WP Block Cover // added (925)
+    .wp-block-cover {
+        color: #fff;
+
+        a {
+            color: inherit;
+        }
+    }
+
+    .wp-block-cover .wp-block-cover__inner-container p {
+        font-size: 2em !important;
+        line-height: 1.25;
+        z-index: 1;
+        margin-bottom: 0;
+    }
+
+    .wp-block-cover-image .wp-block-cover-image-text,
+    .wp-block-cover .wp-block-cover-text,
+    .wp-block-cover .wp-block-cover__inner-container p,
+    section.wp-block-cover-image>h2 {
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .wp-block-cover-image.has-background-dim,
+    .wp-block-cover.has-background-dim {
+        background-color: #000;
+    }
+
+    // WP Gallery Caption // added (925)
+    .blocks-gallery-caption,
+    .wp-block-embed figcaption,
+    .wp-block-image figcaption {
+        width: 100%;
+    }
+
+    // WP Block Separator
+    .wp-block-separator {
+        clear: both;
+    }
+
+    // WP Block Table 
+    .wp-block-table table td,
+    .wp-block-table table th {
+        padding: .5em;
+    }
+
+    // Wp Calendar
+    .calendar_wrap {
+        position: relative;
+        font-size: 13px;
+        color: #999;
+
+        th {
+            padding: 5px 0 4px 0;
+            font-weight: 600;
+            color: $dark-color;
+            line-height: 1;
+            text-align: center;
+            border: 0;
+        }
+
+        tbody tr:first-child {
+            td {
+                padding-top: 13px;
+            }
+        }
+
+        td {
+            padding: 7px 10px;
+            text-align: center;
+            border: 0;
+        }
+
+        caption {
+            margin-bottom: 1.3rem;
+            font-weight: 600;
+            font-size: 14px;
+            color: #fff;
+            background-color: var(--wolmart-primary-color, $primary-color);
+            text-transform: capitalize;
+            line-height: 48px;
+            height: 48px;
+        }
+
+        .wp-calendar-nav {
+            position: absolute;
+            top: 16px;
+
+            .widget & span a,
+            .widget & span a:hover,
+            .widget & span a:focus {
+                color: #fff;
+            }
+
+            span {
+                a {
+                    display: inline-block;
+                    position: relative;
+                    text-indent: -9999px;
+
+                    &:before {
+                        content: '';
+                        font-family: 'wolmart';
+                        position: absolute;
+                        left: 0;
+                        text-indent: 0;
+                    }
+                }
+            }
+
+            .wp-calendar-nav-prev a:before {
+                content: if-ltr('\e912', '\e913');
+                margin-#{$left}: 2rem;
+            }
+
+            .wp-calendar-nav-next {
+                position: absolute;
+                right: 0;
+            }
+
+            .wp-calendar-nav-next a:before {
+                content: if-ltr('\e913', '\e912');
+                right: 0;
+                left: auto;
+                margin-#{$right}: 2rem;
+            }
+        }
+
+        .wp-calendar-nav {
+            width: 100%;
+        }
+    }
+
+    // Blockquote
+    .wp-block-quote {
+        position: relative;
+        padding: .8em 1em;
+        border-left: 2px solid var(--wolmart-primary-color, $primary-color);
+
+        &.has-text-align-right {
+            border-right: 2px solid var(--wolmart-primary-color, $primary-color);
+        }
+
+        &.has-text-align-center {
+            text-align: center;
+
+            &:before {
+                content: '\e934';
+                font-size: 32px;
+                font-family: 'wolmart';
+                line-height: 1;
+                color: var(--wolmart-primary-color, $primary-color);
+            }
+        }
+
+        background-color: #f2f3f5;
+
+        p {
+            margin: 0;
+        }
+
+        &.is-large {
+            padding: 1em 1.5em;
+            border-left: 2px solid var(--rio-primary-color, #26c);
+
+            &.has-text-align-right {
+                border-right: 2px solid var(--rio-primary-color, #26c);
+            }
+
+            background-color: #f2f3f5;
+        }
+
+        cite {
+            color: $dark-color;
+            font-size: 1.2rem;
+        }
+
+        &.is-style-large {
+            margin-bottom: 2rem;
+            padding: side-values(0 0 0 6rem);
+            background: none;
+            font-weight: 600;
+
+            p {
+                font-size: 1.8rem;
+                line-height: 1.4;
+            }
+
+            &:before {
+                content: '\e9c4';
+                display: inline-block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                font-weight: 900;
+                font-size: 2.5rem;
+                font-family: 'wolmart';
+                color: $dark-color;
+                line-height: 1;
+            }
+
+            @include mq(xl, max) {
+                & {
+                    padding: side-values(0 0 0 4rem);
+                }
+
+                p {
+                    font-size: 1.5rem;
+                }
+            }
+
+            @include mq(xs, max) {
+
+                p,
+                cite {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+
+    .wp-block-pullquote {
+        blockquote {
+            padding: 1em;
+            border-#{$left}: 2px solid var(--wolmart-primary-color, $primary-color);
+            background-color: #f2f3f5;
+        }
+    }
+
+    // WP Buttons // added(925)
+    .wp-block-button {
+        margin-bottom: 2rem;
+
+        .wp-block-button__link {
+            background-color: var(--wolmart-primary-color, $primary-color);
+            color: #fff;
+            transition: color, background-color .3s;
+
+            &:hover {
+                color: #fff;
+                background-color: var(--wolmart-primary-color-hover, #2977d8);
+            }
+        }
+
+        &.is-style-outline {
+            .wp-block-button__link {
+                background-color: transparent;
+                color: var(--wolmart-primary-color, $primary-color);
+
+                &:hover {
+                    background-color: var(--wolmart-primary-color, $primary-color);
+                    color: #fff;
+                }
+            }
+        }
+
+        &.is-style-squared {
+            .wp-block-button__link {
+                border-radius: 0;
+            }
+        }
+    }
+
+    // Calendar
+    .footer-dark {
+
+        table td,
+        table th {
+            border-bottom-color: $dark-color;
+        }
+    }
+
+    // Block Search
+    .wp-block-search,
+    .post-password-form {
+        margin-bottom: 2rem;
+    }
+
+    .post-password-form {
+        &>p {
+            display: flex;
+            align-items: flex-end;
+        }
+    }
+
+    .wp-block-search .wp-block-search__input,
+    .wc-block-product-search .wc-block-product-search__field,
+    .woocommerce-product-search input,
+    .post-password-form input[type="password"] {
+        display: block;
+        width: 100%;
+        min-height: 3.6rem;
+        padding: .85rem 2rem;
+        border: 1px solid #e3e3e3;
+        font-size: 1.4rem;
+        line-height: 1.5;
+        font-weight: 400;
+        color: var(--wolmart-body-color, $body-color);
+        background-color: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        outline: 0;
+
+        &::placeholder {
+            color: inherit;
+            transition: color .3s;
+        }
+
+        &::-webkit-input-placeholder {
+            color: inherit;
+            transition: color .3s;
+        }
+
+        &::-moz-placeholder {
+            color: inherit;
+            transition: color .3s;
+        }
+
+        &:focus::placeholder {
+            color: transparent;
+        }
+
+        &:focus::-webkit-input-placeholder {
+            color: transparent;
+        }
+
+        &:focus::-moz-placeholder {
+            color: transparent;
+        }
+
+        &.form-solid {
+            background-color: #fff;
+            border: 0;
+            color: #8d8d8d;
+        }
+    }
+
+    .wp-block-search button:not(.has-icon),
+    .woocommerce-product-search button,
+    .post-password-form input[type="submit"] {
+        display: inline-block;
+        border: 2px solid var(--wolmart-primary-color, $primary-color);
+        background-color: var(--wolmart-primary-color, $primary-color);
+        color: #fff;
+        outline: 0;
+        border-radius: 0;
+        min-width: 9rem;
+        padding: 0.7em 1em;
+        font-weight: 700;
+        font-size: 1.4rem;
+        letter-spacing: -0.025em;
+        line-height: 1.2;
+        text-transform: uppercase;
+        text-align: center;
+        transition: color .3s, border-color .3s, background-color .3s, box-shadow .3s;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &:hover {
+            border: 2px solid var(--wolmart-primary-color-hover, ligthen($primary-color, 10%));
+            background-color: var(--wolmart-primary-color-hover, ligthen($primary-color, 10%));
+        }
+    }
+
+    .widget_product_search .woocommerce-product-search {
+        display: flex;
+    }
+
+    .wc-block-product-search .wc-block-product-search__field {
+        border-radius: 3px;
+        height: 4.7rem;
+    }
+
+    .wp-block-search .wp-block-search__label,
+    .wc-block-product-search__label {
+        display: block;
+        padding: 13px 0;
+        color: var(--wolmart-heading-color, var(--wolmart-body-color));
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .wp-block-search__inside-wrapper {
+        display: flex;
+        position: relative;
+        max-width: 100%;
+    }
+
+    .wp-block-search .wp-block-search__input {
+        border-radius: 3px;
+    }
+
+    .wp-block-search button.has-icon,
+    .wc-block-product-search__button {
+        width: 4.7rem;
+        flex: 0 0 4.7rem;
+        background: transparent;
+        border: 1px solid #e3e3e3;
+        margin-#{$left}: .5rem;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: color .3s;
+
+        &:hover,
+        &:focus {
+            color: var(--wolmart-primary-color, $primary-color);
+        }
+    }
+
+    .wp-block-search svg,
+    .wc-block-product-search__button svg {
+        display: none;
+    }
+
+    .wp-block-search button.has-icon:before,
+    .wc-block-product-search__button:before {
+        content: "\e97e";
+        font-family: 'wolmart';
+        font-size: 18px;
+        vertical-align: middle;
+    }
+
+    .wc-block-product-search__fields {
+        position: relative;
+    }
+
+    .wc-block-product-search__button,
+    .wp-block-search__button-inside button {
+        position: absolute;
+        #{$right}: 0;
+        top: 0;
+    }
+
+    .wc-block-product-search__button,
+    .wp-block-search__button-inside button.has-icon {
+        height: 100%;
+        border: 0;
+        margin-#{$left}: 0;
+    }
+
+    .wp-block-search__button-inside {
+        button {
+            &:not(.has-icon) {
+                margin: 5px;
+                padding: 5px;
+            }
+        }
+    }
+
+    .wc-block-product-search .wc-block-product-search__field,
+    .wp-block-search__button-inside.wp-block-search__icon-button .wp-block-search__input {
+        padding-#{$right}: 4.7rem;
+    }
+
+    .wp-block-search__icon-button .wp-block-search__input {
+        padding: 1.2rem 2rem;
+    }
+
+    .wp-block-search__text-button .wp-block-search__input {
+        border-radius: 0;
+    }
+
+    .wp-block-latest-comments .avatar,
+    .wp-block-latest-comments__comment-avatar {
+        height: auto !important;
+        padding-top: 0 !important;
+    }
+
+    /* Sidebar Widget */
+    @if use(widget-block) {
+        .widget-block .wolmart-block {
+            text-align: initial;
+        }
+    }
+
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -5px;
+    }
+
+    .gallery-item {
+        margin-bottom: 1.5rem;
+        width: 100%;
+        padding: 5px;
+    }
+
+    @for $i from 1 through 9 {
+        .gallery-columns-#{$i}>* {
+            max-width: #{ round( 100% / $i * 10000 ) / 10000 };
+            flex: 0 0 #{ round( 100% / $i * 10000 ) / 10000 };
+        }
+    }
+
+    @if use(wp-columns) {
+        /* Gutenberg Block Style */
+
+        /* Gutenberg Style */
+        .main-content>.wp-block-columns:not(.alignwide):not(.alignfull) {
+            max-width: var(--wolmart-container-width, 1280px);
+        }
+
+        .main-content>.alignwide {
+            max-width: var(--wolmart-container-fluid-width, 1820px);
+            padding-left: 2rem;
+            padding-right: 2rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .main-content>.wp-block-columns:not(.alignfull) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @include mq(1280px) {
+            .main-content>.wp-block-columns:not(.alignwide):not(.alignfull) {
+                max-width: 1280px;
+                padding-left: 0;
+                padding-right: 0;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @include mq(1820px) {
+            .main-content>.alignwide.wp-block-columns {
+                max-width: 1800px;
+                padding-left: 0;
+                padding-right: 0;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        .container,
+        .container-fluid {
+            .wp-block-columns:not(.alignfull) {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .main-content>.wp-block-columns {
+                margin-left: -10px;
+                margin-right: -10px;
+            }
+
+            .alignwide {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        .container-fluid .main-content> {
+            @include mq(1300px) {
+                .wp-block-columns:not(.alignwide):not(.alignfull) {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+        }
+
+        .wp-block-columns {
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+
+        @include mq(xs, max) {
+            .wp-block-columns:not(.alignfull) {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+
+        .wp-block-columns>.wp-block-column {
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-left: 0;
+        }
+
+        .blocks-gallery-grid[class*="columns-"] .blocks-gallery-image,
+        .blocks-gallery-grid[class*="columns-"] .blocks-gallery-item,
+        .wp-block-gallery[class*="columns-"] .blocks-gallery-image,
+        .wp-block-gallery[class*="columns-"] .blocks-gallery-item {
+            margin-#{$right}: 20px;
+            margin-bottom: 20px;
+
+            &:last-child {
+                margin-#{$right}: 0;
+            }
+        }
+
+        .blocks-gallery-grid.columns-2 .blocks-gallery-image,
+        .blocks-gallery-grid.columns-2 .blocks-gallery-item,
+        .wp-block-gallery.columns-2 .blocks-gallery-image,
+        .wp-block-gallery.columns-2 .blocks-gallery-item {
+            width: calc((100% - 10px * 2) / 2);
+        }
+
+        .blocks-gallery-grid.columns-3 .blocks-gallery-image,
+        .blocks-gallery-grid.columns-3 .blocks-gallery-item,
+        .wp-block-gallery.columns-3 .blocks-gallery-image,
+        .wp-block-gallery.columns-3 .blocks-gallery-item {
+            width: calc((100% - 10px * 4) / 3);
+        }
+
+        .blocks-gallery-grid.columns-4 .blocks-gallery-image,
+        .blocks-gallery-grid.columns-4 .blocks-gallery-item,
+        .wp-block-gallery.columns-4 .blocks-gallery-image,
+        .wp-block-gallery.columns-4 .blocks-gallery-item {
+            width: calc((100% - 10px * 6) / 4);
+        }
+
+        .blocks-gallery-grid.columns-5 .blocks-gallery-image,
+        .blocks-gallery-grid.columns-5 .blocks-gallery-item,
+        .wp-block-gallery.columns-5 .blocks-gallery-image,
+        .wp-block-gallery.columns-5 .blocks-gallery-item {
+            width: calc((100% - 10px * 8) / 5);
+        }
+
+        .blocks-gallery-grid.columns-6 .blocks-gallery-image,
+        .blocks-gallery-grid.columns-6 .blocks-gallery-item,
+        .wp-block-gallery.columns-6 .blocks-gallery-image,
+        .wp-block-gallery.columns-6 .blocks-gallery-item {
+            width: calc((100% - 10px * 10) / 6);
+        }
+
+        .blocks-gallery-grid.columns-7 .blocks-gallery-image,
+        .blocks-gallery-grid.columns-7 .blocks-gallery-item,
+        .wp-block-gallery.columns-7 .blocks-gallery-image,
+        .wp-block-gallery.columns-7 .blocks-gallery-item {
+            width: calc((100% - 10px * 12) / 7);
+        }
+
+        .blocks-gallery-grid.columns-8 .blocks-gallery-image,
+        .blocks-gallery-grid.columns-8 .blocks-gallery-item,
+        .wp-block-gallery.columns-8 .blocks-gallery-image,
+        .wp-block-gallery.columns-8 .blocks-gallery-item {
+            width: calc((100% - 10px * 14) / 8);
+        }
+
+        .blocks-gallery-grid.columns-9 .blocks-gallery-image,
+        .blocks-gallery-grid.columns-9 .blocks-gallery-item,
+        .wp-block-gallery.columns-9 .blocks-gallery-image,
+        .wp-block-gallery.columns-9 .blocks-gallery-item {
+            width: calc((100% - 10px * 16) / 9);
+        }
+
+        .wp-block-columns {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+
+        .wp-block-column {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        @media (max-width: 781px) and (min-width: 600px) {
+            .wp-block-column {
+                flex-basis: 50% !important;
+                flex-grow: 0;
+            }
+        }
+    }
+
+    .wp-block-code {
+        background: #333;
+        border-color: #333;
+
+        code {
+            color: #fff;
+        }
+    }
+}
+
+// Gutenberg Blocks in Sidebars
+.sidebar .widget_block {
+    margin-bottom: 1rem;
+
+    h2 {
+        font-size: 1.6rem;
+        padding: 1.3rem 0;
+        margin-bottom: 0;
+    }
+}
+
+.sidebar .wp-block-latest-comments {
+    padding-left: 0;
+    margin: 0;
+}

@@ -1,0 +1,122 @@
+/* -------------------------------------------
+    Accordion
+---------------------------------------------- */
+
+// Default
+@if use_component(accordion) {
+	.accordion {
+		overflow: hidden;
+
+		.collapsed,
+		.expanding {
+			display: none;
+			// overflow: hidden;
+			// height: 0px;
+		}
+	}
+
+	.card-header {
+		text-transform: uppercase;
+		font-size: 1.5rem;
+		font-weight: 600;
+		line-height: 1;
+		color: var(--wolmart-dark-color, $dark-color);
+
+		a {
+			display: flex;
+			align-items: center;
+			position: relative;
+			padding: 1.8rem .5rem;
+			transition: color .3s, background-color .3s, border-color .3s;
+
+			&:hover,
+			&.collapse {
+				color: var(--wolmart-primary-color, $primary-color);
+			}
+		}
+	}
+
+	.card-header .opened,
+	.card-header .closed {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		#{$right}: .4rem;
+	}
+
+	.collapse .closed {
+		display: none;
+	}
+
+	.expand .opened {
+		display: none;
+	}
+
+	.card-body {
+		padding: 1.3rem .5rem;
+	}
+}
+
+// Simple
+@if use(accordion-simple) {
+	.accordion-simple {
+		.card {
+			border-top: 1px solid $border-color-light;
+
+			&:last-child {
+				border-bottom: 1px solid $border-color-light;
+			}
+		}
+	}
+}
+
+// Boxed Style
+@if use(accordion-boxed) {
+	.accordion-boxed {
+
+		.card-header a,
+		.card-body {
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+
+		.card-header {
+
+			.opened,
+			.closed {
+				#{$right}: 2rem;
+			}
+		}
+	}
+}
+
+// Border Style
+@if use(accordion-border) {
+	.accordion-border {
+		.card {
+			border: solid $border-color-light;
+			border-width: 1px 1px 0;
+
+			&:last-child {
+				border-bottom: 1px solid $border-color-light;
+			}
+		}
+	}
+}
+
+// Boxed 2 - Card Border & Gutter
+@if use(accordion-boxed2) {
+	.accordion-boxed2 {
+		.card {
+			border: 1px solid #dae1e5;
+
+			&:not(:last-child) {
+				margin-bottom: 10px;
+			}
+		}
+	}
+}
+
+.accordion-gutter-sm .card:not(:last-child) {
+	margin-bottom: 2px;
+}

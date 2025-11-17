@@ -1,0 +1,212 @@
+/* -------------------------------------------
+	Vendors 
+------------------------------------------- */
+@if use_component(vendor) {
+    .vendor-widget {
+        margin-bottom: 2rem;
+        .vendor-details {
+            display: flex;
+            align-items: center;
+        }
+        .vendor-logo {
+            max-width: 7rem;
+            width: 100%;
+            background-color: #e1e1e1;
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        .vendor-personal {
+            margin-#{$left}: 1rem;
+        }
+        .vendor-name {
+            display: inline-block;
+            font-size: 1.5rem;
+            text-transform: capitalize;
+            letter-spacing: -.025em;
+            line-height: 1.4;
+            margin-bottom: 0;
+            max-width: 100%;
+            vertical-align: middle;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .vendor-products-count {
+            font-weight: 400;
+            font-size: 1.2rem;
+            letter-spacing: 0;
+            color: var(--wolmart-body-color, $body-color);
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+        .vendor-sale {
+            margin-bottom: 0;
+        }
+        .ratings-container {
+            line-height: 1;
+            margin-top: .4rem;
+            .star-rating {
+                font-size: 12px;
+            }
+            + .vendor-sale {
+                margin-top: .4rem;
+            }
+        }
+    }
+    .vendor-widget-1 {
+        .vendor-details {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        // .vendor-product {
+        .product-media  img {
+            border: 1px solid transparent;
+            transition: border-color .35s;
+            &:hover {
+                border-color: var(--wolmart-primary-color, $primary-color);
+            }
+        }
+        // }
+        .vendor-personal {
+            max-width: calc(100% - 8rem);
+        }
+        .vendor-name {
+            display: inline-block;
+            max-width: 100%;
+        }    
+    }
+    .vendor-widget-2 {
+        padding: 2rem;
+        border: 1px solid $border-color-light;
+        transition: border-color .3s;
+        .vendor-logo {
+            margin-#{$right}: 1rem !important;
+            max-width: 7rem;
+            img {
+                width: 100%;
+            }
+        }
+        .vendor-details {
+            display: flex;
+            align-items: center;
+        }
+        .vendor-personal {
+            margin-#{$left}: 0;
+            max-width: calc(100% - 9rem);
+        }
+        .vendor-products {
+            margin-top: 2rem;
+        }
+        &:hover {
+            border-color: var(--wolmart-primary-color, $primary-color);
+        }
+    }
+    .vendor-widget-3 {
+        border: 1px solid $border-color-light;
+        transition: box-shadow .45s, border-color .45s;
+        .vendor-details {
+            padding: 0 2rem 2rem;
+            margin-top: -45px;
+            flex-direction: column;
+        }
+        .vendor-info {
+            text-align: $right;
+            flex: 1;
+        }
+        .vendor-name {
+            display: block;
+            margin-top: 1.7rem;
+            margin-bottom: 1.3rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1;
+            letter-spacing: 0;
+        }
+        .ratings-container {
+            margin-bottom: 1.3rem;
+        }
+        .vendor-products-count {
+            display: block;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            color: var(--wolmart-body-color, $body-color);
+            line-height: 1;
+        }
+        .visit-vendor-btn {
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--wolmart-secondary-color, $secondary-color);
+            text-transform: uppercase;
+            transition: color .4s;
+            &:hover,
+            &:focus, &.active {
+                color: var(--wolmart-primary-color, $primary-color);
+            }
+        }
+        .vendor-banner {
+            min-height: 18rem;
+    
+            img {
+                min-height: inherit;
+                object-fit: cover;
+            }
+        }
+        .vendor-logo {
+            max-width: 9rem;
+            border-radius: 50%;
+            border: 1px solid $border-color;
+            background-color: $border-color;
+            transition: background-color .45s, border-color .45s;
+            img {
+                border-radius: 50%;
+                transition: transform .45s;
+            }
+        }
+        &:hover {
+            box-shadow: 5px 0 20px rgba(0,0,0,0.08);
+            border-color: transparent;
+            .vendor-logo {
+                background-color: var(--wolmart-primary-color, $primary-color);
+                border-color: var(--wolmart-primary-color, $primary-color);
+                img{
+                    transform: translateY(- 10px );
+                }
+            }
+        }
+        .star-rating {
+            margin-#{$right}: 0;
+        }
+        .product-media {
+            border: 1px solid transparent;
+            transition: border-color .4s;
+        }
+    }
+    .vendor-products.grid-type {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, calc(100% / 3));
+        margin: -2.5px;
+        width: calc(100% + 5px);
+        grid-auto-rows: 1fr;
+
+        .product-media {
+            padding: 2.5px;
+            grid-column-end: span 1;
+            grid-row-end: span 1;
+            &:first-child {
+                grid-column-end: span 2;
+                grid-row-end: span 2;
+            }
+        }
+        .product-media,
+        a,
+        img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

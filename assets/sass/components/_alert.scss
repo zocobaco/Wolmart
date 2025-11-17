@@ -1,0 +1,220 @@
+/* -------------------------------------------
+    Alert
+        - Default
+        - Simple Alert
+        - Dark Alert
+        - Icon Alert
+        - Light Alert
+        - Message Alert
+        - Button Alert
+        - Summary Alert
+---------------------------------------------- */
+
+// Alert Radius
+.alert-round {
+    border-radius: 3px;
+}
+
+// Default
+.alert {
+    position: relative;
+    padding: side-values(1.4rem 4.5rem 1.4rem 2rem);
+    border: 1px solid var(--wolmart-dark-color, $dark-color);
+    font-size: 1.4rem;
+    line-height: 1.75;
+
+    strong {
+        margin-#{$right}: 3px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .close-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+
+        &::before {
+            box-shadow: 0 0 1px rgba(0, 0, 0, .5);
+            height: 1px;
+            top: calc(50% - .5px);
+            background: var(--wolmart-dark-color, $dark-color);
+        }
+
+        &::after {
+            box-shadow: 0 0 1px rgba(0, 0, 0, .5);
+            width: 1px;
+            left: calc(50% - .5px);
+            background: var(--wolmart-dark-color, $dark-color);
+        }
+    }
+
+    .btn-close {
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        margin-top: -.8rem;
+        #{$right}: 2rem;
+        line-height: 0;
+    }
+
+    p,
+    ul {
+        line-height: 1.85;
+        font-size: .93em;
+    }
+}
+
+.alert-close-top .btn-close {
+    top: 2.8rem;
+}
+
+.alert-title {
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin-bottom: .6rem;
+
+    i {
+        margin-#{$right}: .8rem;
+        font-size: 1.8rem;
+        vertical-align: text-top;
+    }
+}
+
+// Color types
+.alert-info {
+    border-color: $info-color-light;
+    color: $info-color;
+
+    .close-icon::before,
+    .close-icon::after {
+        background-color: $info-color;
+    }
+}
+
+.alert-success {
+    border-color: $success-color-light;
+    color: $success-color;
+
+    .close-icon::before,
+    .close-icon::after {
+        background-color: $success-color;
+    }
+}
+
+.alert-warning {
+    border-color: $warning-color-light;
+    color: $warning-color;
+
+    .close-icon::before,
+    .close-icon::after {
+        background-color: $warning-color;
+    }
+}
+
+.alert-danger {
+    border-color: $danger-color-light;
+    color: $danger-color;
+
+    .close-icon::before,
+    .close-icon::after {
+        background-color: $danger-color;
+    }
+}
+
+.btn-close {
+    .close-icon {
+
+        &::before,
+        &::after {
+            transition: background-color .3s;
+        }
+    }
+
+    &:hover {
+
+        .close-icon::before,
+        .close-icon::after {
+            background-color: #000;
+        }
+    }
+}
+
+.alert-dark {
+    background: var(--wolmart-dark-color, $dark-color);
+    color: #fff;
+
+    .btn-close .close-icon::before,
+    .btn-close .close-icon::after {
+        background-color: #fff;
+    }
+}
+
+//  Light
+.alert-light {
+    &.alert-info {
+        background-color: $info-color-light;
+        border-color: $info-color-light;
+    }
+
+    &.alert-success {
+        background-color: $success-color-light;
+        border-color: $success-color-light;
+    }
+
+    &.alert-warning {
+        background-color: $warning-color-light;
+        border-color: $warning-color-light;
+    }
+
+    &.alert-danger {
+        background-color: $danger-color-light;
+        border-color: $danger-color-light;
+    }
+}
+
+// Simple
+.alert-simple {
+    background-color: transparent;
+    border-style: dashed;
+    border-color: #cacbcc;
+
+    &.alert-info {
+        border-color: $info-color-light;
+    }
+
+    &.alert-success {
+        border-color: $success-color-light;
+    }
+
+    &.alert-warning {
+        border-color: $warning-color-light;
+    }
+
+    &.alert-danger {
+        border-color: $danger-color-light;
+    }
+}
+
+//  Icon
+.alert-icon {
+    padding: side-values(1.5rem 4.5rem 1.5rem 1.9rem);
+
+    >i {
+        vertical-align: middle;
+        margin-#{$right}: 1.2rem;
+        line-height: 1;
+        font-size: 2.4rem;
+        font-weight: 600;
+    }
+}
+
+//  Buttons
+.alert-btn {
+    padding: side-values(1rem 4rem 1rem 1rem);
+
+    .btn:not(.btn-close) {
+        margin-#{$left}: .5rem;
+        margin-#{$right}: 1.5rem;
+    }
+}

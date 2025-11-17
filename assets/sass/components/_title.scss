@@ -1,0 +1,165 @@
+/* -------------------------------------------
+   Titles
+        - Default
+        - Simple
+        - Line
+        - Underline
+        - Icon
+        - Link
+---------------------------------------------- */
+
+.title-wrapper {
+    display: flex;
+    align-items: center;
+
+    .link {
+        display: inline-flex;
+        align-items: center;
+        color: var(--wolmart-dark-color, $dark-color);
+
+        &:hover {
+            color: var(--wolmart-primary-color, $primary-color);
+        }
+    }
+
+    .divider {
+        margin: 0 1.5rem;
+    }
+}
+
+.title {
+    margin-bottom: 0;
+    max-width: 100%;
+
+    &::before,
+    &::after {
+        height: 2px;
+        background: #edeef0;
+    }
+}
+
+.title-start .title {
+    margin-#{$right}: auto;
+}
+
+.title-end .title {
+    margin-#{$left}: auto;
+    text-align: end;
+}
+
+.title-center .title {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.link-start {
+    .title {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    &.title-start {
+        justify-content: flex-start;
+        text-align: start;
+    }
+
+    &.title-center {
+        justify-content: center;
+    }
+
+    &.title-end {
+        justify-content: flex-end;
+        text-align: end;
+    }
+}
+
+// Title Cross
+.title-cross {
+    .title {
+        display: flex;
+        position: relative;
+        align-items: center;
+        flex: 1;
+
+        &::before {
+            margin-#{$right}: 3rem;
+        }
+
+        &::after {
+            margin-#{$left}: 3rem;
+        }
+
+        &::before,
+        &::after {
+            flex: 1;
+            content: '';
+        }
+    }
+
+    &.title-start .title::before,
+    &.title-end .title::after {
+        content: none
+    }
+}
+
+// Underline
+@if use(title-underline) {
+    .title-underline {
+        position: relative;
+        text-align: $left;
+
+        &:after {
+            content: '';
+            margin: 0;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            height: 1px;
+            background: #edeef0;
+        }
+
+        .title {
+            display: inline-block;
+            flex: 0 0 auto;
+            position: relative;
+            z-index: 2;
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                bottom: 0;
+                background: var(--wolmart-primary-color, $primary-color);
+            }
+        }
+    }
+}
+
+// Extra Fixed Titles
+.title-underline2 {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $border-color-light;
+
+    .title {
+        font-weight: 700;
+        font-size: 2rem;
+        text-transform: capitalize;
+    }
+
+    .btn-link {
+        padding: .5rem 0;
+        text-transform: capitalize;
+    }
+}
+
+@include mq(sm, max) {
+    .title-wrapper {
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,168 @@
+// Comments
+.comments {
+	position: relative;
+	margin-bottom: 4.5rem;
+	padding-top: 5.5rem;
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		left: 0;
+		top: -1px;
+		width: 100%;
+		height: 1px;
+		background-color: $border-color-light;
+	}
+
+	.title {
+		margin-bottom: 2.6rem;
+		font-size: 2.4rem;
+		line-height: 1.2;
+		color: var(--wolmart-dark-color, $dark-color);
+		text-transform: capitalize;
+	}
+
+	.main-content-wrap + & {
+		margin-top: 4.5rem;
+	}
+}
+.comment-form {
+	a {
+		color: var(--wolmart-dark-color, $dark-color);
+	}
+}
+.comment-text {
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
+#respond #cancel-comment-reply-link {
+	float: $right;
+}
+.commentlist {
+	.children {
+        padding-top: 3rem;
+        margin-#{$left}: 3rem;
+	}
+	li.comment {
+		margin-bottom: 4.5rem;
+		&:last-child {
+			border-bottom-width: 0;
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+	}
+}
+
+@include mq( md, max ) {
+	.commentlist .children {
+		margin-#{$left}: 3rem;
+	}
+}
+
+div.comment,
+.comment_container {
+	display: flex;
+}
+
+.comment-action>* {
+	margin-#{$right}: 2rem;
+}
+
+.comment-reply-link {
+	color: var(--wolmart-dark-color, $dark-color);
+
+	&:#{$after} {
+		content: if-ltr('\e92c', '\e92b');
+		font-family: 'wolmart';
+		margin-#{$left}: .7rem;
+		vertical-align: middle;
+	}
+
+	&:hover,
+	&:focus {
+		color: var(--wolmart-primary-color, $primary-color);
+		box-shadow: 0 2px 0 var(--wolmart-primary-color, $primary-color);
+	}
+}
+
+.comment-avatar {
+	max-width: 9rem;
+	flex: 0 0 9rem;
+	margin-#{$right}: 2rem;
+
+	img {
+		height: 9rem; 
+		background-color: #ebebeb;
+		border-radius: 50%;
+	}
+}
+
+.comment-name {
+	display: inline-block;
+	margin-#{$right}: .5rem;
+	margin-bottom: 1rem;
+	font-size: 1.8rem;
+	line-height: 1;
+
+	a {
+		color: var(--wolmart-dark-color, $dark-color);
+	}
+}
+
+.comment-date {
+	display: inline-block;
+	margin-bottom: .8rem;
+	color: var(--wolmart-body-color, $body-color);
+	font-weight: 400;
+	line-height: 1;
+	font-size: 1.3rem;
+}
+
+.comment-text>p {
+	margin-bottom: 1rem;
+	font-size: 1.4rem;
+	line-height: 1.85;
+}
+
+.comment-respond {
+	margin-bottom: 5rem;
+
+	.comment-reply-title {
+		display: flex;
+		align-items: center;
+		font-size: 2rem;
+		margin-bottom: .5rem;
+	}
+
+	.form-control,
+	textarea {
+		font-size: 1.3rem;
+		margin-bottom: 2rem;
+		max-width: 100%;
+		color: #999;
+		border-color: #ebebeb;
+		background: #fff;
+	}
+
+	p {
+		font-size: 1.4rem;
+		color: var(--wolmart-body-color, $body-color);
+	}
+
+	.form-submit {
+		margin-bottom: 0;
+	}
+	.btn-submit {
+		letter-spacing: 0;
+	}
+	label {
+		vertical-align: top;
+	}
+}
+
+@include mq(sm, max) {
+	.comment-action span {
+		display: none;
+	}
+}

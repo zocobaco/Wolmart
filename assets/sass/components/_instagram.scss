@@ -1,0 +1,60 @@
+/* -------------------------------------------
+    Instagram
+---------------------------------------------- */
+
+@if use_component(instagram) {
+.instagram {
+    figure {
+        display: block;
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: #000;
+            opacity: 0;
+            transition: opacity .3s;
+            z-index: 1;
+        }
+        &::after {
+            content: '\e903';
+            display: inline-block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(90deg) scale(2);
+            font: {
+                size: 3rem;
+                family: 'wolmart';
+            }
+            color: #fff;
+            opacity: 0;
+            transition: opacity .3s, transform .3s;
+            z-index: 1;
+        }
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    figure:hover {
+        &::before {
+            opacity: .5;
+        }
+        &::after {
+            opacity: 1;
+            transform: translate(-50%, -50%) rotate(0deg) scale(1);
+        }
+    }
+}
+            }

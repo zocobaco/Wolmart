@@ -1,0 +1,546 @@
+/* -------------------------------------------
+	Sidebars
+		- Base
+		- Sidebar Elements
+		- Right Sidebar
+		- Fixed Sidebar
+		- Widget Styles
+		- Blog Sidebar
+------------------------------------------- */
+
+// Sidebar Base
+.top-sidebar-active .top-sidebar,
+.left-sidebar-active .left-sidebar,
+.right-sidebar-active .right-sidebar {
+
+	.sidebar-overlay,
+	.sidebar-close {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.sidebar-content {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+// Sidebar Elements
+.sidebar-close {
+	position: fixed;
+	top: 25px;
+	left: calc(100vw - 50px);
+	margin: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .3s;
+	z-index: 1062;
+}
+
+.sidebar-overlay,
+.sidebar-toggle,
+.sidebar-content {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+.sidebar-overlay {
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, .8);
+	opacity: 0;
+	visibility: hidden;
+	transition: visibility .4s, opacity .4s;
+	z-index: 1061;
+}
+
+.sidebar-toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 160px;
+	width: 40px;
+	height: 40px;
+	border-radius: 0 3px 3px 0;
+	font-size: 1.4rem;
+	color: #fff;
+	background-color: #222;
+	opacity: .6;
+	z-index: 1060;
+
+	&:hover {
+		opacity: .8;
+		color: #fff;
+	}
+}
+
+.right-sidebar .sidebar-toggle {
+	border-radius: 3px 0 0 3px;
+}
+
+.sidebar-fixed {
+	&.left-sidebar {
+		width: var(--wolmart-left-sidebar-width, 31rem);
+		flex: 0 0 auto;
+	}
+
+	&.right-sidebar {
+		width: var(--wolmart-right-sidebar-width, 31rem);
+		flex: 0 0 auto;
+	}
+}
+
+.sidebar-content {
+	.left-sidebar & {
+		width: var(--wolmart-left-sidebar-width, 31rem);
+	}
+
+	.right-sidebar & {
+		width: var(--wolmart-right-sidebar-width, 31rem);
+	}
+
+	bottom: 0;
+	padding: 2rem;
+	transform: translateX(-100%);
+	overflow: auto;
+	opacity: 0;
+	line-height: 1.3;
+	transition: transform .4s,
+	opacity .4s;
+	box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
+	color: #999;
+
+	.sidebar-offcanvas & {
+		z-index: 1062;
+		background: #fff;
+	}
+
+	.sidebar-overlay~& {
+		box-shadow: none;
+	}
+
+	.sidebar-close {
+		display: flex;
+		position: static;
+		align-items: center;
+		margin-bottom: 2rem;
+		text-transform: uppercase;
+		line-height: 1;
+	}
+
+	.close-icon {
+		width: 1.6rem;
+		height: 1.6rem;
+		margin-right: .6rem;
+
+		&::before,
+		&::after {
+			background: var(--wolmart-body-color, $body-color);
+		}
+	}
+
+	p {
+		line-height: 1.6;
+		color: var(--wolmart-body-color, $body-color);
+	}
+}
+
+@include mq(lg, 'max') {
+	.sidebar-content {
+		background: #fff;
+	}
+}
+
+.rtl {
+	.left-sidebar {
+		order: 2;
+	}
+
+	.right-sidebar {
+		order: initial;
+	}
+}
+
+// Right Sidebar
+.right-sidebar {
+	margin-left: auto;
+	order: 2;
+
+	.sidebar-toggle {
+		left: auto;
+		right: 0;
+	}
+
+	.sidebar-close {
+		left: 3rem;
+	}
+
+	.sidebar-content {
+		transform: translateX(100%);
+		left: auto;
+		right: 0;
+	}
+}
+
+@include mq(lg) {
+	.sidebar-fixed .sidebar-toggle {
+		display: none;
+	}
+
+	// Fixed Sidebar
+	.sidebar-fixed {
+		.sidebar-overlay {
+			display: none;
+		}
+
+		.sidebar-content {
+			position: relative;
+			overflow: visible;
+			padding: 0;
+			opacity: 1;
+		}
+
+		.sidebar-content {
+			width: auto;
+			transform: none;
+		}
+	}
+}
+
+@include mq(lg, max) {
+	.sidebar-content {
+		z-index: 1062;
+	}
+}
+
+.sidebar {
+
+	.sidebar-content {
+
+		a:not(.btn),
+		span.count {
+			color: var(--wolmart-dark-color, $dark-color);
+		}
+
+		li:hover,
+		li.chosen {
+
+			>a:not(.btn),
+			>span.count {
+				color: var(--wolmart-primary-color, $primary-color);
+			}
+		}
+	}
+
+	.widget_search:not(.widget-collapsible) {
+		margin-bottom: 2.5rem;
+
+		.search-wrapper {
+			width: 100%;
+		}
+	}
+
+	.search-wrapper .form-control {
+		min-height: 4.7rem;
+	}
+
+	.widget-title {
+		&.collapsed {
+			margin-bottom: 0; // Origin 5px ???
+		}
+	}
+
+	&:not(.shop-sidebar) .widget {
+		.widget-title {
+			margin-bottom: 1rem;
+		}
+
+		>ul {
+			margin-top: -1rem;
+		}
+	}
+
+	.widget {
+		> :not(.widget-title) {
+			transition: opacity .3s;
+		}
+
+		>.slider-wrapper {
+			transition-property: transform;
+		}
+
+		>ul,
+		.tagcloud {
+			margin-bottom: 1.3rem;
+		}
+
+		form {
+			margin-bottom: 2.3rem;
+		}
+
+		>select {
+			margin-bottom: 2rem;
+		}
+
+		.current-cat>a {
+			color: var(--wolmart-primary-color, $primary-color);
+		}
+
+		.children {
+			position: relative;
+			width: 100%;
+			margin: 1rem 0 -.5rem;
+			padding-#{$left}: 1.3rem;
+
+			&::before {
+				content: '';
+				position: absolute;
+				#{$left}: 2px;
+				top: 4px;
+				bottom: 3px;
+				border-#{$left}: 1px solid $border-color-light;
+			}
+		}
+
+		li {
+			padding: 1rem 0;
+		}
+
+		li>a {
+			padding: side-values(0 0 0 2px);
+		}
+
+		.count {
+			line-height: 1;
+			transition: color 0.4s;
+		}
+
+		.product-wrap {
+			margin-bottom: 0;
+		}
+	}
+
+	.children a {
+		color: var(--wolmart-body-color, $body-color);
+	}
+
+	.widget_categories {
+		>form {
+			margin-bottom: 2rem;
+		}
+
+		ul.children {
+			font-size: 1.3rem;
+		}
+	}
+
+	.collapsed~* {
+		// updated(925)
+		opacity: .1;
+	}
+
+	.cat-item {
+		position: relative;
+		flex-wrap: wrap;
+
+		>a {
+			flex: none;
+		}
+
+		>.count {
+			flex: 1;
+			margin-#{$left}: 5px;
+		}
+
+		>ul {
+			position: relative;
+			display: none;
+			width: 100%;
+			margin: 1rem 0 0;
+			padding-#{$left}: 1.3rem;
+
+			&::before {
+				content: '';
+				position: absolute;
+				#{$left}: 2px;
+				top: 4px;
+				bottom: 3px;
+				border-#{$left}: 1px solid $border-color-light;
+			}
+		}
+
+		li {
+			padding: 5.5px 0;
+		}
+
+		>a>i {
+			content: '\e90e';
+			position: absolute;
+			top: 9px;
+			#{$right}: 0;
+			line-height: 0;
+			margin-#{$right}: -3px;
+			padding: 1rem 5px;
+			font-size: 1.1rem;
+			font-family: 'wolmart';
+			font-weight: 600;
+			transition: transform .3s;
+		}
+
+		&.show>a {
+			color: var(--wolmart-primary-color, $primary-color);
+
+			i {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+
+	.menu {
+		li {
+			padding: 0;
+		}
+
+		li a {
+			padding: 0.7rem 0;
+		}
+
+		ul {
+			padding: 0;
+			margin: 0;
+		}
+	}
+}
+
+// Collapsible Widget
+.widget-collapsible:not(.widget-block) {
+	>.widget-title {
+		position: relative;
+		cursor: pointer;
+		padding: 1.3rem 0;
+		margin: 0;
+	}
+
+	>h3 {
+		padding: 2rem 0;
+	}
+
+	.dokan-store-open-close {
+		margin: 1.3rem 0;
+	}
+
+	>ul,
+	// dokan compatibility
+	.product-cat-stack-dokan.cat-drop-stack,
+	.store-cat-stack-dokan.cat-drop-stack,
+	.product-cat-stack-dokan#cat-drop-stack,
+	.store-cat-stack-dokan#cat-drop-stack {
+		padding: .7rem 0;
+		margin-top: 0;
+		margin-bottom: 1.3rem;
+	}
+
+	>h3+p {
+		margin-top: 1.5rem;
+	}
+
+	.dokan-bestselling-product-widget {
+		margin-bottom: 2.3rem;
+	}
+
+	>ul,
+	>* {
+		border-top: none;
+	}
+
+	.toggle-btn {
+		top: 21px;
+		#{$right}: 2px;
+		padding: 0;
+		width: 12px;
+		opacity: 1;
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			border-top: 2px solid var(--wolmart-body-color, $body-color);
+			width: 12px;
+			transition: transform .3s;
+		}
+	}
+
+	>.collapsed .toggle-btn::before {
+		transform: rotate(90deg);
+	}
+
+	>.collapsed .toggle-btn::after {
+		transform: rotate(180deg);
+	}
+}
+
+.widget.widget-collapsible {
+	>select {
+		border: 1px solid #eee;
+	}
+
+	>span.select2,
+	&.dropdown_product_cat {
+		margin: 2rem 0;
+	}
+}
+
+.widget {
+	span.select2-selection--single {
+		border-color: #eee;
+		height: 4rem;
+
+		>.select2-selection__rendered {
+			line-height: 3.8rem;
+		}
+
+		.select2-selection__arrow {
+			top: 6px;
+		}
+	}
+}
+
+span.select2-container--default .select2-search--dropdown .select2-search__field,
+span.select2-dropdown {
+	border-radius: 3px;
+	border-color: #eee;
+}
+
+.collapsed+ul {
+	display: none;
+}
+
+// Products widget and posts widget in sidebar 
+.widget>.slider-wrapper:first-child~.slider-button {
+	display: none;
+}
+
+.widget>.slider-wrapper:nth-child(2)~.slider-button {
+	top: 2.4rem;
+}
+
+.widget-products.widget ul.products-col {
+	border-top: 1px solid $border-color-light;
+	margin: 0;
+	padding: 1rem 0 2rem;
+}
+
+@media (max-width: 359px) {
+	.sidebar .sidebar-content {
+		width: 28rem;
+	}
+
+	.right-sidebar .sidebar-close {
+		left: 1rem;
+	}
+
+	.left-sidebar .sidebar-close {
+		right: 1rem;
+	}
+}

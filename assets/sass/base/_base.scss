@@ -1,0 +1,790 @@
+/* -------------------------------------------
+	Base
+---------------------------------------------- */
+
+*,
+::after,
+::before {
+	box-sizing: inherit;
+}
+
+:root {
+	font-size: 62.5%;
+	font-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	font-weight: 400;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+	@media (prefers-reduced-motion: no-preference) {
+		scroll-behavior: smooth;
+	}
+}
+
+body {
+	overflow-x: hidden;
+	max-width: var(--wolmart-site-width);
+	margin: side-values(var(--wolmart-site-margin));
+	padding: side-values(var(--wolmart-site-gap));
+	background-color: var(--wolmart-site-bg-color, #fff);
+	background-image: var(--wolmart-site-bg-image);
+	background-repeat: var(--wolmart-site-bg-repeat);
+	background-position: var(--wolmart-site-bg-position);
+	background-size: var(--wolmart-site-bg-size);
+	background-attachment: var(--wolmart-site-bg-attachment);
+
+	--alpha-primary-color: var(--wolmart-primary-color);
+}
+
+[tabindex="-1"]:focus:not(:focus-visible) {
+	outline: 0 !important;
+}
+
+abbr[title],
+abbr[data-bs-original-title] {
+	text-decoration: underline;
+	text-decoration: underline dotted;
+	cursor: help;
+	text-decoration-skip-ink: none;
+}
+
+address {
+	margin-bottom: 1rem;
+	font-style: normal;
+	line-height: inherit;
+}
+
+sub,
+sup {
+	position: relative;
+	line-height: 0;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -.25em;
+}
+
+sup {
+	top: -.5em;
+}
+
+pre,
+code,
+kbd,
+samp {
+	direction: ltr #{"/* rtl:ignore */"};
+	unicode-bidi: bidi-override;
+}
+
+pre {
+	display: block;
+	margin-top: 0;
+	margin-bottom: 1rem;
+	overflow: auto;
+
+	code {
+		word-break: normal;
+	}
+}
+
+code {
+	word-wrap: break-word;
+}
+
+main {
+	display: block;
+	position: relative;
+	padding-top: 3rem;
+	padding-bottom: 5rem;
+	flex: 1 1 auto;
+
+	.archive:not(.breadcrumb-divider-active) .breadcrumb-container+& {
+		padding-top: 0;
+	}
+}
+
+body:not(.loaded) * {
+	transition: all 0s !important;
+}
+
+.page-wrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	transition: margin .4s, opacity .5s;
+	// opacity: 0;
+
+	background-color: var(--wolmart-page-wrapper-bg-color, #fff);
+	background-image: var(--wolmart-page-wrapper-bg-image);
+	background-repeat: var(--wolmart-page-wrapper-bg-repeat);
+	background-position: var(--wolmart-page-wrapper-bg-position);
+	background-size: var(--wolmart-page-wrapper-bg-size);
+	background-attachment: var(--wolmart-page-wrapper-bg-attachment);
+
+	.loaded>& {
+		opacity: 1;
+	}
+}
+
+.main-content {
+	&::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+.site-boxed .page-wrapper {
+	box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+table {
+	margin-bottom: 2rem;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+
+	td,
+	th {
+		padding: 10px;
+		text-align: $left;
+		vertical-align: top;
+		border-bottom: 1px solid #e9e9e9;
+		// &:first-child {
+		// 	padding-#{$left}: 0;
+		// }
+	}
+}
+
+dl {
+	dt {
+		font-weight: 700;
+		font-size: 1.1em;
+	}
+
+	dd {
+		margin-bottom: .5rem;
+	}
+}
+
+ul {
+	padding-inline-start: 20px;
+
+	@include only-for-edge() {
+		padding-#{$left}: 20px;
+	}
+}
+
+// added(925) issue: style borken????
+ul,
+ol {
+	margin-bottom: 2rem;
+
+	li & {
+		margin-bottom: 0;
+	}
+}
+
+ol ol {
+	list-style: upper-alpha;
+
+	ol {
+		list-style: lower-roman;
+	}
+}
+
+.comment-text {
+	>ul {
+		list-style: disc;
+
+		ul {
+			list-style: circle;
+
+			ul {
+				list-style: square;
+			}
+		}
+	}
+
+	>ol {
+		list-style: decimal;
+
+		ol {
+			list-style: upper-alpha;
+
+			ol {
+				list-style: lower-roman;
+			}
+		}
+	}
+}
+
+.menu,
+.menu ul,
+.mobile-menu,
+.mobile-menu ul,
+.nav,
+.nav ul,
+.tabs,
+.widget ul,
+.list,
+.breadcrumb,
+.dropdown-box,
+.pagination,
+.commentlist,
+.comments>ol,
+.comment>ol,
+.nav-filters,
+.product-category ul,
+.products,
+.products ul,
+.product-nav,
+.product-tabs>div ul,
+.woocommerce-error,
+.image-gallery,
+.image-gallery ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.breadcrumb,
+.post-meta,
+.post-cats,
+.post .post-title,
+.tagcloud,
+.menu .menu-item>,
+header,
+.product-category,
+.product_meta,
+.product-cat,
+.product .woocommerce-loop-product__title,
+.widget_product_categories,
+.yith-woocommerce-ajax-product-filter,
+.wolmart-price-filter,
+.pagination,
+.mobile-icon-bar,
+.mobile-menu-wrapper,
+.card-header,
+.cart_item,
+// .nav-tabs, // by single product tab
+.nav-filters {
+	a {
+		color: inherit;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: var(--wolmart-primary-color, $primary-color);
+	transition: color .3s;
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+
+		i {
+			text-decoration: none;
+		}
+	}
+}
+
+.compare-list,
+.vendor-widget,
+.nav-filters,
+.title,
+.title-wrapper,
+.post-cats,
+.post-tags,
+.post-meta,
+.post-title,
+.filter-actions,
+.toolbox,
+.pagination,
+.breadcrumb,
+nav,
+.nav,
+.social-icons,
+.mobile-icon-bar,
+.account,
+.contact,
+.dropdown,
+.tooltip,
+.product,
+.product-category,
+.toggle-menu,
+.menu,
+.compare-value,
+.card-header,
+.elementor-icon-box-title,
+.nav_bar,
+.brand-name {
+
+	a:hover,
+	a:focus {
+		text-decoration: none;
+	}
+}
+
+.mobile-menu-toggle:hover,
+.mobile-menu-toggle:focus,
+.sidebar-toggle:hover,
+.sidebar-toggle:focus,
+.btn-readmore:hover,
+.btn-readmore:focus,
+.btn:hover,
+.btn:focus,
+.wolmart-icon-list-item:hover,
+.wolmart-icon-list-item:focus,
+.button:hover,
+.button:focus,
+.comment-reply-link:focus,
+.comment-reply-link:hover,
+.page-numbers:hover,
+.page-numbers:focus,
+.remove:hover,
+.remove:focus,
+a.wishlist,
+a.compare-open {
+	text-decoration: none;
+}
+
+.vendor-widget,
+.brand-name {
+	a {
+		color: inherit;
+
+		&:hover,
+		&:focus {
+			color: var(--wolmart-primary-color, $primary-color);
+		}
+	}
+}
+
+:focus {
+	outline: 0;
+}
+
+figure {
+	margin: 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle
+}
+
+svg {
+	vertical-align: middle;
+}
+
+hr {
+	margin-bottom: 2rem; // updated(925)
+	border: 0;
+	border-top: 1px solid $border-color-light;
+}
+
+input {
+	padding: 0;
+	font-family: inherit;
+	background: transparent;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	&:focus {
+		outline: 0;
+	}
+}
+
+// Remove the inheritance of text transform in Firefox
+button,
+select {
+	text-transform: none;
+}
+
+// Remove the inheritance of word-wrap in Safari.
+// See https://github.com/twbs/bootstrap/issues/24990
+
+select {
+	word-wrap: normal;
+}
+
+// Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
+
+::-moz-focus-inner {
+	padding: 0;
+	border-style: none;
+}
+
+// Textareas should really only resize vertically so they don't break their (horizontal) containers.
+textarea {
+	resize: vertical;
+}
+
+// 1. Browsers set a default `min-width: min-content;` on fieldsets,
+//    unlike e.g. `<div>`s, which have `min-width: 0;` by default.
+//    So we reset that to ensure fieldsets behave more like a standard block element.
+//    See https://github.com/twbs/bootstrap/issues/12359
+//    and https://html.spec.whatwg.org/multipage/#the-fieldset-and-legend-elements
+// 2. Reset the default outline behavior of fieldsets so they don't affect page layout.
+
+fieldset {
+	min-width: 0; // 1
+	padding: 0; // 2
+	margin: 0; // 2
+	border: 0; // 2
+}
+
+// Remove the inner padding in Chrome and Safari on macOS.
+::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+// Remove padding around color pickers in webkit browsers
+::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+
+// stylelint-disable-next-line selector-pseudo-element-no-unknown
+::file-selector-button {
+	font: inherit;
+}
+
+// 1. Change font properties to `inherit`
+// 2. Correct the inability to style clickable types in iOS and Safari.
+::-webkit-file-upload-button {
+	font: inherit; // 1
+	-webkit-appearance: button; // 2
+}
+
+output {
+	display: inline-block;
+}
+
+iframe {
+	border: 0;
+}
+
+summary {
+	display: list-item; // 1
+	cursor: pointer;
+}
+
+progress {
+	vertical-align: baseline;
+}
+
+[hidden] {
+	display: none;
+}
+
+ins {
+	text-decoration: none;
+}
+
+i {
+	font-style: normal;
+}
+
+button {
+	&:focus {
+		outline: none;
+	}
+}
+
+blockquote,
+input,
+textarea,
+button,
+select,
+optgroup {
+	font-family: inherit;
+	margin: 0;
+}
+
+blockquote {
+	margin: 0 0 20px;
+	padding: 20px;
+	border-#{$left}: 2px solid var(--wolmart-primary-color, $primary-color);
+	background: #f4f4f4;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+code {
+	display: inline-block;
+	border-radius: 4px;
+	padding: 2px 5px;
+	font-size: 1.4rem;
+	color: var(--wolmart-primary-color, $primary-color);
+}
+
+pre {
+	margin: 20px 0;
+	padding: 20px;
+	color: var(--wolmart-primary-color, $primary-color);
+	background-color: #f2f3f5;
+	overflow: auto;
+	font-size: 1.6rem;
+}
+
+// added (925)
+dd {
+	margin-left: 1rem;
+}
+
+.scrollable,
+.sidebar-content {
+	-webkit-overflow-scrolling: touch;
+
+	&::-webkit-scrollbar {
+		height: 4px;
+		width: 4px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		margin-#{$right}: 2px;
+		background: rgba(#000, 0);
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background .3s;
+	}
+
+	&:hover::-webkit-scrollbar-thumb {
+		background: rgba(#000, 0.25);
+	}
+}
+
+.scrollable-light:hover::-webkit-scrollbar-thumb {
+	background: rgba(#fff, 0.2);
+}
+
+.single-attachment .attachment>a {
+	display: inline-block;
+}
+
+// Overlay Animation
+.loading-overlay {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	transition: all .3s ease-in-out;
+	background: #fff;
+	opacity: 1;
+	visibility: visible;
+	z-index: 999999;
+
+	.loaded>& {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+.bounce-loader {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+.bounce-loader>div {
+	background-color: var(--wolmart-primary-color, $primary-color);
+	border-radius: 100%;
+	margin: 2px;
+	position: absolute;
+	left: -50px;
+	top: -50px;
+	opacity: 0;
+	margin: 0;
+	width: 100px;
+	height: 100px;
+	animation: bounce-loader 1.6s linear infinite;
+}
+
+.bounce-loader> :last-child {
+	animation-delay: -.8s;
+}
+
+@keyframes bounce-loader {
+	0% {
+		transform: scale(0);
+		opacity: 1;
+	}
+
+	to {
+		transform: scale(1);
+		opacity: 0;
+	}
+}
+
+// Animation
+.appear-animate {
+	transform: translate3d(0, 0, 0) scale(1);
+	will-change: transform, filter, opacity;
+}
+
+// Lazyload
+.w-lazyload {
+	height: 0 !important;
+	background: var(--wolmart-lazy-load-bg, #f4f4f4);
+}
+
+// [data-lazy]:not(img) {
+// 	background-image: none!important;
+// }
+.banner-img .w-lazyload {
+	min-height: 0;
+}
+
+
+.screen-reader-text,
+script {
+	display: none !important;
+}
+
+// Sticky Content(new)
+@keyframes fixedTop {
+	from {
+		transform: translateY(-100%);
+		transform-origin: center top 0px;
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes fixedBottom {
+	from {
+		transform: translateY(100%);
+		transform-origin: center top 0px;
+	}
+
+	to {
+		transform: translateY(0);
+	}
+}
+
+.sticky-content {
+	&.fix-top {
+		top: 0;
+	}
+
+	&.fix-bottom {
+		bottom: 0;
+	}
+
+	&.fixed {
+		position: fixed;
+		left: 0;
+		right: 0;
+		opacity: 1;
+		transform: none;
+		background: #fff;
+		z-index: 1051;
+		box-shadow: 0 0 10px 1px rgba(0, 0, 0, .1);
+	}
+
+	transition: opacity 0.5s;
+}
+
+.fixed.fix-top {
+	animation: fixedTop .4s;
+}
+
+.fixed.fix-bottom {
+	animation: fixedBottom .4s;
+}
+
+// Fitvids
+.fit-video .wp-video {
+	width: 100% !important;
+}
+
+// Loading Icon
+form.w-loading {
+	opacity: .3;
+}
+
+.w-loading {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(255, 255, 255, .6);
+	z-index: 1;
+
+	&.small i {
+		// position: absolute;
+		left: calc(50% - 10px);
+		top: calc(50% - 10px);
+		width: 20px;
+		height: 20px;
+	}
+
+	i {
+		position: absolute;
+		left: calc(50% - 17px);
+		top: calc(50% - 17px);
+		width: 34px;
+		height: 34px;
+		border: 2px solid transparent;
+		border-top-color: var(--wolmart-primary-color, $primary-color);
+		border-radius: 50%;
+		animation: spin .75s infinite linear;
+
+		&:before {
+			content: '';
+			top: -2px;
+			left: -2px;
+			position: absolute;
+			width: inherit;
+			height: inherit;
+			border: inherit;
+			border-radius: inherit;
+			animation: spin 1.5s infinite ease;
+		}
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: none;
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@media (max-width: 767px) {
+	.wolmart-disable-mobile-animation {
+
+		.elementor-invisible,
+		.appear-animate,
+		[data-vce-animate] {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+
+#wp-admin-bar-my-account .w-lazyload.avatar {
+	padding-top: 0 !important;
+	height: auto !important;
+	width: auto !important
+}
+
+.empty-icon {
+	font-size: 100px;
+	color: #d3d3d4;
+}

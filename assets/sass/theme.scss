@@ -1,0 +1,85 @@
+/*
+1. config
+2. mixins
+3. demo config
+4. plugins
+5. base
+6. wp plugins
+7. components
+8. header
+9. footer
+10. pages
+*/
+
+/* 1. Wolmart SCSS Framework */
+@import 'config';
+@import 'mixins';
+@import 'direction';
+
+/* 2. Theme SCSS Framework */
+// @set_theme_configuration
+
+/* 3. base */
+@import 'base/base';
+@import 'base/type';
+@import 'base/layout';
+
+@import 'base/grid';
+@import 'base/spacing';
+@import 'base/helper';
+
+/* 6. wp plugins */
+@import 'compatibility/wp';
+@import 'compatibility/gutenberg';
+@import 'compatibility/woocommerce';
+
+/* 7. components */
+@import 'components/slider';
+@import 'components/price-slider';
+@import 'components/accordion';
+@import 'components/alert';
+@import 'components/animation';
+@import 'components/banner';
+@import 'components/blog';
+@import 'components/brand';
+@import 'components/button';
+@import 'components/category';
+@import 'components/comment';
+@import 'components/counter';
+@import 'components/cookie-law';
+@import 'components/dropdown';
+@import 'components/element';
+@import 'components/hotspot';
+@import 'components/filter';
+@import 'components/form';
+@import 'components/icon-box';
+@import 'components/icon';
+@import 'components/iconlist';
+@import 'components/image-box';
+@import 'components/instagram';
+@import 'components/minipopup';
+@import 'components/subcat';
+@import 'components/overlay';
+@import 'components/page-header';
+@import 'components/pagination'; 
+@import 'components/popup';
+@import 'components/product';
+@import 'components/product-single';
+@import 'components/social-icon';
+@import 'components/sidebar';
+@import 'components/sidebar-shop'; 
+@import 'components/tab';
+@import 'components/testimonial';
+@import 'components/tooltip';
+@import 'components/title';
+@import 'components/vendor';
+@import 'components/widget';
+@import 'components/compare';
+@import 'components/404';
+
+/* 8. header */
+@import 'base/header/header';
+@import 'base/header/menu';
+
+/* 9. footer */
+@import 'base/footer/footer';

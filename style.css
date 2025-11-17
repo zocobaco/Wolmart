@@ -1,0 +1,51 @@
+/*
+Theme Name: Wolmart
+Theme URI: https://d-themes.com/wordpress/wolmart
+Author: D-THEMES
+Author URI: https://d-themes.com/
+Description: Wolmart Multi-Vendor Marketplace Responsive Wordpress Theme.
+Version: 1.9.6
+Tested up to: 5.5
+Requires PHP: 7.4
+License: Commercial
+License URI: http://themeforest.net/licenses/regular_extended
+Tags: e-commerce, one-column, two-columns, three-columns, four-columns, full-width-template, left-sidebar, right-sidebar, custom-menu, custom-background, custom-colors, custom-header, custom-logo, editor-style, featured-images, flexible-header, microformats, post-formats, rtl-language-support, theme-options, translation-ready, accessibility-ready, threaded-comments
+Text Domain: wolmart
+*/
+
+/*************** ADD YOUR CUSTOM CSS HERE  ***************/
+
+.bypostauthor {
+  display: block;
+}
+
+.gallery-caption,
+.wp-caption-text {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  padding-top: 10px;
+}
+
+.aligncenter.wp-caption .wp-caption-text {
+  padding-bottom: 20px;
+}
+
+.alignleft.wp-caption .wp-caption-text {
+  padding-bottom: 10px;
+}
+
+.blog.home.wolmart-archive-post-layout main {
+  padding-top: 0;
+}
+
+.wp-block-group.has-background+.btn-readmore {
+  display: block;
+  margin-top: 1rem;
+}
+
+@media (max-width: 767px) {
+  .blog.home.wolmart-archive-post-layout .post-archive .post-wrap:first-child .post-details {
+    padding-top: 10px;
+  }
+}

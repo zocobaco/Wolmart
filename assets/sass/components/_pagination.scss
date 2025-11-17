@@ -1,0 +1,111 @@
+/* -------------------------------------------
+    Pagination
+---------------------------------------------- */
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 1.4rem;
+
+    .prev i {
+        margin-#{$right}: .5rem;
+
+        @include if-rtl {
+            &:before {
+                content: '\e92c';
+            }
+        }
+    }
+
+    .next i {
+        margin-#{$left}: .5rem;
+
+        @include if-rtl {
+            &:before {
+                content: '\e92b';
+            }
+        }
+    }
+}
+
+// Pagination
+.pagination-footer {
+    // added(925)
+    clear: both;
+}
+
+.pagination-footer>.links {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.pagination-footer .name {
+    display: inline-block;
+    margin-#{$right}: 1rem;
+}
+
+.page-numbers {
+
+    &.next,
+    &.prev {
+        color: var(--wolmart-dark-color, $dark-color);
+    }
+}
+
+.page-numbers,
+.pagination-footer .links .post-page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3rem;
+    height: 4rem;
+    padding: 0 .3rem;
+    line-height: 1;
+    background-color: transparent;
+    border: .1rem solid transparent;
+    transition: border .3s;
+    border-radius: 3px;
+
+    &:hover,
+    &.current {
+        border-color: #eee;
+        color: var(--wolmart-primary-color, $primary-color);
+    }
+
+    &.disabled {
+        color: #aaa;
+        pointer-events: none;
+    }
+
+    &+.page-numbers {
+        margin-#{$left}: .5rem;
+    }
+
+    &.dots {
+        min-width: auto;
+        padding: 0 0 .8rem;
+        border: none;
+    }
+}
+
+.pagination .prev,
+.pagination .next {
+    min-width: 8rem;
+    padding: 1.2rem;
+
+    i {
+        top: 0;
+    }
+}
+
+.show-info {
+    margin: 0;
+    color: #aaa;
+
+    span {
+        margin: 0 5px;
+        color: var(--wolmart-dark-color, $dark-color);
+    }
+}

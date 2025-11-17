@@ -1,0 +1,19 @@
+.field-megamenu,
+.field-megamenu_width,
+.field-megamenu_pos,
+.field-block {
+    display: none;
+}
+
+.menu-item-depth-0 {
+    .field-megamenu,
+    .field-megamenu_width,
+    .field-megamenu_pos {
+        display: block;
+    }
+}
+.menu-item-depth-2 {
+    .field-block {
+        display: block;
+    }
+}

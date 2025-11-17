@@ -1,0 +1,31 @@
+/* -------------------------------------------
+	Erorr 404 Page
+---------------------------------------------- */
+
+.error404 .main {
+	padding-top: 0;
+	padding-bottom: 0;
+	border: none;
+}
+
+.area_404 {
+	background-color: #f7f7f7;
+	padding: 14.5rem 0 8.5rem;
+	text-align: center;
+
+	h1 {
+		font-size: 3rem;
+	}
+
+	.img-area {
+		max-width: 820px;
+		height: 460px;
+		background-position: center;
+		background-image: url(../images/404.png);
+	}
+
+	p {
+		font-size: 1.4rem;
+		color: #999;
+	}
+}

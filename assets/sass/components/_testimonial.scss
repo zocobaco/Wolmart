@@ -1,0 +1,315 @@
+/* -------------------------------------------
+    Testimonial
+---------------------------------------------- */
+
+@if use_component(testimonial) {
+    .testimonial-group .testimonial {
+        margin-bottom: 2rem;
+    }
+
+    blockquote.testimonial {
+        border-left: 0;
+    }
+
+    .testimonial {
+        padding: 0;
+        margin-bottom: 0;
+        width: 100%;
+        color: var(--wolmart-body-color, $body-color);
+        font-size: 1.6rem;
+        background-color: transparent;
+        transition: background-color .4s, box-shadow .4s;
+
+        img,
+        .slider-wrapper & img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+
+        cite {
+            display: block;
+            font-style: normal;
+            color: var(--wolmart-dark-color, $dark-color);
+        }
+
+        .name {
+            color: var(--wolmart-dark-color, $dark-color);
+            font-weight: 600;
+        }
+
+        .avatar,
+        cite,
+        .comment {
+            margin-bottom: 1.5rem;
+        }
+
+        .content {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .comment-title {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            line-height: 1.2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .comment {
+            font-size: 1.4rem;
+            line-height: 1.86;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .ratings-container {
+            line-height: 1;
+            font-size: 1.1rem;
+        }
+
+        .ratings-full,
+        .ratings {
+            display: inline-block;
+            position: relative;
+            font-family: 'wolmart';
+            letter-spacing: .2em;
+        }
+
+        .ratings-full {
+            cursor: pointer;
+
+            &::before {
+                content: "\e986" "\e986" "\e986" "\e986" "\e986";
+                color: rgba(0, 0, 0, 0.16);
+                white-space: nowrap;
+            }
+
+            &:hover {
+                .tooltiptext {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+        }
+
+        .ratings {
+            position: absolute;
+            top: 0;
+            left: 0;
+            white-space: nowrap;
+            overflow: hidden;
+
+            &::before {
+                content: "\e986" "\e986" "\e986" "\e986" "\e986";
+                color: var(--wolmart-secondary-color, $secondary-color);
+            }
+        }
+
+        &.aside,
+        &.aside_info .commenter,
+        .avatar {
+            display: inline-flex;
+        }
+
+        &.aside,
+        &.aside_info {
+            .avatar {
+                margin-right: 1.5rem;
+            }
+        }
+
+        cite span,
+        &.top_info cite {
+            display: block;
+        }
+
+        .name {
+            font-size: 1.4rem;
+            font-style: normal;
+            line-height: 1;
+        }
+
+        .role {
+            font-size: 1.3rem;
+            text-transform: none;
+            color: #999;
+            line-height: 1;
+        }
+
+        .fa-icon {
+
+            &:before,
+            .ratings:before {
+                font-weight: 900;
+                font-family: 'wolmart';
+                content: '\e960' '\e960' '\e960' '\e960' '\e960';
+            }
+
+            &.outline:before {
+                font-weight: 400;
+                content: '\e960' '\e960' '\e960' '\e960' '\e960';
+            }
+        }
+    }
+
+    // Simple
+    @if use(testimonial-simple) {
+        .testimonial-simple {
+            .content {
+                position: relative;
+                margin-bottom: 2rem;
+                padding: 2.1rem 3rem;
+                color: var(--wolmart-body-color, $body-color);
+                overflow: visible;
+                border: 1px solid $border-color-light;
+                background-color: #fff;
+
+                &::before,
+                &::after {
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    bottom: 0;
+                    #{$left}: 40px;
+                    width: 12px;
+                    height: 12px;
+                    background-color: $border-color-light;
+                    transform: rotate(-45deg) translateY(80%);
+                }
+
+                &::before {
+                    background-color: inherit;
+                    z-index: 11;
+                    transform: rotate(-45deg) translate(5%, 75%);
+                }
+            }
+
+            .name {
+                margin-bottom: .7rem;
+            }
+
+            cite,
+            .avatar,
+            .comment {
+                margin-bottom: 0;
+            }
+
+            .commenter {
+                display: flex;
+                align-items: center;
+                padding: 0 2rem;
+
+                .avatar {
+                    margin-#{$right}: 1.5rem;
+                }
+            }
+
+            &.inversed {
+
+                .content::after,
+                .content::before {
+                    right: 55px;
+                    left: auto;
+                }
+
+                .avatar {
+                    order: 2;
+                    margin-#{$left}: 1.5rem;
+                    margin-#{$right}: 0;
+                }
+
+                .commenter {
+                    justify-content: if-ltr(flex-end, flex-start);
+                }
+
+                cite {
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    // Boxed
+    @if use(testimonial-boxed) {
+        .testimonial-boxed {
+            text-align: center;
+
+            .avatar {
+                margin: 0 auto 1.5rem auto;
+            }
+
+            .name {
+                margin-bottom: .8rem;
+            }
+
+            .ratings-container {
+                margin-bottom: 1rem;
+            }
+
+            .content {
+                padding: 0 2rem;
+            }
+        }
+    }
+
+    // Aside
+    @if use(testimonial-aside) {
+        .testimonial-aside {
+            display: flex;
+            align-items: center;
+
+            .commentor {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                cite {
+                    margin-right: 0;
+                    margin-left: 0;
+                    text-align: center;
+                }
+            }
+
+            .comment {
+                margin-bottom: 1rem;
+                padding-#{$right}: 2rem;
+            }
+
+            .comment-title,
+            .ratings-container,
+            cite,
+            .comment {
+                margin-#{$right}: 2rem;
+            }
+
+            .ratings-container {
+                margin-#{$right}: 2rem;
+                margin-bottom: .5rem;
+            }
+
+            &.inversed {
+                .commentor {
+                    order: 2;
+
+                    cite {
+                        margin-#{$left}: 0;
+                    }
+                }
+
+                .comment-title,
+                .ratings-container,
+                cite,
+                .comment {
+                    margin-#{$left}: 2rem;
+                    margin-#{$right}: 0;
+                    padding-#{$right}: 0;
+                }
+            }
+        }
+    }
+}

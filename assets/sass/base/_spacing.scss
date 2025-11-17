@@ -1,0 +1,54 @@
+/* -------------------------------------------
+	Spacing
+
+	Spacing classes such as mt-5 pb-lg-4
+---------------------------------------------- */
+
+$spacing-prefixes: (mt, mb, ml, mr, pt, pb, pl, pr );
+$spacing-breakpoints: ('', sm, md, lg, xl);
+
+@each $sbi in $spacing-breakpoints {
+	@if ( $sbi == '' ) {
+		@each $spi in $spacing-prefixes {
+			$spp : '';
+			$spp : if( $spi == "mt", margin-top, $spp);
+			$spp : if( $spi == "mb", margin-bottom, $spp);
+			$spp : if( $spi == "ml", margin-left, $spp);
+			$spp : if( $spi == "mr", margin-right, $spp);
+			$spp : if( $spi == "pt", padding-top, $spp);
+			$spp : if( $spi == "pb", padding-bottom, $spp);
+			$spp : if( $spi == "pl", padding-left, $spp);
+			$spp : if( $spi == "pr", padding-right, $spp);
+			@for $i from 0 through 10 {
+				@if use(#{$spi}-#{$i}) {
+					.#{$spi}-#{$i}{ #{$spp}: #{$i*0.5}rem !important; }
+				}
+			}
+		}
+		@if use(ml-auto) { .ml-auto { margin-left: auto !important; } }
+		@if use(mr-auto) { .mr-auto { margin-right: auto !important; } }
+		@if use(mx-auto) { .mx-auto { margin-left: auto !important; margin-right: auto !important; } }
+	} @else {
+		@include mq( $sbi ) {
+			@each $spi in $spacing-prefixes {
+				$spp : '';
+				$spp : if( $spi == "mt", margin-top, $spp);
+				$spp : if( $spi == "mb", margin-bottom, $spp);
+				$spp : if( $spi == "ml", margin-left, $spp);
+				$spp : if( $spi == "mr", margin-right, $spp);
+				$spp : if( $spi == "pt", padding-top, $spp);
+				$spp : if( $spi == "pb", padding-bottom, $spp);
+				$spp : if( $spi == "pl", padding-left, $spp);
+				$spp : if( $spi == "pr", padding-right, $spp);
+				@for $i from 0 through 10 {
+					@if use(#{$spi}-#{$i}) {
+						.#{$spi}-#{$sbi}-#{$i}{ #{$spp}: #{$i*0.5}rem !important; }
+					}
+				}
+			}
+			@if use(ml-#{$sbi}-auto) { .ml-#{$sbi}-auto { margin-left: auto !important; } }
+			@if use(mr-#{$sbi}-auto) { .mr-#{$sbi}-auto { margin-right: auto !important; } }
+			@if use(mx-#{$sbi}-auto) { .mx-#{$sbi}-auto { margin-left: auto !important; margin-right: auto !important; } }
+		}
+	}
+}

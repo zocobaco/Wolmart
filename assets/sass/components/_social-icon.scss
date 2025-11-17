@@ -1,0 +1,71 @@
+/* Social Icons */
+
+.social-icons {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@each $social, $value in (social-facebook, $social-facebook ), 
+                         (social-twitter, $social-twitter ), 
+                         (social-linkedin, $social-linkedin ), 
+                         (social-email, $social-email ), 
+                         (social-youtube, $social-youtube ), 
+                         (social-google, $social-google ), 
+                         (social-pinterest, $social-pinterest ), 
+                         (social-reddit, $social-reddit ), 
+                         (social-tumblr, $social-tumblr ), 
+                         (social-vk, $social-vk ), 
+                         (social-whatsapp, $social-whatsapp ), 
+                         (social-xing, $social-xing ),
+                         (social-instagram, $social-instagram) {
+    .#{$social},
+    .#{$social}.use-hover:hover {
+        color: #{$value};
+    }
+    .#{$social}.stacked {
+        background-color: #{$value};
+        color: #fff;
+    }
+    .#{$social}.framed,
+    .#{$social}.stacked {
+        &:hover {
+            border-color: #{$value};
+            background-color: #{$value};
+            color: #fff;
+        }
+    }
+}
+
+.use-hover.social-icon:not(:hover) {
+    color: var(--wolmart-body-color, $body-color);
+    border-color: var(--wolmart-light-color, $light-color);
+}
+.use-hover.stacked:not(:hover) {
+    color: #fff;
+    background-color: $grey-color;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin: side-values(.3rem .8rem .3rem 0);
+    border-radius: 50%;
+    font-size: 14px;
+    transition: color .3s, background .3s, border .3s;
+
+    // .social-icons &:last-child {
+    //     margin-#{$right}: 0;
+    // }
+
+    &.framed {
+        border: 1px solid;
+    }
+
+    &:hover {
+        color: var(--wolmart-primary-color, $primary-color);
+    }
+}

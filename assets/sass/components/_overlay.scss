@@ -1,0 +1,247 @@
+/* -------------------------------------------
+    Overlay
+---------------------------------------------- */
+
+.overlay,
+.overlay-visible {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    transition: padding .3s ease-out, background-color .3s, opacity .3s;
+}
+
+.overlay {
+    padding-top: 10rem;
+    background: rgba(0,0,0,.3);
+    opacity: 0;
+    a > & {
+        cursor: pointer;
+    }
+    figure:hover & {
+        padding-top: 0;
+        opacity: 1;
+    }
+}
+@if use(overlay-visible) {
+.overlay-visible {
+    figure:hover & {
+        background-color: var(--wolmart-primary-color-op-90, rgba( $primary-color, 0.9 ) );
+        padding-bottom: 9rem;
+    }
+}
+.overlay-transparent {
+    background: transparent;
+}
+}
+// Global Overlays
+.overlay-dark,
+.overlay-light {
+    figure, .banner {
+        position: relative;
+    }
+
+    > figure::after,
+    > figure > a::after,
+    &.banner::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: var(--wolmart-dark-color, $dark-color);
+        opacity: 0;
+        transition: opacity .3s, background .3s, transform .3s;
+    }
+
+    &:hover > figure::after,
+    &:hover > figure > a::after,
+    &.banner:hover::after {
+        opacity: .2;
+    }
+
+    &.banner-fixed::after,
+    &.post > figure::after {
+        content: none;
+    }
+    &.post > figure > a::after {
+        z-index: 1;
+    }
+}
+
+@if use(overlay-light) {
+    .overlay-light {
+        figure::after,
+        figure > a::after,
+        &.banner::after {
+            background: var(--wolmart-light-color, var(--wolmart-light-color, $light-color));
+        }
+    }
+}
+
+// Zoom
+@if use(overlay-zoom) {
+.overlay-zoom {
+    &,
+    .post-media,
+    figure {
+        overflow: hidden;   
+    }
+
+    img {
+        transition: transform .3s;
+    }
+    &:hover {
+        img {
+            transform: scale(1.08);
+        }
+    }
+}
+}
+
+// Effect
+.overlay-effect-1, .overlay-effect-1 figure {
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        opacity: 1;
+    }
+
+    &:before {
+        background: rgba(255, 255, 255, .3);
+        bottom: 0;
+        left: 50%;
+        right: 51%;
+        top: 0;
+    }
+
+    &:after {
+        bottom: 50%;
+        left: 0;
+        right: 0;
+        top: 50%;
+    }
+}
+.overlay-effect-1:hover, .overlay-effect-1:hover figure {
+    &:before,
+    &:after {
+        left: 0;
+        right: 0;
+        opacity: 0;
+        transition: .5s linear;
+    }
+}
+
+.overlay-effect-2,
+.overlay-effect-2 figure, 
+.overlay-effect-3, 
+.overlay-effect-3 figure {
+    overflow: hidden;
+    position: relative;
+}
+
+.overlay-effect-2, .overlay-effect-2 figure {
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        background: rgba(255, 255, 255, .6);
+        height: 100%;
+        left: 0;
+        opacity: .4;
+        top: 0;
+        transition: .9s;
+        width: 100%;
+    }
+
+    &:before {
+        transform: translate(105%, 0%);
+    }
+
+    &:after {
+        transform: translate(-105%, 0%);
+    }
+}
+.overlay-effect-2:hover, .overlay-effect-2:hover figure {
+    &:before,
+    &:after {
+        opacity: 0;
+        transform: none;
+    }
+}
+
+.overlay-effect-3, .overlay-effect-3 figure {
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 120%;
+        height: 60px;
+        background: rgba(255, 255, 255, .1);
+        transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, -150%, 0);
+        transition: .5s linear;
+        backface-visibility: hidden;
+    }
+}
+.overlay-effect-3:hover, .overlay-effect-3:hover figure {
+    &::before {
+        top: 100%;
+        left: -100%;
+        transform: scale3d(1.9, 1.4, 1) rotate3d(0, 0, 1, 45deg) translate3d(0, 200%, 0);
+    }   
+}
+
+.overlay-effect-4, .overlay-effect-4 figure {
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        background: rgba(255, 255, 255, .1);
+        opacity: 1;
+        transition: .5s;
+    }
+
+    &:before {
+        bottom: 0;
+        left: 50%;
+        right: 51%;
+        top: 0;
+    }
+    &:after {
+        bottom: 50%;
+        left: 0;
+        right: 0;
+        top: 50%;
+    }
+}
+.overlay-effect-4:hover, .overlay-effect-4:hover figure {
+    &:before,
+    &:after {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        opacity: .5;
+    }
+}
+
+// Banner Background
+.background-effect-wrapper {
+    overflow: hidden;
+}
+
+.background-effect-wrapper, .background-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

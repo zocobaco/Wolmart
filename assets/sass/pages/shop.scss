@@ -1,0 +1,548 @@
+/* -------------------------------------------
+    Shop Page
+
+ - Toolbox
+    (support toolbox, toolbox-left, toolbox-right)
+    (support label, select-box)
+ - Toolbox Item
+    (support full)
+ - Layout Button
+ - Select Menu
+    (support as sidebar's widget < 992px)
+    (support toggle)
+ - Select Items
+ - Toolbox Pagination
+ - Toolbox Horizontal
+ - Toolbox Navigation
+    (support as sidebar-fixed)
+    (please place sidebar before toolbox: to know sidebar's close status)
+---------------------------------------------- */
+
+@import '../config';
+@import '../mixins';
+@import '../direction';
+
+/* Theme SCSS Framework */
+// @set_theme_configuration
+
+// Toolbox, Filter Clean Widget, Filter Price Widget
+.filter-actions,
+.toolbox,
+.toolbox-left,
+.toolbox-right,
+.toolbox-item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-actions,
+.toolbox {
+    justify-content: space-between;
+}
+
+.toolbox-top {
+    position: relative;
+    justify-content: initial;
+
+    .show-info {
+        margin-bottom: 1rem;
+    }
+}
+
+.toolbox-left {
+    flex: 1;
+    white-space: nowrap;
+}
+
+.sidebar-fixed~.main-content {
+    .sticky-toolbox.fixed {
+        padding-top: 1rem;
+    }
+}
+
+.toolbox {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    padding-bottom: 1rem;
+    transition: padding .4s;
+    color: var(--wolmart-dark-color, $dark-color);
+
+    &-left,
+    &-right {
+        >* {
+            margin-#{$right}: 2rem;
+        }
+    }
+
+    .toolbox-right {
+        margin-#{$right}: -2rem;
+    }
+
+    label {
+        margin-#{$right}: 1rem;
+        font-weight: 600;
+        font-size: 1.4rem;
+    }
+
+    select {
+        cursor: pointer;
+        padding: side-values(.9rem 2.7rem .9rem 1.4rem);
+        border-radius: $corner-normal;
+        background-position: calc(100% - 4px);
+    }
+
+    .select-box::before {
+        font-size: 1rem;
+        #{$right}: 1rem;
+    }
+
+    .toolbox-toggle {
+        border-radius: 3px;
+        padding: 1rem 1.3rem;
+
+        i {
+            font-size: 1.4rem;
+            line-height: inherit;
+        }
+    }
+
+    .orderby {
+        width: 15.4rem;
+        max-width: none;
+    }
+
+    .item-found span {
+        color: var(--wolmart-dark-color, $dark-color);
+        margin-#{$right}: .5rem;
+    }
+}
+
+.toolbox-item {
+    flex-wrap: nowrap;
+    margin-bottom: 1rem;
+}
+
+.toolbox-show-type {
+    padding-bottom: 2px;
+}
+
+.sticky-toolbox.fixed {
+    padding: 1rem 2rem 0;
+}
+
+@include mq(xs, max) {
+    .sticky-toolbox.fixed {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (max-width: 359px) {
+    .toolbox .orderby {
+        width: 13rem;
+    }
+}
+
+// Layout Button
+.toolbox-show-type {
+    font-size: 19px;
+}
+
+.btn-showtype {
+    line-height: 1;
+    color: #dadada;
+
+    &:last-child {
+        padding-#{$right}: 0;
+    }
+
+    &:hover,
+    &.active {
+        color: var(--wolmart-dark-color, $dark-color);
+    }
+
+    &+& {
+        margin-#{$left}: 10px;
+    }
+}
+
+// Toolbox Horizontal
+.toolbox-horizontal {
+    display: flex;
+    color: var(--wolmart-dark-color, $dark-color);
+    z-index: 2;
+
+    >.sticky-content-wrapper,
+    >.toolbox {
+        flex: 1;
+    }
+
+    .select-box::before {
+        font-size: 1.2rem;
+        right: 1.2rem;
+        margin-top: 1px;
+    }
+
+    select {
+        max-width: 15.7rem;
+        padding: side-values(.65em 2.55em .58em 1.2em);
+        font-size: 1.2rem;
+    }
+
+    .toolbox-toggle {
+        padding: .85rem 1.3rem;
+    }
+
+    .show-info {
+        margin-bottom: 1.2rem;
+        color: #999;
+        font-size: inherit;
+    }
+
+    .toolbox-show-count label {
+        display: none;
+    }
+
+    .shop-sidebar {
+        margin-#{$right}: 0;
+    }
+
+    &.fixed .sidebar-overlay,
+    &.fixed .sidebar-content {
+        min-height: 100vh;
+    }
+}
+
+// Select Items
+.select-item {
+    position: relative;
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: side-values(5px 2.4rem 5px 1rem);
+    border-radius: $corner-normal;
+    color: var(--wolmart-dark-color, $dark-color);
+    background: $border-color-light;
+
+    i {
+        position: absolute;
+        font-size: 13px;
+        top: 0;
+        bottom: 0;
+        #{$right}: 5px;
+        line-height: 29px;
+    }
+}
+
+.select-items {
+    display: none;
+    margin-bottom: 1.5rem;
+
+    .toolbox+& {
+        font-size: 1.2rem;
+        margin: 2px 0 1.8rem;
+    }
+
+    >* {
+        margin: side-values(0 .8rem .5rem 0);
+    }
+
+    .filter-clean {
+        margin-#{$left}: 1.2rem;
+    }
+}
+
+.filter-actions .filter-clean {
+    line-height: 3.7rem;
+}
+
+
+// Dropdown Type - Filter Products by Attribute 
+.woocommerce-widget-layered-nav-dropdown {
+    margin-top: 1rem;
+
+    button {
+        background-color: var(--wolmart-primary-color);
+        border: none;
+        margin-top: 0.5rem;
+        padding: 1rem 2rem;
+        color: #fff;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: var(--wolmart-primary-color-hover);
+        }
+    }
+}
+
+.sidebar .wp-block-woocommerce-rating-filter li {
+    padding: 0;
+}
+
+
+// Toolbox Pagination
+.toolbox-pagination {
+    position: relative;
+    border-top: 1px solid #f4f4f4;
+
+    &.no-pagination,
+    .btn-load+& {
+        padding: 0;
+        border-top: none;
+    }
+
+    .pagination:first-child {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.product-archive+.toolbox-pagination {
+    padding-top: 3rem;
+}
+
+// WooCommerce Info
+.no-product {
+    max-width: 100%;
+    flex: 100%;
+}
+
+// Loading
+.product-archive>.w-loading>i {
+    top: 14rem;
+}
+
+.product-archive .products>p {
+    margin: 0 10px;
+}
+
+@include mq(sm, max) {
+    .toolbox-pagination {
+        flex-direction: column;
+
+        >*:not(:last-child) {
+            margin-bottom: 1rem;
+            margin-#{$right}: 0;
+        }
+    }
+
+    .toolbox .toolbox-toggle {
+        padding: 1rem .6rem;
+    }
+}
+
+@include mq(sm) {
+    .toolbox-horizontal {
+        .toolbox-left {
+            margin-#{$right}: auto;
+        }
+    }
+}
+
+@include mq(lg, max) {
+
+    // Shop Sidebar : Mobile
+    .toolbox-horizontal {
+        .sidebar-fixed {
+            margin-#{$right}: 0;
+        }
+
+        .sidebar-content {
+            display: block;
+        }
+    }
+
+    // Navigation Style
+    .toolbox-wrap {
+        .shop-sidebar .widget-title {
+            border-top: 3px solid $border-color-light;
+        }
+    }
+
+    .toolbox-left,
+    .toolbox-right {
+        flex-wrap: nowrap;
+    }
+
+    .sidebar-content.toolbox-left>* {
+        margin-#{$right}: 0;
+    }
+}
+
+@include mq(lg) {
+    .toolbox .sidebar-content {
+        max-width: none;
+    }
+
+    // Horizontal Style
+    .toolbox-horizontal {
+        font-size: 1.2rem;
+
+        .shop-sidebar .sidebar-content {
+            padding-bottom: 0;
+        }
+
+        .widget {
+            position: relative;
+            margin-bottom: 1rem;
+            margin-#{$right}: 1rem;
+            color: var(--wolmart-dark-color, $dark-color);
+
+            .widget-title {
+                position: relative;
+                border: 1px solid var(--wolmart-light-color, $light-color);
+                padding: side-values(.65em 4.3em .58em 1.2em);
+                background: #fff url(../../images/select-bg.svg) if-ltr(98%, 2%) 45%/26px 60px no-repeat;
+                margin-bottom: 0;
+                font-size: 1.2rem;
+                line-height: 1.5;
+                font-weight: 400;
+                letter-spacing: 0;
+                text-transform: capitalize;
+                border-radius: $corner-normal;
+                background-color: #fff;
+            }
+
+            .widget-title+* {
+                position: absolute;
+                top: 100%;
+                z-index: 100;
+                min-width: 23rem;
+                margin-top: .5rem;
+                padding: 1rem 2rem 1rem;
+                background: #fff;
+                opacity: 0;
+                visibility: hidden;
+                box-shadow: 0 5px 16px rgba(0, 0, 0, .12);
+            }
+
+            &.opened {
+                h3 {
+                    border-color: var(--wolmart-primary-color, $primary-color);
+                }
+
+                .widget-title+* {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+
+        .sidebar {
+            .widget {
+
+                // Widget list styling
+                ul {
+                    white-space: normal;
+                    padding-bottom: 2rem;
+                }
+
+                li {
+                    border-radius: $corner-normal;
+                    background-color: #f5f5f5;
+                    margin: side-values(1rem .5rem 0 0);
+                    padding: 0;
+                }
+
+                li a {
+                    padding: .5em 1em;
+
+                    &:before {
+                        content: none;
+                    }
+                }
+
+                li.chosen,
+                li.current-cat {
+                    background-color: var(--wolmart-primary-color, $primary-color);
+
+                    a {
+                        color: #fff;
+
+                        &:before {
+                            content: none;
+                        }
+                    }
+                }
+
+                .count {
+                    display: none;
+                }
+            }
+
+            .cat-item i {
+                display: none;
+            }
+
+            .wolmart-price-range {
+                margin: -2rem 0 1rem;
+            }
+
+            &.shop-sidebar .widget li {
+                display: inline-flex;
+            }
+        }
+
+        .toolbox-left .toolbox-item:not(:last-child) {
+            margin-#{$right}: 2rem;
+        }
+
+        .filter-clean {
+            font-size: 1.3rem;
+        }
+    }
+}
+
+@include mq(md, max) {
+
+    .toolbox label,
+    .toolbox-top .show-info {
+        display: none;
+    }
+}
+
+@include mq(sm, max) {
+    .toolbox .toolbox-show-type {
+        display: none;
+    }
+}
+
+@include mq(479px, max) {
+
+    .toolbox-left>*,
+    .toolbox-right>* {
+        margin-#{$right}: 1rem;
+    }
+
+    .toolbox .toolbox-right {
+        margin-#{$right}: -1rem;
+    }
+}
+
+@include mq(1600px) {
+
+    .container-fluid .sidebar-offcanvas+.main-content .product-archive .list-type-products>*,
+    .container-fluid .main-content:first-child .product-archive .list-type-products>* {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@include mq(xl) {
+    aside:not(.sidebar-fixed)~.main-content .list-type-products>.product-wrap {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .sidebar-fixed+.sidebar-fixed+.main-content .list-type-products {
+        .product-media {
+            max-width: 9rem;
+        }
+
+        .product-details {
+            max-width: calc(100% - 11rem);
+        }
+    }
+}

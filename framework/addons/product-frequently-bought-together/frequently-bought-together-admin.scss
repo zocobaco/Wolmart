@@ -1,0 +1,10 @@
+#wolmart_fbt_options {
+    .form-field {
+        display: flex;
+        align-items: center;
+        .fbt_input {
+            max-width: 100px;
+            margin-right: 5px;
+        }
+    } 
+}

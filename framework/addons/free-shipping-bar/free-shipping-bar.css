@@ -1,0 +1,68 @@
+.wolmart-free-shipping {
+    position: relative;
+    padding: 2rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    color: #333;
+}
+
+.wolmart-free-shipping:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ebf3e0;
+}
+
+.wolmart-free-shipping .wolmart-free-shipping-notice {
+    position: relative;
+    display: flex;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-transform: none;
+}
+
+.dropdown-box .wolmart-free-shipping {
+    padding: 1.4rem 1.2rem;
+}
+
+.dropdown-box .wolmart-free-shipping .wolmart-free-shipping-notice {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.dropdown-box .wolmart-free-shipping .wolmart-free-shipping-bar {
+    height: 5px;
+}
+
+.wolmart-free-shipping .wolmart-free-shipping-notice .amount {
+    color: #85b444;
+    font-weight: 600;
+}
+
+.wolmart-free-shipping .wolmart-free-shipping-bar {
+    position: relative;
+    display: block;
+    height: 8px;
+    width: 100%;
+    pointer-events: none;
+    appearance: none;
+    background-color: #fff;
+    margin-bottom: 0.3rem;
+    border-radius: 10px;
+}
+
+.wolmart-free-shipping .wolmart-free-shipping-bar::-webkit-progress-bar {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.wolmart-free-shipping .wolmart-free-shipping-bar::-webkit-progress-value {
+    background-color: #85b444;
+    border-radius: 10px;
+}

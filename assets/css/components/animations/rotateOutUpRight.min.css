@@ -1,0 +1,1 @@
+@keyframes rotateOutUpRight{0%{opacity:1;transform-origin:right bottom}to{opacity:0;transform:rotate(90deg);transform-origin:right bottom}}.rotateOutUpRight{animation-name:rotateOutUpRight}

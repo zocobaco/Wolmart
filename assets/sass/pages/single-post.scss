@@ -1,0 +1,458 @@
+/*
+Single Post
+*/
+
+@import '../config';
+@import '../mixins';
+@import '../direction';
+
+/* Theme SCSS Framework */
+// @set_theme_configuration
+
+.single-post {
+	.breadcrumb-container+main {
+		padding-top: 0;
+	}
+
+	main {
+		padding-top: 2rem; // issue for theme check
+		padding-bottom: 7rem;
+	}
+
+	.comments {
+		text-align: center;
+
+		.title,
+		.commentlist {
+			text-align: #{$left};
+		}
+
+		.commentlist {
+			margin-bottom: 5.5rem;
+			transition: .3s ease;
+
+			&.loading {
+				opacity: .5;
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+.post-single>.post-wrap {
+
+	// Post media
+	.post-media {
+		padding-bottom: 3.2rem;
+	}
+
+	.thumbnail-caption {
+		bottom: 2.2rem;
+	}
+
+	// Post Detail
+	.post-details {
+		padding: 5px 0 0 0;
+
+		>*:last-child {
+			// margin-bottom: 6rem; // issue for theme check
+			margin-bottom: 3rem;
+		}
+	}
+
+	.post-cats {
+		color: var(--wolmart-body-color, $body-color); // updated(925)
+
+		a {
+			color: var(--wolmart-dark-color, $dark-color);
+
+			&:hover,
+			&:focus {
+				color: var(--wolmart-primary-color, $primary-color);
+			}
+		}
+	}
+
+	.post-author a,
+	.post-cats a {
+		font-weight: 500;
+	}
+
+	.post-meta {
+		font-size: 1.4rem;
+		margin-bottom: 7px;
+	}
+
+	.post-cats {
+		line-height: 1.4;
+		margin-bottom: 1rem;
+	}
+
+	.post-title {
+		margin-bottom: 1.8rem;
+		white-space: normal;
+		font-size: 3rem;
+	}
+
+	.social-icons .social-icon {
+		font-size: 1.3rem;
+	}
+
+	.post-tags {
+		margin-bottom: 2.5rem;
+	}
+
+	.social-icons label {
+		margin-#{$right}: 2rem;
+	}
+
+	.post-tags label {
+		color: var(--wolmart-dark-color, $dark-color);
+		font-weight: 500;
+		margin-#{$right}: 1rem;
+	}
+}
+
+.post-author-detail .author-content {
+	line-height: 1.86;
+}
+
+.post-single {
+	.title {
+		margin-bottom: 2.6rem;
+		font-size: 2.4rem;
+		line-height: 1.2;
+		text-transform: capitalize;
+	}
+
+	.social-icons {
+		margin-bottom: 0;
+	}
+
+	// Post Author Detail
+	.post-author-detail {
+		display: flex;
+		align-items: flex-start;
+		padding: 4rem;
+		background-color: #f8f8f8;
+
+		.social-icons+& {
+			margin-top: 4rem;
+		}
+	}
+
+	.post-details .post-author-detail:last-child {
+		margin: 5rem 0 0 0;
+	}
+
+	.author-avatar {
+		max-width: 10.5rem;
+		flex: 0 0 10.5rem;
+		margin-#{$right}: 2.4rem;
+		border-radius: 50%;
+		overflow: hidden;
+		height: 10.5rem;
+
+		img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			background: $border-color-light;
+		}
+	}
+
+	.author-body {
+		flex: 1;
+	}
+
+	.author-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin: .8rem 0 1.7rem;
+
+		.author-name {
+			margin-bottom: .4rem;
+			font-size: 1.8rem;
+		}
+
+		.author-date {
+			font-size: 1.3rem;
+		}
+
+		.author-link {
+			display: inline-block;
+			margin: 1rem 0;
+
+			&:hover {
+				color: var(--wolmart-primary-color, $primary-color);
+			}
+
+			@include if-rtl {
+				i:before {
+					content: "\e92b";
+				}
+			}
+		}
+	}
+
+	.post-content {
+		font-size: 1.4rem;
+		letter-spacing: 0;
+		// margin-bottom: 3.5rem; // issue for theme check
+		margin-bottom: 1.5rem;
+
+		&::after {
+			content: '';
+			display: block;
+			visibility: hidden;
+			clear: both;
+			zoom: 1;
+			height: 0;
+		}
+	}
+
+	blockquote {
+		position: relative;
+		padding: .8em 1em;
+		background-color: #f8f8f8;
+
+		p {
+			margin-bottom: 0;
+		}
+	}
+
+	.post-media-carousel .slider-pagination {
+		bottom: 4.5rem;
+	}
+}
+
+@supports (-moz-appearance: none) {
+	.post-single .author-avatar img {
+		max-width: calc(100% + 2px);
+		width: calc(100% + 2px);
+		height: calc(100% + 2px);
+		margin: -1px;
+	}
+}
+
+.post-content .title {
+	margin-bottom: 0;
+}
+
+// Post Author Details
+.post-author-detail {
+	position: relative;
+	z-index: 1;
+}
+
+// Navigation
+.post-navigation .nav-links {
+	position: relative;
+	padding-bottom: 4.5rem;
+	padding-top: 4.5rem;
+	display: flex;
+	align-items: center;
+	width: 100%;
+
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: -1px;
+		#{$left}: 0;
+		background: $border-color-light;
+		width: 100%;
+		height: 1px;
+	}
+}
+
+.post-navigation {
+	a {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		flex: 0 0 100%;
+		max-width: 100%;
+		width: 100%;
+		font-weight: 400;
+		padding-top: .95rem;
+		padding-bottom: .95rem;
+		font-size: 1.6rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		line-height: 1.5;
+		transition: all .3s ease;
+	}
+
+	.nav-links .label {
+		color: var(--wolmart-dark-color, $dark-color);
+	}
+
+	.nav-next .label {
+		&:#{$after} {
+			content: if-ltr('\e92c', '\e92b');
+			position: relative;
+			top: 1px;
+			margin-#{$left}: 1rem;
+			font-family: 'wolmart';
+		}
+	}
+
+	.nav-previous .label {
+		&:#{$before} {
+			content: if-ltr('\e92b', '\e92c');
+			position: relative;
+			top: 1px;
+			margin-#{$right}: 1rem;
+			font-family: 'wolmart';
+		}
+	}
+
+	.pager-link-title {
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			display: inline-block;
+			width: 100%;
+			height: 2px;
+			background: var(--wolmart-dark-color, $dark-color);
+			transform: scale(0);
+			transition: transform .3s;
+		}
+	}
+
+	.nav-previous a {
+		text-align: $left;
+	}
+
+	.nav-next:first-child {
+		width: 50%;
+		margin-#{$left}: auto;
+	}
+
+	.nav-next a {
+		align-items: flex-end;
+		text-align: $right;
+	}
+
+	a:hover,
+	a:focus {
+		.pager-link-title::after {
+			transform: scale(1);
+		}
+	}
+
+	.nav-previous,
+	.nav-next {
+		flex: 0 0 50%;
+		max-width: 50%;
+	}
+
+	.nav-next {
+		border-top: none;
+	}
+}
+
+.pager-link-title {
+	display: inline-block;
+	margin-top: .6rem;
+	flex: 0 0 auto;
+	color: var(--wolmart-dark-color, $dark-color);
+	font-size: 1.5rem;
+	font-weight: 400;
+	text-transform: none;
+	transition: all .35s ease;
+	max-width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@include mq(sm, max) {
+
+	.post-single .post-author-detail,
+	.post-single .author-header {
+		display: block;
+	}
+
+	.post-single .author-avatar {
+		margin-#{$right}: 1.5rem;
+		margin-bottom: 2rem;
+	}
+
+	.post-navigation .nav-links {
+		letter-spacing: -.04em;
+	}
+
+	.post-navigation .pager-link-title {
+		display: none;
+	}
+}
+
+@include mq(xs, max) {
+	.post-single .post-author-detail {
+		padding: 2rem;
+	}
+}
+
+// Related Post
+.related-posts {
+	border-top: 1px solid $border-color-light;
+	padding-top: 5.5rem;
+
+	&.slider-container {
+		position: relative;
+	}
+
+	&.slider-nav-top .slider-button {
+		top: 7rem;
+	}
+
+	.post-details {
+		padding-bottom: 1rem;
+	}
+}
+
+// Comments
+.single-post {
+	.related-posts+.comments {
+		margin: 5.5rem 0 0;
+
+		.comment-respond {
+			margin: 0 0 5.5rem;
+		}
+	}
+
+	.comment-respond {
+		margin: 5.5rem 0 0;
+	}
+
+	.comments+.comment-respond {
+		padding-top: 5.5rem;
+		border-top: 1px solid $border-color-light;
+	}
+
+	.comment-reply-title small {
+		display: inline-block;
+		margin-#{$left}: auto;
+		font-size: 1.3rem;
+		text-transform: uppercase;
+	}
+}
+
+// no comments
+.no-comments {
+	margin: 2.5rem 0 1rem;
+	padding-top: 2rem;
+	border-top: 1px solid #e1e1e1;
+	text-align: $right;
+	color: #999;
+}

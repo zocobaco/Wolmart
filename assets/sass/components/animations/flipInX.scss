@@ -1,0 +1,16 @@
+@keyframes flipInX {
+    0% {
+        animation-timing-function: ease-in;
+        opacity: 0;
+        transform: perspective(400px) rotateX(90deg)
+    }
+
+    to {
+        transform: perspective(400px)
+    }
+}
+
+.flipInX {
+    animation-name: flipInX;
+    backface-visibility: visible !important
+}

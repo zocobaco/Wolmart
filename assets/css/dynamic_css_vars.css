@@ -1,0 +1,76 @@
+html {
+    --wolmart-container-width: 1280px;
+    --wolmart-container-fluid-width: 1820px;
+    --wolmart-site-bg-color: #fff;
+    --wolmart-site-width: false;
+    --wolmart-site-margin: 0;
+    --wolmart-site-gap: 0;
+    --wolmart-page-wrapper-bg-color: #fff;
+    --wolmart-primary-color: #2879FE;
+    --wolmart-secondary-color: #f93;
+    --wolmart-dark-color: #333;
+    --wolmart-light-color: #ccc;
+    --wolmart-primary-color-hover: #4b8fff;
+    --wolmart-primary-color-alpha: rgba(40,121,254, 0.8);
+    --wolmart-secondary-color-hover: #ffab56;
+    --wolmart-dark-color-hover: #454545;
+    --wolmart-light-color-hover: #dedede;
+    --wolmart-body-font-family: 'Poppins';
+    --wolmart-body-font-weight: 400;
+    --wolmart-body-font-size: 14px;
+    --wolmart-body-line-height: 1.6;
+    --wolmart-body-color: #666;
+    --wolmart-typo-ratio: 1;
+    --wolmart-heading-font-weight: 600;
+    --wolmart-heading-line-height: 1.2;
+    --wolmart-heading-letter-spacing: -0.025em;
+    --wolmart-heading-text-transform: none;
+    --wolmart-heading-color: #333;
+    --wolmart-ptb-bg-color: #eee;
+    --wolmart-ptb-height: 180px;
+    --wolmart-ptb-title-font-weight: 700;
+    --wolmart-ptb-title-font-size: 34px;
+    --wolmart-ptb-title-line-height: 1.125;
+    --wolmart-ptb-title-letter-spacing: -0.025em;
+    --wolmart-ptb-title-text-transform: capitalize;
+    --wolmart-ptb-title-color: #333;
+    --wolmart-ptb-subtitle-font-size: 18px;
+    --wolmart-ptb-subtitle-line-height: 1.8;
+    --wolmart-ptb-subtitle-color: #666;
+    --wolmart-ptb-breadcrumb-font-size: 13px;
+    --wolmart-ptb-breadcrumb-color: #333;
+    --wolmart-lazy-load-bg: #f4f4f4;
+    
+    }
+    @media (max-width: 1279px) {
+        .container-fluid .container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    @media (max-width: 1279px) and (min-width: 480px) {
+    .elementor-top-section.elementor-section-boxed > .elementor-column-gap-no,
+    .elementor-section-full_width .elementor-section-boxed > .elementor-column-gap-no {
+    width: calc(100% - 40px);
+    }
+    .elementor-top-section.elementor-section-boxed > .elementor-column-gap-default,
+    .elementor-section-full_width .elementor-section-boxed > .elementor-column-gap-default {
+    width: calc(100% - 20px);
+    }
+    .elementor-top-section.elementor-section-boxed > .elementor-column-gap-narrow,
+    .elementor-section-full_width .elementor-section-boxed > .elementor-column-gap-narrow {
+    width: calc(100% - 30px);
+    }
+    .elementor-top-section.elementor-section-boxed > .elementor-column-gap-extended,
+    .elementor-section-full_width .elementor-section-boxed > .elementor-column-gap-extended {
+    width: calc(100% - 10px);
+    }
+    .elementor-top-section.elementor-section-boxed > .elementor-column-gap-wide,
+    .elementor-section-full_width .elementor-section-boxed > .elementor-column-gap-wide {
+    width: 100%;
+    }
+    .elementor-top-section.elementor-section-boxed > .elementor-column-gap-wider,
+    .elementor-section-full_width .elementor-section-boxed > .elementor-column-gap-wider {
+    width: calc(100% + 10px);
+    }
+    }

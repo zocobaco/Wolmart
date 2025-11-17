@@ -1,0 +1,1286 @@
+/** Compatibility with WCFM Element **/
+
+@import '../../../assets/sass/config';
+@import '../../../assets/sass/mixins';
+@import '../../../assets/sass/direction';
+
+@if use_component(wcfm) {
+
+    // Elements
+    .wcfmmp-store-search-form input.wcfmmp-radius-addr,
+    .wcfmmp-store-search-form input.wcfm-search-field,
+    .wcfmmp-store-search-form input#search,
+    .wcfmmp-store-search-form select#wcfmmp_store_category,
+    .wcfmmp-store-search-form select#wcfmmp_store_country,
+    .wcfmmp-store-search-form #wcfmmp_store_state,
+    .wcfmmp-store-search-form .select2-container,
+    .wcfmmp-store-search-form .wcfmmp-search-box,
+    #wcfmmp_store_orderby {
+        border-color: $border-color-light !important;
+        box-shadow: none;
+        font-size: 1.3rem;
+    }
+
+    #wcfmmp-store-lists-sidebar {
+
+        .wcfmmp-store-search-form #wcfmmp_store_state,
+        .wcfmmp-store-search-form input.wcfm-search-field {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+    }
+
+    .select2-dropdown {
+        border-color: $border-color-light;
+    }
+
+    // Store Manager
+    .variations .page_collapsible_content_holder {
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    .woocommerce-MyAccount-navigation ul li.woocommerce-MyAccount-navigation-link--wcfm-store-manager a:before {
+        content: none;
+    }
+
+    #wolmart-wcfm-swatch-options {
+        .notice.inline {
+            background: #fff;
+            border: 1px solid #c3c4c7;
+            border-left-width: 4px;
+            box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
+            padding: 1px 12px;
+        }
+
+        p {
+            margin: 0;
+            line-height: 30px;
+            font-size: 12px;
+            padding: 5px 9px 0;
+        }
+
+        .card-header {
+            text-transform: capitalize;
+
+            a:hover,
+            a.collapse {
+                color: inherit;
+            }
+        }
+
+        .description {
+            display: block;
+            margin-top: 5px;
+        }
+
+        .form-field {
+            border-bottom: 1px solid #e1e1e1;
+            padding-left: 0;
+        }
+
+        table.product_custom_swatches thead th {
+            border-bottom: 0;
+            color: #666;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .btn {
+            border-width: 1px;
+            border-radius: 3px;
+            text-transform: capitalize;
+
+            &.wolmart-wcfm-save-changes {
+                i {
+                    display: none;
+                    line-height: 19px;
+                    vertical-align: middle;
+                }
+
+                &.spining i {
+                    display: inline-block;
+                    animation: dashicons-spin 1s infinite;
+                    animation-timing-function: linear;
+                }
+            }
+        }
+    }
+
+    @keyframes dashicons-spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    // Demo Page
+    .product-single.product-widget {
+        .wcfm_catalog_enquiry_button_wrapper {
+            display: none;
+        }
+    }
+
+    // WCFM page
+    .wcfmmp-store-list-page .breadcrumb {
+        border-bottom: 0;
+    }
+
+    .product-single>.wcfm_buttons {
+        width: auto;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        left: auto;
+    }
+
+    .tab-section.woocommerce-Tabs-panel--wcfm_enquiry_tab .wcfm-enquiries-heading {
+        display: none;
+    }
+
+    .tab-section.woocommerce-Tabs-panel--wcfm_enquiry_tab {
+        margin-bottom: 5rem;
+    }
+
+    .tab-section.woocommerce-Tabs-panel--wcfm_policies_tab,
+    .tab-section.woocommerce-Tabs-panel--wcfm_product_multivendor_tab {
+        margin-bottom: 4rem;
+    }
+
+    .enquiry-form p.comment-notes {
+        margin-#{$left}: 0 !important;
+    }
+
+    // WCFM Vendors List Page
+    #wcfmmp-stores-lists {
+        box-shadow: none;
+
+        .wcfmmp-store-list-map {
+            border-radius: 5px;
+            min-height: 450px;
+            background: #dfdfdf;
+        }
+
+        ul.wcfmmp-store-wrap {
+            margin-left: -10px;
+            margin-right: -10px;
+            margin-top: 0;
+            width: calc(100% + 20px);
+
+            >li {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+
+        .wcfmmp-store-lists-sorting {
+            margin: 0;
+            padding: 3rem 0 2rem;
+
+            .wcfm-woocommerce-ordering {
+                padding: 0;
+                margin-#{$right}: 0;
+            }
+
+            .woocommerce-result-count {
+                float: right;
+                color: var(--wolmart-dark-color, $dark-color);
+                font-size: 1.3rem;
+            }
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            text-align: #{$left};
+            line-height: 35px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 100%;
+            top: 0px;
+            #{$right}: 6px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow b {
+            border: 0;
+            background: #fff url(../../images/select-bg.svg) if-ltr(98%, 2%) 45%/26px 60px no-repeat !important;
+            margin-#{$left}: auto;
+            margin-top: auto;
+            width: 20px;
+            height: 20px;
+            transform: translate(-50%, -50%);
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__clear {
+            display: none;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__placeholder {
+            color: #666;
+        }
+    }
+
+    .no-sidebar {
+        .wcfmmp-store-search-form {
+            display: flex;
+            flex-wrap: wrap;
+            padding-bottom: 0;
+
+            >* {
+                flex: 1;
+                flex-basis: 20rem;
+                margin-bottom: 1rem;
+                min-height: 42px !important;
+
+                &#wcfmmp_store_state {
+                    margin-#{$right}: 0;
+                }
+            }
+        }
+
+        &#wcfmmp-stores-lists .wcfmmp-store-lists-sorting {
+            padding-top: 2rem;
+        }
+    }
+
+    // Sidebar
+    .wcfmmp-store-search-form {
+        box-shadow: none;
+
+        .select2-container--default .select2-selection--single {
+            padding: 5px 7px;
+        }
+    }
+
+    #wcfmmp-store-lists-sidebar .wcfmmp-store-search-form div.wcfm_radius_filter_container,
+    #wcfmmp-store-lists-sidebar .wcfmmp-store-search-form input.wcfmmp-radius-addr,
+    #wcfmmp-store-lists-sidebar .wcfmmp-store-search-form div.wcfm_radius_slidecontainer,
+    #wcfmmp-store-lists-sidebar .wcfmmp-store-search-form input#search,
+    #wcfmmp-store-lists-sidebar .wcfmmp-store-search-form input.wcfm-search-field,
+    #wcfmmp-store-lists-sidebar .wcfmmp-store-search-form select#wcfmmp_store_category,
+    #wcfmmp-store-lists-sidebar .wcfmmp-store-search-form select#wcfmmp_store_country,
+    #wcfmmp-store-lists-sidebar .wcfmmp-store-search-form #wcfmmp_store_state,
+    #wcfmmp-store-lists-sidebar .wcfmmp-store-search-form .select2-container,
+    #wcfmmp-store-lists-sidebar .wcfmmp-store-search-form .wcfmmp-search-box {
+        width: 100% !important;
+        color: #666;
+        height: 46px;
+    }
+
+    #wcfmmp-store-lists-sidebar {
+        #wcfmmp_store_state {
+            > :first-child {
+                color: #666;
+            }
+        }
+
+        #wcfmmp-store-lists-search-2 {
+            position: relative;
+
+            &::after {
+                content: "\e942";
+                font-family: "wolmart";
+                font-size: 1.8rem;
+                display: inline-block;
+                width: 30px;
+                line-height: 46px;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }
+
+        .wcfmmp-store-search-form {
+            >* {
+                margin-bottom: 2.5rem;
+            }
+
+            input.wcfmmp-store-search,
+            input.wcfmmp-radius-addr {
+                padding-#{$left}: 1.5rem;
+            }
+
+            i.wcfmmmp_locate_icon {
+                #{$right}: 10px;
+                #{$left}: auto;
+                margin-top: 4px;
+                transform: translateY(-50%);
+            }
+
+            div.wcfm_radius_filter_container,
+            div.wcfm_radius_slidecontainer {
+                padding: 0;
+            }
+
+            .wcfm_radius_filter_container {
+                margin-bottom: 3rem !important;
+            }
+        }
+    }
+
+    .sidebar .wcfmmp_store_hours,
+    .sidebar .wcfmmp_store_shipping_rules {
+        padding-top: 1.6rem;
+    }
+
+    .sidebar .wcfmmp-store-map {
+        margin-top: 1.6rem;
+    }
+
+    // Store Wrap
+    #wcfmmp-stores-wrap {
+        ul.wcfmmp-store-wrap {
+            li {
+                .store-wrapper {
+                    border-radius: 5px;
+                    overflow: hidden;
+
+                    .store-content {
+                        border-bottom: 0px;
+
+                        .store-info {
+                            opacity: 1;
+                            height: 222px !important;
+                        }
+                    }
+
+                    .store-footer {
+                        min-height: 78px !important;
+                        height: 78px !important;
+                        padding: 20px;
+
+                        .store-avatar {
+                            padding: 0;
+                            #{$right}: 30px;
+                            z-index: 1;
+                            width: 78px;
+                            height: 78px;
+                            margin-top: 0;
+                            top: -45px;
+                            background-color: $warning-color;
+                            border: 0;
+
+                            img {
+                                margin: -2px;
+                                height: calc(100% + 4px);
+                                width: calc(100% + 4px);
+                                max-width: unset;
+                                border: 1px solid #ccc;
+                                transition: transform .4s;
+                            }
+
+                            &:hover {
+                                img {
+                                    transform: translateY(-10px);
+                                }
+                            }
+                        }
+
+                        @include mq(xs, max) {
+                            height: 108px !important;
+                            padding: 50px 20px 20px;
+
+                            .store-avatar {
+                                left: 20px;
+                            }
+                        }
+
+                        .store-data-container {
+                            top: -195px;
+                            left: 3rem;
+                            width: calc(100% - 6rem);
+                        }
+
+                        p.store-enquiry {
+                            position: relative;
+                            display: inline;
+                            top: auto;
+                            #{$right}: auto;
+                            margin-bottom: 1rem;
+
+                            .wcfm_catalog_enquiry {
+                                margin-bottom: 0;
+                                height: auto;
+                            }
+                        }
+
+                        p.store-enquiry .wcfm_catalog_enquiry,
+                        a.wcfmmp-visit-store {
+                            display: inline-block;
+                            padding: 1.2rem 2.5rem;
+                            background-color: $border-color-light;
+                            font-size: 1.3rem;
+                            font-weight: 600;
+                            color: var(--wolmart-dark-color, $dark-color);
+                            text-transform: uppercase;
+                            line-height: 1;
+                            box-shadow: none;
+                            border-bottom: 0;
+                            height: auto;
+                        }
+
+                        a.wcfmmp-visit-store {
+                            top: auto;
+                            #{$right}: auto;
+                            position: relative;
+                            margin-bottom: 1rem;
+                        }
+                    }
+
+                    .store-data .wcfmmp-store-rating::before,
+                    .store-data .wcfmmp-store-rating span:before {
+                        content: "" "" "" "" "";
+                        position: absolute;
+                        float: left;
+                        top: 0px;
+                        left: 0px;
+                        opacity: 1;
+                        color: var(--wolmart-light-color, $light-color);
+                        font-size: 1.2rem;
+                    }
+
+                    .store-data .wcfmmp-store-rating span {
+                        color: $secondary-color;
+
+                        &:before {
+                            color: inherit;
+                        }
+                    }
+
+                    .store-data h2 {
+                        margin-bottom: 1rem;
+
+                        &:hover {
+                            color: var(--wolmart-primary-color, $primary-color);
+                        }
+
+                        a {
+                            color: #fff !important;
+                            text-shadow: 0 0 3px #000;
+                        }
+                    }
+
+                    .store-data p.store-phone {
+                        background: transparent !important;
+                        font-size: 1.3rem;
+                        opacity: .8;
+                        margin: 3px 0 0 0;
+                        text-shadow: 0 0 3px #000;
+
+                        i {
+                            background-color: transparent !important;
+
+                            &.w-icon-phone-full {
+                                transform: rotateZ(90deg);
+                            }
+                        }
+                    }
+
+                    .store-data .store-address {
+                        color: #fff;
+                        opacity: .8;
+                        margin-bottom: 0;
+                        padding-#{$left}: .3rem;
+
+                        i {
+                            font-size: 1.6rem;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+
+                .store-actions {
+                    >* {
+                        margin-#{$right}: 1rem;
+                    }
+                }
+
+                &.coloum-3 {
+                    .store-footer {
+                        .store-avatar {
+                            left: auto;
+                        }
+                    }
+
+                    .store-actions a.wcfmmp-visit-store {
+                        bottom: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    // Single Vendor Store
+    #wcfmmp-store {
+        box-shadow: none;
+
+        .body_area.row.gutter-lg {
+            margin-left: -15px;
+            margin-right: -15px;
+            padding-top: 3rem;
+        }
+
+        ins {
+            background-color: transparent;
+        }
+
+        del {
+            color: #aaa;
+        }
+
+        .wcfmmp-store-info-area {
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        #wcfmmp-store-content {
+            position: relative;
+        }
+
+        .banner_img {
+            height: 460px !important;
+            max-height: 460px !important;
+        }
+
+        .banner_text {
+            top: calc(50% - 80px);
+        }
+
+        #wcfm_store_header {
+            position: absolute;
+            background: rgba(34, 34, 34, 0.8) !important;
+            width: 100%;
+            min-height: 160px;
+            bottom: 0;
+        }
+
+        .bd_icon_box .wcfm_store_enquiry {
+            i {
+                transition: none;
+            }
+
+            i,
+            &:hover i {
+                color: inherit;
+            }
+        }
+
+        .header_left {
+            display: flex;
+            padding: 0;
+            padding-#{$left}: 3rem;
+            margin-#{$left}: 0;
+            float: none;
+        }
+
+        .personal-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-60px);
+            margin-#{$right}: 3rem;
+
+            .star-rating {
+                margin-#{$right}: 0;
+
+                &::before {
+                    color: #666;
+                }
+            }
+        }
+
+        .logo-area {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+
+        .address {
+            position: relative;
+            padding-top: 2rem;
+            padding-#{$left}: 0;
+            width: 100% !important;
+            top: auto;
+            left: auto;
+
+            >*:not(h1) {
+                opacity: .8;
+            }
+        }
+
+        div.store_info_parallal {
+            display: block;
+            padding-bottom: .5rem;
+            word-break: break-all;
+        }
+
+        .social_area {
+            padding-bottom: 2rem;
+            min-height: auto;
+            width: 300px;
+            background-color: transparent !important;
+
+            ul {
+                display: flex;
+                position: relative;
+                justify-content: center;
+                top: auto;
+                transform: none;
+
+                li {
+                    background-color: transparent !important;
+
+                    &:first-child {
+                        margin-#{$left}: 0;
+                    }
+
+                    &:last-child {
+                        margin-#{$right}: 0;
+                    }
+
+                    >a {
+                        margin: 0;
+                        border-radius: 2px;
+
+                        i {
+                            color: #fff !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .bd_icon_area {
+            position: relative;
+            display: block;
+            float: none;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+            top: auto;
+
+            .bd_icon_box {
+                margin-#{$right}: 3rem;
+                float: none;
+            }
+
+            .wcfm_store_enquiry {
+                padding: 1.2rem 2.5rem;
+                height: auto;
+                line-height: 1;
+
+                i::before {
+                    content: '\f059';
+                }
+
+                span {
+                    line-height: 1;
+                    color: inherit !important;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        // Store Main Content
+        .store-main-content.right_side {
+            width: auto;
+            max-width: 100%;
+            padding: 0 1.5rem 2rem;
+        }
+
+        // Tabs
+        .tab_area {
+            .tab_links {
+                margin-bottom: 4rem;
+                border-bottom: 1px solid $border-color-light;
+
+                li {
+                    position: relative;
+                    border: 0;
+
+                    &:not(:last-child) {
+                        margin-#{$right}: 3rem;
+                    }
+
+                    &::after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        top: unset;
+                        bottom: 1px;
+                        left: 0;
+                        height: 2px;
+                        width: 100%;
+                        border: 1px solid transparent;
+                        transform: scaleX(0);
+                        opacity: 1;
+                        background: none !important;
+                        transition: transform .3s, border-color .3s !important;
+                    }
+
+                    &,
+                    &:hover,
+                    &.active {
+
+                        // border: 0 !important;
+                        >a {
+                            padding: 15px 0 15px;
+                            color: var(--wolmart-dark-color, $dark-color) !important;
+                            font-size: 1.6rem;
+                            font-weight: 600;
+                            text-transform: capitalize;
+                        }
+                    }
+
+                    &:hover,
+                    &.active {
+                        &::after {
+                            transform: scale(1);
+                            bottom: 1px;
+                            border-color: var(--wolmart-primary-color, $primary-color);
+                        }
+                    }
+
+                    &.active {
+                        border: 0 !important;
+                    }
+                }
+            }
+        }
+
+        // About Tab
+        .wcfm_store_description,
+        .policies_area {
+            box-shadow: none;
+            padding: 0;
+            margin: 0;
+
+            p {
+                font-size: 1.3rem;
+                line-height: 2;
+            }
+        }
+
+        // Policy Tab
+        .policies_area {
+            &:not(:last-child) {
+                margin-bottom: 3rem;
+                border-bottom: 1px solid $border-color-light;
+            }
+
+            p {
+                font-size: 1.4rem;
+            }
+        }
+
+        .wcfm_policies_heading,
+        .reviews_heading {
+            padding-bottom: 0;
+            font-size: 2rem;
+            font-weight: 600;
+            // color: var(--wolmart-dark-color, $dark-color);
+            text-transform: capitalize;
+            border-bottom: 0;
+        }
+
+        // Review Tab
+        .reviews_area {
+            box-shadow: none;
+            border: 1px solid $border-color-light;
+            border-radius: 3px;
+            margin-top: 0;
+            margin-bottom: 3rem;
+
+            .add_review input {
+                box-shadow: none;
+                border: 1px solid $border-color-light;
+                border-radius: 3px;
+            }
+
+            .cancel_review_add {
+                color: var(--wolmart-dark-color, $dark-color) !important;
+                transition: color .4s;
+                font-size: 1.3rem;
+
+                &:hover {
+                    color: var(--wolmart-primary-color, $primary-color) !important;
+                }
+            }
+
+            #wcfmmp_store_review_comment {
+                box-shadow: none;
+                border: 1px solid $border-color-light;
+                border-radius: 3px;
+            }
+
+            .reviews_count {
+                font-size: 1.6rem;
+
+                a {
+                    font-weight: 600;
+                }
+            }
+
+            button {
+                padding: 1rem 2rem;
+                border-radius: 3px;
+            }
+        }
+
+        // Rating Star
+        .rating_box {
+            i {
+                font-size: 1.3rem;
+                letter-spacing: .01em;
+            }
+
+            span {
+                font-size: 1.4rem;
+                color: var(--wolmart-dark-color, $dark-color);
+            }
+        }
+
+        .user_review_sec {
+            .user_name {
+                color: var(--wolmart-dark-color, $dark-color) !important;
+                font-size: 1.6rem;
+                font-weight: 600;
+            }
+        }
+
+        .user_review_area span,
+        .reviews_count,
+        .user_review_text>p {
+            color: var(--wolmart-body-color, $body-color);
+        }
+
+        .user_review_area {
+            text-transform: capitalize;
+        }
+
+        .user_review_text p {
+            font-size: 1.4rem;
+        }
+
+        .rated strong {
+            color: var(--wolmart-dark-color, $dark-color);
+            text-transform: capitalize;
+            font-weight: 400;
+        }
+
+        .user_rated {
+            height: 22px;
+            width: 44px;
+            text-align: center;
+            border-radius: 3px;
+            background-color: var(--wolmart-body-color, $body-color) !important;
+        }
+
+        // Rating number
+        .rating_number {
+            display: inline;
+            padding: .7rem 1.5rem;
+            border-radius: 3px;
+        }
+
+        // Store Sidebar
+        ul.categories_list,
+        ul.product-categories {
+            padding: 0.7rem 0;
+
+            >li {
+                padding: 1rem 0;
+            }
+
+            .children {
+                position: relative;
+                width: 100%;
+                margin: 1rem 0 -0.5rem;
+                padding-#{$left}: 1.3rem;
+                padding-bottom: 0;
+
+                >li {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    padding: 5.5px 0;
+                }
+            }
+        }
+
+        ul.product_list_widget li {
+            padding-#{$left}: 0;
+
+            a {
+                display: block;
+                margin-bottom: 0;
+                padding: 0;
+                overflow: visible;
+                text-overflow: unset;
+            }
+
+            img {
+                position: relative;
+                top: auto;
+                width: 100%;
+                height: auto;
+                object-position: unset;
+            }
+        }
+
+        .sidebar {
+            .woocommerce-product-search {
+                padding-top: 2rem;
+
+                input {
+                    border: 1px solid $border-color-light;
+                    width: 100%;
+                    height: 44px;
+                    padding: 6px 18px;
+                    line-height: 24px;
+                    border-radius: 3px;
+                    color: var(--wolmart-body-color, $body-color);
+                }
+            }
+        }
+
+        // Product Area
+        .product_area {
+            ul.products {
+                margin-left: -1rem;
+                margin-right: -1rem;
+                width: calc(100% + 2rem);
+
+                li {
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
+            }
+        }
+
+        // Product Type
+        .btn-product-icon.yith-wcwl-add-to-wishlist a {
+            transition: none;
+        }
+    }
+
+
+    // Coupon Widget
+    .wcfmmp_store_coupons .wcfmmp-store-coupon-single {
+        margin: 0;
+        padding: 1.2rem 2rem;
+        width: 100%;
+        background-color: #f5f5f5;
+        border-color: var(--wolmart-body-color, $body-color);
+        border-radius: 3px;
+    }
+
+    // Store hours widget
+    .wcfmmp_store_hours {
+        color: var(--wolmart-dark-color, $dark-color);
+
+        .wcfmmp-store-hours-day {
+            min-width: 110px;
+            color: var(--wolmart-dark-color, $dark-color) !important;
+        }
+    }
+
+    // Shipping Rules widget
+    .wcfmmp_store_shipping_rules {
+        >br {
+            display: none;
+        }
+
+        .wcfmmp_shipment_rules_display {
+            color: var(--wolmart-dark-color, $dark-color) !important;
+        }
+    }
+
+    // Single Product
+    .single-product {
+        .wcfmmp_sold_by_container_advanced {
+            border-radius: 3px;
+            border-color: $border-color-light;
+
+            .wcfmmp_sold_by_label {
+                letter-spacing: -0.05em;
+            }
+
+            .wcfm_dashboard_item_title {
+                font-size: 1.6rem;
+                letter-spacing: -.05em;
+            }
+        }
+
+        .wcfmmp_shipment_processing_display {
+            font-style: normal;
+            font-size: 1.2rem;
+        }
+
+        .wcfm_product_multivendor_button_wrapper,
+        .wcfm_catalog_enquiry_button_wrapper {
+            display: inline-block;
+            margin: 0;
+        }
+
+        .woocommerce-spmv-ordering {
+            margin-bottom: 2rem;
+            border-color: $border-color-light;
+        }
+
+        div.wcfmmp_product_mulvendor_rowhead {
+            box-shadow: none;
+            background-color: transparent;
+            border-color: $border-color-light;
+            border-bottom: 0;
+        }
+
+        div.wcfmmp_product_mulvendor_container .wcfmmp_product_mulvendor_row.wcfmmp_product_mulvendor_rowbody .wcfmmp_product_mulvendor_rowsub .woocommerce-Price-amount {
+            color: var(--wolmart-dark-color, $dark-color);
+        }
+
+        .wcfm_catalog_enquiry_button_wrapper>a {
+            border: 0 !important;
+            padding: 0;
+            margin: 1rem 0 0;
+            color: var(--wolmart-body-color, $body-color) !important;
+            background: none !important;
+            box-shadow: none;
+
+            &:hover,
+            &:focus {
+                background: none !important;
+                color: var(--wolmart-primary-color, $primary-color) !important;
+            }
+        }
+
+        .wcfm_product_multivendor_button_wrapper>a,
+        .wcfmmp_product_mulvendor_rowsub .wcfmmp_product_multivendor_action_button {
+            margin-bottom: 1rem;
+            padding: 7px 10px;
+            border: 1px solid var(--wolmart-primary-color, $primary-color) !important;
+            background-color: var(--wolmart-primary-color, $primary-color) !important;
+            box-shadow: none;
+            transition: background-color .4s, border-color .4s;
+            border-radius: 2px;
+            font-size: 1.3rem;
+            text-transform: capitalize;
+            font-weight: normal;
+
+            &:hover,
+            &:focus,
+            &.active {
+                background-color: var(--wolmart-dark-color, $dark-color) !important;
+                border-color: var(--wolmart-dark-color, $dark-color) !important;
+            }
+        }
+
+        .wcfm_policies_heading {
+            font-size: 1.6rem;
+        }
+
+        .leaflet-control-zoom-in,
+        .leaflet-control-zoom-out {
+            text-align: center !important;
+        }
+    }
+
+    @media (min-width: 1025px) {
+        #wcfmmp-store {
+            .header_area {
+                display: flex;
+            }
+
+            .header_left {
+                flex: 1;
+            }
+
+            .bd_icon_area .bd_icon_box {
+                text-align: right;
+            }
+
+            .social_area>ul {
+                justify-content: flex-end;
+                padding-#{$right}: 3rem;
+            }
+
+            .bd_rating_sec {
+                padding-#{$right}: 9rem;
+            }
+        }
+    }
+
+    @media (max-width: 1024px) {
+        #wcfmmp-store {
+            .header_left {
+                width: auto;
+                margin-#{$left}: 3rem;
+                padding: 0;
+            }
+
+            .bd_icon_area,
+            .social_area {
+                position: relative;
+                margin-top: 0;
+                width: 100%;
+            }
+
+            .header_right {
+                padding-left: 160px;
+                text-align: left;
+            }
+
+            .bd_icon_area {
+                margin-bottom: 2rem;
+            }
+
+            .social_area {
+                right: auto;
+
+                >ul.social-icons {
+                    justify-content: flex-start;
+                    // padding-left: .5rem;
+                    left: auto;
+                }
+            }
+        }
+    }
+
+    @include mq('lg') {
+        #wcfmmp-stores-lists {
+            .row #wcfmmp-stores-wrap-holder {
+                flex: 1;
+                overflow: hidden;
+            }
+        }
+
+        #wcfmmp-store {
+            .store-main-content.right_side {
+                flex: 1;
+                max-width: 100%;
+            }
+        }
+    }
+
+    @include mq('lg', 'max') {
+        .no-sidebar {
+            .wcfmmp-store-search-form {
+                >* {
+                    max-width: 24.8rem;
+                }
+            }
+        }
+    }
+
+    @include mq('960px', 'max') {
+        #wcfmmp-store .address {
+            margin-#{$left}: 0;
+        }
+    }
+
+    @include mq('md', 'max') {
+        #wcfmmp-stores-lists {
+            .wcfmmp-store-lists-sorting {
+                margin-top: 0;
+
+                .woocommerce-result-count {
+                    float: none;
+                }
+            }
+        }
+    }
+
+    @include mq('640px', 'max') {
+        .no-sidebar {
+            .wcfmmp-store-search-form {
+                justify-content: center;
+
+                >* {
+                    margin-left: .5rem !important;
+                    margin-right: .5rem !important;
+                }
+            }
+        }
+    }
+
+    @include mq('627px', 'max') {
+        #wcfmmp-store .social_area ul li {
+            width: 32px;
+            height: 32px;
+
+            a i {
+                font-size: 1.6rem;
+            }
+        }
+    }
+
+    @include mq('sm', 'max') {
+        #wcfmmp-store {
+            .banner_img {
+                height: 600px !important;
+                max-height: 600px !important;
+            }
+
+            .header_left {
+                flex-direction: column;
+
+                // text-align: center;
+                .address {
+                    padding-top: 0;
+                    margin-left: 0;
+                }
+
+                .address-info {
+                    transform: translateY(-30px);
+                    width: calc(100% - 3rem);
+                    margin-top: -20px;
+                }
+
+                .wcfm_store_title {
+                    font-size: 2rem;
+                    text-align: center;
+                }
+            }
+
+            .header_right {
+                padding-#{$left}: 30px;
+                margin-top: -3rem;
+            }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        #wcfmmp-store {
+            .header_area .header_right {
+                padding-#{$left}: 1rem;
+                text-align: center;
+                background: transparent;
+            }
+
+            .bd_icon_area .bd_icon_box {
+                margin-#{$right}: 0;
+            }
+
+            .social_area>ul.social-icons {
+                justify-content: center;
+            }
+
+            .bd_rating_area,
+            .rating_count {
+                float: none;
+                text-align: left;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}

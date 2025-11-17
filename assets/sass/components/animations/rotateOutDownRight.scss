@@ -1,0 +1,16 @@
+@keyframes rotateOutDownRight {
+    0% {
+        opacity: 1;
+        transform-origin: right bottom
+    }
+
+    to {
+        opacity: 0;
+        transform: rotate(-45deg);
+        transform-origin: right bottom
+    }
+}
+
+.rotateOutDownRight {
+    animation-name: rotateOutDownRight
+}

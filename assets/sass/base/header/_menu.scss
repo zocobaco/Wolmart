@@ -1,0 +1,936 @@
+/* -------------------------------------------
+	Menu
+		- Default
+
+		- Menu(MainMenu)
+			- MegaMenu
+			- MenuBanner
+			- Tips
+
+		- MobileMenu 
+			- MobileMenuWrapper
+			- MobileMenuContainer
+			- MobileMenu
+			- MobileMenuOverlay
+			- MobileMenuCloseButton
+
+		- Dropdown Menu
+ ------------------------------------------- */
+
+// Default Menu Styles
+.menu {
+	.header & {
+		display: flex;
+		align-items: center;
+	}
+
+	ul {
+		padding: 2rem 0;
+		background: #fff;
+	}
+
+	li {
+		position: relative;
+
+		>a {
+			transition: color .3s, background .3s, border .3s;
+		}
+
+		a {
+			display: inline-block;
+			padding: .7rem 1rem;
+			white-space: nowrap;
+
+			i {
+				display: inline-block;
+				margin: side-values(-1px 7px 0 0);
+				line-height: 0;
+				font-size: 17px;
+				vertical-align: middle;
+			}
+		}
+
+		>ul {
+			position: absolute;
+			top: -9999px;
+			#{$left}: 100%;
+			min-width: 21.5rem;
+			margin: 0;
+			box-shadow: 0 4px 20px -8px rgba(0, 0, 0, 0.2);
+			z-index: 1002;
+			background-color: #fff;
+			visibility: hidden;
+			opacity: 0;
+			transition: transform .2s ease-out;
+			transform: translate3d(0, -10px, 0);
+
+			li {
+				padding: 0 2rem;
+			}
+		}
+	}
+
+	li:hover,
+	.show {
+		>ul {
+			visibility: visible;
+			opacity: 1;
+			top: -2rem;
+			transform: translate3d(0, 0, 0);
+		}
+	}
+
+	>li {
+		.header &:last-child {
+			margin: 0;
+		}
+
+		>a {
+			position: relative;
+
+			&::after {
+				margin-#{$left}: .6rem;
+			}
+		}
+
+		>ul {
+			#{$left}: -1.9rem;
+		}
+
+		&:hover,
+		&.show {
+			>ul {
+				top: 100%;
+			}
+
+			&::after {
+				visibility: visible;
+				opacity: 1;
+				top: calc(100% - 20px);
+				transform: translate3d(-50%, 0, 0);
+			}
+
+			nav &>a {
+				color: var(--wolmart-primary-color, $primary-color);
+			}
+		}
+	}
+
+	.menu-item-has-children {
+		>a {
+			display: block;
+		}
+	}
+
+	>.menu-item-has-children {
+		padding-#{$right}: 1.5rem;
+
+		>a {
+			// z-index: 1001;
+
+			&::after {
+				content: '\e910';
+				margin-top: 1px;
+				#{$right}: -1.6em;
+			}
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			z-index: 1002;
+			left: 50%;
+			top: -9999px;
+			transform: translate3d(-50%, -8px, 0);
+			border: 11px solid transparent;
+			border-bottom: 11px solid #fff;
+			transition: opacity .2s ease-out, transform .2s ease-out;
+			visibility: hidden;
+			opacity: 0;
+			cursor: pointer;
+			pointer-events: none;
+		}
+	}
+}
+
+.menu-item-has-children {
+	>a {
+		&::after {
+			display: inline-block;
+			position: absolute;
+			#{$right}: 2rem;
+			top: 50%;
+			line-height: 0;
+			vertical-align: middle;
+			font-family: 'wolmart';
+			font-weight: 700;
+			font-size: .7em;
+			color: inherit;
+			transform: translateY(-50%);
+			content: if-ltr('\e913', '\e912');
+		}
+	}
+}
+
+// Horizontal Menu
+@if use(menu-horizontal) {
+	.menu.horizontal-menu {
+		display: flex;
+		align-items: center;
+	}
+}
+
+// Vertical Menu
+@if use(menu-vertical) {
+	.menu.vertical-menu {
+		display: block;
+		max-width: 100%;
+
+		li>a {
+			display: block;
+		}
+
+		>li {
+			margin-#{$right}: 0;
+
+			>ul {
+				transform: translate3d(if-ltr(-15px, 15px), 0, 0);
+			}
+
+			>a {
+				&::after {
+					content: none;
+				}
+			}
+
+			&:hover,
+			&.show {
+				>ul {
+					#{$left}: 100%;
+					top: 0;
+					transform: translate3d(0, 0, 0);
+				}
+			}
+
+			&:first-child:hover,
+			&:first-child.show {
+				>ul {
+					top: -1rem;
+				}
+			}
+		}
+
+		>.menu-item-has-children {
+			&::after {
+				top: 50%;
+				#{$left}: calc(100% - 20px);
+				transform: translate3d(0, -50%, 0);
+				border: 11px solid transparent;
+				border-#{$right}: 11px solid #fff;
+			}
+
+			&:hover,
+			&.show {
+				&::after {
+					#{$left}: 100%;
+				}
+
+				>a::after {
+					#{$right}: 0.5rem;
+				}
+			}
+
+			>a {
+				&::after {
+					line-height: 0;
+					#{$right}: 1rem;
+					content: if-ltr('\e913', '\e912');
+					font-size: .7em;
+					transition: #{$right} .3s ease;
+				}
+			}
+		}
+
+		&.dropdown-menu>.menu-item-has-children:hover:after,
+		&.dropdown-menu>.menu-item-has-children.show:after {
+			#{$left}: calc(100% - 2rem);
+		}
+
+		.megamenu {
+			>li {
+				>.wolmart-block {
+					margin: -2rem -1rem;
+				}
+
+				&:first-child>.wolmart-block {
+					margin-left: -2rem;
+				}
+
+				&:last-child>.wolmart-block {
+					margin-right: -2rem;
+				}
+
+				>a {
+					margin-bottom: 1.6rem;
+
+					&:before {
+						position: absolute;
+						content: '';
+						left: 1rem;
+						right: 1rem;
+						height: 1px;
+						background-color: $border-color-light;
+						bottom: -.8rem;
+					}
+				}
+			}
+		}
+
+		&.no-arrow {
+			>li {
+				display: flex;
+
+				>a {
+					&::after {
+						content: none;
+					}
+				}
+			}
+		}
+	}
+
+	.vertical-menu.dropdown-menu>li {
+		padding: 0 1rem;
+	}
+}
+
+@if use(menu-collapsible) {
+	.menu.collapsible-menu {
+		display: block;
+
+		>.menu-item {
+			margin-#{$right}: 0;
+		}
+
+		.menu-item-has-children {
+
+			&::after,
+			>a::after {
+				content: none;
+			}
+
+			li {
+				padding: side-values(0 0 0 .7rem);
+			}
+		}
+
+		li>ul {
+			display: none;
+			position: static;
+			visibility: visible;
+			opacity: 1;
+			min-width: 0;
+			transform: none;
+			background: transparent;
+			box-shadow: none;
+		}
+
+		ul {
+			padding: 0;
+		}
+	}
+}
+
+// MobileMenu SlideToggle Button ( v, ^ )
+@if use(toggle-btn) {
+	.toggle-btn {
+
+		&,
+		.menu &,
+		.mobile-menu & {
+			display: block;
+			position: absolute;
+			padding: 6px;
+			#{$right}: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			opacity: .6;
+		}
+
+		&::before {
+			display: block;
+			font-size: 1rem;
+			font-weight: 600;
+			line-height: 1;
+			transition: transform .5s;
+		}
+
+		.menu &::before,
+		.mobile-menu &::before {
+			font-family: 'wolmart';
+			content: if-ltr('\e9a9', '\e9a8');
+			position: static;
+			border: none;
+			width: auto;
+		}
+
+		.menu &,
+		.mobile-menu & {
+			width: auto;
+		}
+
+		.menu &::after,
+		.mobile-menu &::after {
+			content: none;
+		}
+	}
+
+	.show>.toggle-btn::before,
+	.show>a .toggle-btn::before {
+		transform: rotate(if-ltr(270deg, 450deg));
+	}
+}
+
+// Underline Hover Style
+@if use(menu-underline) {
+	.menu-active-underline {
+		>li {
+			>a {
+				&::before {
+					content: '';
+					display: block;
+					position: absolute;
+					bottom: 12px;
+					left: 0;
+					width: 100%;
+					border-bottom: 3px solid;
+					transform-origin: right center;
+					transform: scale(0, 1);
+					transition: transform .3s;
+				}
+			}
+
+			&.current-menu-ancestor>a,
+			&.current-menu-item>a,
+			>a:hover,
+			&:hover>a {
+				color: inherit;
+
+				&::before {
+					transform-origin: left center;
+					transform: scale(1, 1);
+				}
+			}
+		}
+	}
+}
+
+// Mega menu
+@if use(menu-megamenu) {
+	.menu .megamenu {
+		display: flex;
+		padding: 1rem;
+		background: #fff;
+
+		a {
+			white-space: normal;
+		}
+
+		li {
+			background-size: cover;
+			padding: 0;
+		}
+
+		>li {
+			flex: 1;
+			padding: 1rem;
+
+			>a::after {
+				content: none;
+			}
+
+			>ul+a {
+				margin-top: 1rem;
+			}
+		}
+
+		>.menu-item>a {
+			pointer-events: none;
+			margin-bottom: 3px;
+			font-size: 1.4rem;
+			font-weight: 600;
+			line-height: 1;
+			text-transform: uppercase;
+			color: #333;
+			letter-spacing: -.025em;
+		}
+
+		ul {
+			position: static;
+			min-width: 0;
+			padding: 0;
+			box-shadow: none;
+			opacity: 1;
+			visibility: visible;
+			transform: none;
+		}
+
+		&.mp-left {
+			#{$left}: -1.5rem;
+			#{$right}: auto;
+		}
+
+		&.mp-right {
+			#{$left}: auto;
+			#{$right}: -1.5rem;
+		}
+
+		&.mp-center {
+			#{$right}: auto;
+		}
+	}
+}
+
+// Tip
+@if use(menu-tip) {
+	.tip {
+		display: inline-block;
+		position: relative;
+		top: -1px;
+		#{$left}: 7px;
+		border-radius: 2px;
+		padding: .3rem .5rem;
+		font-size: 1rem;
+		font-weight: 600;
+		line-height: 1;
+		color: #fff;
+		text-transform: uppercase;
+
+		&.tip-hot {
+			color: var(--wolmart-secondary-color, $secondary-color);
+		}
+
+		&.tip-new {
+			color: var(--wolmart-primary-color, $primary-color);
+		}
+	}
+}
+
+// Mobile Menu
+// Mobile Menu Wrapper
+@if use(menu-mobile) {
+	.mobile-menu-wrapper {
+		visibility: hidden;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 2999;
+		transition: visibility .4s;
+
+		.loading1::before,
+		.loading1::after,
+		.loading2::before,
+		.loading2::after {
+			background: #fff;
+		}
+
+		.loading1::before {
+			box-shadow: inset 0 0 0 2px #fff;
+		}
+	}
+
+	// Mobile Menu Container
+	.mobile-menu-container {
+		max-width: 296px;
+		padding: 2rem 1.5rem;
+		width: 100%;
+		height: 100%;
+		overflow-y: auto;
+		background: #222;
+		box-shadow: 1px 0 5px rgba(0, 0, 0, .5);
+		transform: translateX(if-ltr(-296px, 296px));
+		transition: transform .4s;
+
+		.w-loading {
+			background: transparent;
+		}
+
+		.hs-simple .input-wrapper {
+			display: flex;
+			margin-bottom: .6rem;
+			height: 4rem;
+
+			.form-control {
+				color: $grey-color;
+				border: 1px solid #333;
+				border-radius: 3px;
+				background-color: transparent;
+			}
+
+			.btn-search {
+				color: #fff;
+				font-size: 1em;
+			}
+
+			i {
+				vertical-align: initial;
+				margin: 0;
+				font-size: inherit;
+			}
+		}
+
+		.mobile-menu {
+			margin-bottom: .5rem;
+
+			.menu-item>a>i {
+				min-width: 20px;
+				text-align: center;
+				font-size: 18px;
+				margin-#{$right}: 1rem;
+				vertical-align: -3px;
+
+				@include if-rtl() {
+					float: right;
+				}
+			}
+		}
+
+		.tab {
+			margin-top: 3rem;
+		}
+
+		.tab-content {
+			background-color: transparent;
+		}
+
+		.tab-pane {
+			padding-top: 1rem;
+		}
+
+		.nav {
+			border-width: 2px;
+		}
+
+		.nav-link {
+			margin-bottom: -2px;
+			padding: 10px;
+			font-size: 13px;
+			color: #fff;
+		}
+
+		.nav-item:hover .nav-link {
+			color: #fff;
+			border-color: transparent;
+		}
+
+		.nav-item.show .nav-link,
+		.nav-item .nav-link.active {
+			color: var(--wolmart-primary-color, $primary-color);
+			border-color: var(--wolmart-primary-color, $primary-color);
+		}
+
+		.nav-item+.nav-item {
+			margin-#{$left}: 1px;
+		}
+	}
+
+	.wolmart-adminbar .mobile-menu-container {
+		padding-top: 5.4rem;
+	}
+
+
+
+	// MobileMenu
+	.mobile-menu {
+		color: #e1e1e1;
+		font-size: 1.2rem;
+		font-weight: 400;
+		line-height: 1.5;
+
+		ul {
+			display: none;
+			width: 100% !important;
+		}
+
+		>li {
+			&:first-child {
+				padding-top: .5rem;
+			}
+
+			&:last-child {
+				padding-bottom: .5rem;
+			}
+
+			&:not(:last-child) {
+				border-bottom: 1px solid #333;
+			}
+		}
+
+		li {
+			a {
+				display: block;
+				position: relative;
+				padding: side-values(1.3rem .6rem 1.3rem 1rem);
+			}
+
+			// List Padding
+			li {
+				a {
+					padding-#{$left}: 2.4rem;
+				}
+
+				li {
+					a {
+						padding-#{$left}: 3.6rem;
+					}
+				}
+			}
+		}
+
+		.expanded,
+		.active>a {
+			background: #333;
+		}
+
+		.menu-item-has-children>a::after {
+			content: none;
+		}
+	}
+
+	.mobile-menu-title {
+		margin-bottom: .5rem;
+		color: #fff;
+		font-size: 1.4rem;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	// MobileMenu Overlay
+	.mobile-menu-overlay {
+		position: fixed;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		background: #000;
+		opacity: 0;
+		transition: opacity .4s;
+	}
+
+	// MobileMenu Close Button
+	.mobile-menu-close {
+		position: fixed;
+		#{$left}: calc(100vw - 50px);
+		top: 25px;
+
+		i {
+			font-size: 2.8rem;
+			color: #e1e1e1;
+		}
+
+		transition: opacity .3s;
+		opacity: 0;
+	}
+
+	.mmenu-active {
+		overflow: hidden;
+
+		.page-wrapper {
+			margin-#{$left}: 296px;
+			margin-#{$right}: -296px;
+		}
+
+		.mobile-menu-wrapper {
+			visibility: visible;
+		}
+
+		.mobile-menu-container {
+			transform: translateX(0);
+		}
+
+		.mobile-menu-overlay {
+			opacity: .8;
+		}
+
+		.mobile-menu-close {
+			opacity: 1;
+		}
+	}
+
+	@include mq(400px, max) {
+		.mobile-menu-close {
+			#{$left}: calc(100vw - 40px);
+			top: 10px;
+		}
+	}
+}
+
+nav .menu,
+.dropdown-menu,
+.toggle-menu {
+	display: inline-block;
+}
+
+// Toggle Dropdown
+@if use(menu-toggle) {
+	.toggle-menu {
+		width: 280px;
+
+		>a {
+			position: relative;
+			padding: 1.8rem 2rem;
+			transition: background .3s, color .3s;
+
+			&:after {
+				position: absolute;
+				content: '\e910';
+				top: 50%;
+				transform: translateY(-50%);
+				#{$right}: 18px;
+				font-family: 'wolmart';
+				color: inherit;
+			}
+
+			i {
+				margin-top: -1px;
+				font-size: 1.2em;
+			}
+
+			i+span {
+				margin-#{$left}: 7px;
+			}
+
+			.hover {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				opacity: 0;
+			}
+		}
+
+		&:hover>a {
+			i:not(:first-child) {
+				opacity: 0;
+			}
+
+			.hover {
+				opacity: 1;
+			}
+		}
+
+		.menu {
+			padding: 2rem 0;
+		}
+
+		.menu>li {
+			margin-#{$right}: 0;
+		}
+
+		.dropdown-box {
+			padding: 0;
+			#{$right}: auto;
+		}
+
+		&::before,
+		&::after {
+			#{$left}: 25px;
+		}
+
+		&.show .dropdown-box,
+		.home &.show-home .dropdown-box {
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		@if use(menu-toggle-border) {
+			&.has-border {
+				&::before {
+					content: '';
+					position: absolute;
+					z-index: 1002;
+					top: -9999px;
+					transform: translateX(-50%);
+					border: 11px solid transparent;
+					border-bottom: 11px solid #e1e1e1;
+					transition: opacity .4s ease;
+					visibility: hidden;
+					opacity: 0;
+					cursor: pointer;
+				}
+
+				&.show::before {
+					visibility: visible;
+					opacity: 1;
+					top: calc(100% - 21px);
+					transform: translate3d(-50%, 0, 0);
+				}
+
+				.menu {
+					border: 1px solid #e1e1e1;
+				}
+			}
+		}
+	}
+
+	@if use(header-sticky) {
+		.sticky-content:not(.fixed) {
+			.show-home {
+				&::after {
+					top: 100%;
+				}
+
+				.dropdown-box {
+					top: calc(100% + 20px);
+				}
+
+				.dropdown-box,
+				&::after {
+					visibility: visible;
+					opacity: 1;
+				}
+
+				.dropdown-box {
+					transform: translate3d(0, 0, 0);
+				}
+
+				&::after {
+					transform: translate3d(-50%, 0, 0);
+				}
+
+				@if use(menu-toggle-border) {
+					&.has-border {
+						&::before {
+							top: calc(100% - 1px);
+							visibility: visible;
+							opacity: 1;
+						}
+
+						@include only-for-retina() {
+							&::before {
+								top: calc(100% - 2px);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@include mq(1199px, max) {
+	.toggle-menu {
+		width: 240px;
+	}
+}
+
+@if use(menu-lazy) {
+	.lazy-menu>li:hover>ul {
+		height: 32rem;
+		min-width: 21.5rem;
+	}
+
+	.lazy-menu .w-loading li {
+		height: 100%;
+	}
+}

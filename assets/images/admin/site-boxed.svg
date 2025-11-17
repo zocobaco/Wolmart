@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 220 250" enable-background="new 0 0 220 250" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<path fill="#2879FE" d="M198.9,0H21C9.4,0,0,9.4,0,21v208.1c0,11.6,9.4,21,21,21h177.9c11.6,0,21-9.4,21-21V21
+				C219.9,9.4,210.4,0,198.9,0z M21,6h177.9c8.3,0,15,6.7,15,15v11.9H6V21C6,12.7,12.7,6,21,6z M6,210.9v-172h39v172H6z M51,38.9
+				h117.5v172H51V38.9z M174.5,38.9h39.4v172h-39.4V38.9z M198.9,244.1H21c-8.3,0-15-6.7-15-15v-12.2h207.9v12.2
+				C213.9,237.3,207.1,244.1,198.9,244.1z"/>
+			<circle fill="#2879FE" cx="19.7" cy="20.2" r="3.9"/>
+			<circle fill="#2879FE" cx="32.8" cy="20.2" r="3.9"/>
+			<circle fill="#2879FE" cx="45.9" cy="20.2" r="3.9"/>
+		</g>
+	</g>
+</g>
+<rect x="51" y="38.9" opacity="0.2" fill="#2879FE" enable-background="new" width="117.5" height="172"/>
+</svg>

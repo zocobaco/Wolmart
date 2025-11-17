@@ -1,0 +1,15 @@
+@keyframes fadeOutLeftShorter {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        transform: translate(-50px, 0);
+        transform-origin: 0 0;
+    }
+}
+
+.fadeOutLeftShorter {
+    animation-name: fadeOutLeftShorter
+}

@@ -1,0 +1,57 @@
+/* -------------------------------------------
+	Image Box
+---------------------------------------------- */
+
+@if use_component(image-box) {
+	.image-box {
+		figure {
+			display: inline-block;
+			position: relative;
+			margin-bottom: 1rem;
+		}
+
+		img {
+			display: block;
+		}
+
+		&.inner {
+			.title, .subtitle {
+				color: #fff;
+			}
+		}
+
+		.title {
+			margin-bottom: 3px;
+			font-size: calc( 14px / var(--wolmart-body-size, 14px) * 14px );
+			text-transform: uppercase;
+			a {
+				color: inherit;
+			}
+		}
+
+		.subtitle {
+			margin-bottom: 0;
+			font-size: calc( 12px / var(--wolmart-body-size, 14px) * 14px );
+			font-weight: 400;
+			text-transform: uppercase;
+			color: var(--wolmart-body-color, $body-color);
+		}
+
+		.content {
+			margin-top: 1rem;
+		}
+
+		&.outer .content {
+			margin-top: 0;
+		}
+		.social-icon {
+			width: 46px;
+			height: 46px;
+			color: #fff;
+			font-size: 24px;
+		}
+		a.social-icon {
+			border-width: 2px;
+		}
+	}
+}

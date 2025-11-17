@@ -1,0 +1,31 @@
+@keyframes flip {
+    0% {
+        animation-timing-function: ease-out;
+        transform: perspective(400px) scaleX(1) translateZ(0) rotateY(-1turn)
+    }
+
+    40% {
+        animation-timing-function: ease-out;
+        transform: perspective(400px) scaleX(1) translateZ(150px) rotateY(-190deg)
+    }
+
+    50% {
+        animation-timing-function: ease-in;
+        transform: perspective(400px) scaleX(1) translateZ(150px) rotateY(-170deg)
+    }
+
+    80% {
+        animation-timing-function: ease-in;
+        transform: perspective(400px) scale3d(.95, .95, .95) translateZ(0) rotateY(0deg)
+    }
+
+    to {
+        animation-timing-function: ease-in;
+        transform: perspective(400px) scaleX(1) translateZ(0) rotateY(0deg)
+    }
+}
+
+.animated.flip {
+    animation-name: flip;
+    backface-visibility: visible
+}

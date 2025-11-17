@@ -1,0 +1,80 @@
+/* -------------------------------------------
+    Mini Popup
+---------------------------------------------- */
+
+
+.minipopup-area {
+    position: fixed;
+    display: flex;
+    flex-direction: column-reverse;
+    #{$left}: 30px;
+    bottom: 30px;
+    z-index: 6000;
+}
+.minipopup-box {
+    width: 30rem;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    opacity: 0;
+    transition: opacity .4s, transform .4s ease-out;
+    transform: translateX(if-ltr(-200%, 200%));
+    font-size: 14px;
+    &.show {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .product {
+        font-size: 1.3rem;
+
+        @include if-rtl {
+            flex-flow: row;
+        }
+    }
+
+    figure.product-media {
+        flex-basis: 8rem;
+        max-width: 8rem;
+        margin-#{$right}: 1.2rem;
+    }
+
+    div.product-details {
+        max-width: calc(100% - 9.2rem);
+    }
+
+    a.product-title {
+        display: block;
+        margin-bottom: .8rem;
+        color: var(--wolmart-dark-color, $dark-color);
+        font-size: 1.4rem;
+        line-height: 1.43;
+
+        @include text-block();
+    }
+
+    figure {
+        max-width: 9rem;
+    }
+
+    .btn {
+        min-width: 12.5rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        
+        + .btn {
+            margin-#{$left}: .5rem;
+        }
+    }
+}
+.minipopup-title {
+    font-size: 1.5rem;
+    font-weight: 600;       
+}
+.minipopup-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}

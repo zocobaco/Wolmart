@@ -1,0 +1,100 @@
+/* -------------------------------------------
+    Counter
+
+    - Count To
+    - Count Down
+---------------------------------------------- */
+
+@if use(counter) {
+    // Count To
+    .count-to {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+    .count-title {
+        color: inherit;
+        font-weight: 400;
+    }
+}
+
+@if use_component(countdown) {
+    // Count Down
+    .countdown-amount {
+        font-size: 3rem;
+        color: var(--wolmart-primary-color, $primary-color);
+    }
+
+    .countdown-container {
+        display: flex;
+        align-items: center;
+        &.inline-type {
+            .countdown-amount {
+                font-size: inherit;
+            }
+        }
+        .countdown-label {
+            margin-#{$right}: 1rem;
+        }
+    }
+
+    .countdown-section {
+        display: inline-block;
+        position: relative;
+        &:not(:last-child) {
+            margin-#{$right}: 2rem;
+        }
+        padding: 2rem 1rem;
+        text-align: center;
+
+        &:not(:last-child)::after {
+            color: var(--wolmart-dark-color, $dark-color);
+            content: ':';
+            display: inline-block;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1;
+            position: absolute;
+            #{$left}: 100%;
+            margin-#{$left}: 8px;
+            margin-top: -1px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        span {
+            display: block;
+            white-space: nowrap;
+        }
+        .countdown-period {
+            position: absolute;
+            #{$left}: 0;
+            width: 100%;
+            bottom: 1rem;
+            color: var(--wolmart-dark-color, $dark-color);
+            text-transform: lowercase;
+            width: 100%;
+            padding-left: .2rem;
+            padding-right: .2rem;
+            white-space: nowrap;
+            font-size: 1.2rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .countdown {
+        &.outer-period {
+            .countdown-period {
+                left: 0;
+                right: 0;
+                text-align: center;
+                bottom: -2rem;
+            }
+        }
+        &.no-split {
+            .countdown-section::after {
+                content: none;
+            }
+        }
+    }
+}

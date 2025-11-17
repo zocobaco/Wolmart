@@ -1,0 +1,416 @@
+/* -------------------------------------------
+    Form
+---------------------------------------------- */
+
+.form .form-control {
+    margin-bottom: 2rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    min-height: 4rem;
+    padding: .85rem 2rem;
+    border: 1px solid $border-color-light;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--wolmart-body-color, $body-color);
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    outline: 0;
+
+    &::placeholder {
+        opacity: 1;
+        transition: color .3s;
+    }
+
+    &::-webkit-input-placeholder {
+        transition: color .3s;
+    }
+
+    &::-moz-placeholder {
+        transition: color .3s;
+    }
+
+    &:-ms-input-placeholder {
+        transition: color .3s;
+    }
+
+    &:focus::placeholder {
+        color: transparent;
+    }
+
+    &:focus::-webkit-input-placeholder {
+        color: transparent;
+    }
+
+    &:focus::-moz-placeholder {
+        color: transparent;
+    }
+
+    &:focus::-ms-input-placeholder {
+        color: transparent;
+    }
+
+    &.form-solid {
+        background-color: #fff;
+        border: 0;
+        color: #8d8d8d;
+    }
+}
+
+textarea {
+    font-family: inherit;
+    // min-width: 100%;
+    max-width: 100%;
+}
+
+.custom-input {
+
+    // CheckBox
+    input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        -webkit-appearance: none;
+
+        +label,
+        +span {
+            position: relative;
+            padding-#{$left}: 2.6rem;
+            cursor: pointer;
+
+            &::before {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                #{$left}: 0;
+                width: 18px;
+                height: 18px;
+                line-height: 16px;
+                border: 1px solid var(--wolmart-light-color, $light-color);
+                border-radius: 2px;
+
+                @include only-for-ie() {
+                    line-height: 14px;
+                }
+            }
+        }
+
+        &:checked+label::before,
+        &:checked+span::before {
+            content: '\e9aa';
+            border-color: var(--wolmart-dark-color, $dark-color);
+            background: var(--wolmart-dark-color, $dark-color);
+            color: #fff;
+            font-size: 9px;
+            font-weight: 600;
+            font-family: 'wolmart';
+            text-align: center;
+        }
+    }
+
+    // Radio
+    input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        -webkit-appearance: none;
+        z-index: -1;
+
+        +label {
+            position: relative;
+            padding-#{$left}: 2.5rem;
+            display: block;
+            cursor: pointer;
+
+            &::after {
+                position: absolute;
+                content: '';
+                display: inline-block;
+                #{$left}: 0;
+                width: 1.8rem;
+                height: 1.8rem;
+                margin-top: -1rem;
+                background: #fff;
+                border: 1px solid #cdcdcd;
+                border-radius: 2px;
+                top: 50%;
+                font-family: 'wolmart';
+                font-size: 1rem;
+                font-weight: 900;
+                cursor: pointer;
+                //transition: color .3s, background-color .3s, content .3s;
+            }
+        }
+
+        &:checked~label::after {
+            content: '\e9aa';
+            background-color: var(--wolmart-dark-color, $dark-color);
+            border: 2px solid var(--wolmart-dark-color, $dark-color);
+            color: #fff;
+            padding-#{$left}: 2px;
+        }
+    }
+}
+
+// input[type="checkbox"],
+// input[type="radio"] {
+//     width: 1.8rem;
+//     height: 1.8rem;
+//     vertical-align: middle;
+//     -webkit-appearance: none;
+//     appearance: none;
+//     -moz-appearance: none;
+//     color-adjust: exact; // Keep themed appearance for print
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     background-size: contain;
+//     border: 1px solid var(--wolmart-light-color, $light-color);
+//     transition: background-color .35s, border-color .35s;
+//     cursor: pointer;
+// }
+// input[type="checkbox"] {
+//     border-radius: 2px;
+//     &:checked {
+//         background-color: var(--wolmart-dark-color, $dark-color);
+//         border-color: var(--wolmart-dark-color, $dark-color);
+//         color: #fff;
+//         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+//     }
+// }
+// input[type="radio"] {
+//     border-radius: 50%;
+//     &:checked,
+//     &[checked] {
+//         background-color: #fff;
+//         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='%2333'/%3e%3c/svg%3e")
+//     }
+// }
+
+input[type="checkbox"],
+input[type="radio"] {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    background: #fff;
+    color: #fff;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    // display: inline-block;
+    // text-align: center;
+    vertical-align: middle;
+    // margin-bottom: 2px;
+    margin-#{$right}: 4px;
+
+    ~label,
+    ~span {
+        cursor: pointer;
+    }
+
+    &:checked {
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+input[type="checkbox"] {
+    &:checked {
+        background: var(--wolmart-dark-color, $dark-color);
+        border-color: var(--wolmart-dark-color, $dark-color);
+
+        &:before {
+            content: '\e9aa';
+            font-size: 9px;
+            font-weight: 900;
+            font-family: 'wolmart';
+            // display: block;
+            line-height: 18px;
+        }
+    }
+}
+
+input[type="radio"] {
+    border-radius: 50%;
+
+    &:checked {
+        border: 1px solid var(--wolmart-dark-color, $dark-color);
+
+        &:before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: var(--wolmart-dark-color, $dark-color);
+            // display: inline-block;
+            border-radius: 50%;
+            // margin-bottom: 2px;
+        }
+    }
+}
+
+// Select Box
+select {
+    // updated (925)
+    width: 100%;
+    height: 40px;
+    min-height: auto;
+    border: 1px solid #d7d7d7;
+    border-radius: 2px;
+    background: #fff url(../images/select-bg.svg) if-ltr(98%, 2%) 45%/26px 60px no-repeat !important;
+    cursor: pointer;
+    padding: 0 1.5rem;
+    max-width: 28rem;
+    margin: 0;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.select-box {
+    position: relative;
+}
+
+.select-box select {
+    position: relative;
+    max-width: 14rem;
+    min-height: auto;
+    width: auto;
+    height: 100%;
+    padding: side-values(8.5px 27px 8.5px 9px);
+    border: 1px solid #d7d7d7;
+    border-radius: 2px;
+    color: inherit;
+    background-color: transparent;
+    font-size: 1.2rem;
+    font-family: inherit;
+    letter-spacing: inherit;
+    z-index: 1;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+@include only-for-ie() {
+    select::-ms-expand {
+        display: none
+    }
+
+    select:focus::-ms-value {
+        background: transparent;
+        color: currentColor
+    }
+}
+
+// Quantity
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.quantity {
+    position: relative;
+    display: inline-block;
+    height: 4.4rem;
+    width: 14rem;
+    // max-width: 100%;
+
+    .qty {
+        -moz-appearance: textfield;
+        width: 100%;
+        font-size: 1.3rem;
+        padding: side-values(0 4.2rem 0 1.8rem);
+
+        @if (get(form, input-group, border-color)) {
+            border: solid get(form, input-group, border-color);
+            border-width: 1px;
+            border-radius: 2px;
+        }
+
+        color: var(--wolmart-body-color, $body-color);
+        height: inherit;
+        // min-height: auto;
+        border: 1px solid var(--wolmart-light-color, $light-color);
+        border-radius: 3px;
+    }
+
+    button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 0;
+        background: $border-color-light;
+        border: none;
+        border-radius: 50%;
+        color: var(--wolmart-body-color, $body-color);
+        font-size: 1.5rem;
+        cursor: pointer;
+        width: 2.4rem;
+        height: 2.4rem;
+        #{$right}: 4.8rem;
+
+        &:last-child {
+            #{$right}: 1.5rem;
+        }
+    }
+}
+
+// Input Wrapper
+.input-wrapper {
+    input.form-control {
+        flex: 1;
+        min-width: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+.input-wrapper-inline {
+    display: flex;
+    position: relative;
+    max-width: 61.3rem;
+    width: 100%;
+    height: 40px;
+
+    .btn {
+        line-height: 1;
+    }
+}
+
+.form-row .input-text,
+.dokan-form-control {
+    &::placeholder {
+        color: $grey-color;
+        transition: color .3s;
+    }
+
+    &::-webkit-input-placeholder {
+        color: $grey-color;
+        transition: color .3s;
+    }
+
+    &::-moz-placeholder {
+        color: $grey-color;
+        transition: color .3s;
+    }
+
+    &:focus::placeholder {
+        color: transparent;
+    }
+
+    &:focus::-webkit-input-placeholder {
+        color: transparent;
+    }
+
+    &:focus::-moz-placeholder {
+        color: transparent;
+    }
+}

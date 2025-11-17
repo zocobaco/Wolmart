@@ -1,0 +1,129 @@
+/* -------------------------------------------
+    Banner
+        - Default
+        - Hover Effect - Button Hide
+        - Presets
+---------------------------------------------- */
+
+// Default
+@if use_component(banner) {
+    .banner {
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        font-size: 1rem;
+        border-radius: inherit;
+        figure {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+        }
+        figure img {
+    		display: block;
+            width: 100%;
+            height: auto;
+            border-radius: inherit;
+        }
+        .banner-content {
+            position: relative;
+        }
+        .banner-item {
+            text-align: inherit;
+        }
+        .divider-wrap {
+            line-height: 0;
+        }
+        .divider {
+            display: inline-block;
+            color: inherit;
+        }
+    }
+    .banner-img,
+    .banner-img img { // issue: should be here?
+        min-height: inherit;
+        max-height: inherit;
+        object-fit: cover;
+    }
+    .banner-item:last-child {
+        margin-bottom: 0;
+    }
+    .banner-fixed {
+        > .container,
+        > .container-fluid {
+            position: absolute;
+            z-index: 1;
+            .banner-content {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+        }
+        .banner-content {
+            position: absolute;
+            z-index: 1;
+        }
+
+        > .container,
+        > .container-fluid {
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+    }
+    .banner-stretch,
+    .banner-stretch figure img {
+        height: 100%;
+    }
+    .banner-full {
+        height: 100vh;
+        figure img {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    .t-none {
+        transform: translate(0, 0) !important;
+    }
+    .t-m {
+        transform: translateY(-50%) !important;
+    }
+    .t-c {
+        transform: translateX(if-ltr(-50%, 50%)) !important;
+        }
+    .t-mc {
+        transform: translate(if-ltr(-50%, 50%), -50%) !important;
+    }
+
+    @include mq(md, max) {
+        .banner {
+            font-size: .9rem;
+        }
+    }
+
+    @include mq(sm, max) {
+        .banner {
+            font-size: .8rem;
+        }
+    }
+
+    @include mq(xs, max) {
+        .banner-fixed {
+            > .container,
+            > .container-fluid {
+                > .banner-content {
+                    margin-left: 15px;
+                    margin-right: 15px;
+                }
+            }
+        }
+    }
+    .banner-item:not(a) {
+        color: inherit;
+    }
+}
+
+.banner-content > p {
+    font-size: 1.4em;
+}

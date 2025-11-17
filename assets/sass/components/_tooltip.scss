@@ -1,0 +1,31 @@
+/* -------------------------------------------
+	Tooltips 
+------------------------------------------- */
+
+.tooltiptext {
+	position: absolute;
+	padding: 1rem .7rem;
+	bottom : 125%;
+	#{$left} : 50%;
+	background-color: var(--wolmart-dark-color, $dark-color);
+	color: #fff;
+	font-weight: 400;
+	font-size: 1.3rem;
+	text-align: center;
+	visibility: hidden;
+	opacity: 0;
+	transform : translateX(if-ltr(-50%, 50%));
+	z-index: 1;
+	transition: opacity .3s;
+}
+
+.tooltip-top::after {
+	content: "";
+	position: absolute;
+	top: 96%;
+	#{$left}: 50%;
+	margin-#{$left}: -6px;
+	border-width: 6px;
+	border-style: solid;
+	border-color: var(--wolmart-dark-color, $dark-color) transparent transparent transparent;
+}

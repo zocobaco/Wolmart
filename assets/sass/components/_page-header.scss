@@ -1,0 +1,165 @@
+/* -------------------------------------------
+    Page Header
+        - Page Title
+        - Breadcrumb
+---------------------------------------------- */
+
+// Page Title Bar
+.page-header {
+    background-color: var(--wolmart-ptb-bg-color);
+    background-image: var(--wolmart-ptb-bg-image);
+    background-repeat: var(--wolmart-ptb-bg-repeat);
+    background-position: var(--wolmart-ptb-bg-position);
+    background-size: var(--wolmart-ptb-bg-size);
+    background-attachment: var(--wolmart-ptb-bg-attachment);
+
+    .page-title {
+        font-family: var(--wolmart-ptb-title-font-family, var(--wolmart-heading-font-family), var(--wolmart-body-font-family)), sans-serif;
+        font-weight: var(--wolmart-ptb-title-font-weight, 700);
+        font-size: var(--wolmart-ptb-title-font-size);
+        line-height: var(--wolmart-ptb-title-line-height, var(--wolmart-heading-line-height, var(--wolmart-heading-line-height)));
+        letter-spacing: var(--wolmart-ptb-title-letter-spacing, var(--wolmart-heading-letter-spacing, var(--wolmart-heading-letter-spacing)));
+        text-transform: var(--wolmart-ptb-title-text-transform, var(--wolmart-heading-text-transform, var(--wolmart-heading-text-transform)));
+        color: var(--wolmart-ptb-title-color, var(--wolmart-heading-color, var(--wolmart-body-color)));
+        margin-bottom: 0;
+    }
+
+    .page-subtitle {
+        font-family: var(--wolmart-ptb-subtitle-font-family), var(--wolmart-heading-font-family), var(--wolmart-body-font-family), sans-serif;
+        font-weight: var(--wolmart-ptb-subtitle-font-weight, 400);
+        font-size: var(--wolmart-ptb-subtitle-font-size);
+        line-height: var(--wolmart-ptb-subtitle-line-height, var(--wolmart-heading-line-height, var(--wolmart-body-line-height)));
+        letter-spacing: var(--wolmart-ptb-subtitle-letter-spacing, var(--wolmart-heading-letter-spacing, var(--wolmart-body-letter-spacing)));
+        text-transform: var(--wolmart-ptb-subtitle-text-transform, var(--wolmart-heading-text-transform, var(--wolmart-body-text-transform)));
+        color: var(--wolmart-ptb-subtitle-color, var(--wolmart-heading-color, var(--wolmart-body-color)));
+        margin-bottom: 0;
+    }
+}
+
+.page-title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: var(--wolmart-ptb-height);
+
+    .breadcrumb {
+        margin-top: 1em;
+        padding: 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &.type-left {
+        align-items: if-ltr(flex-start, flex-end);
+    }
+
+    &.type-center {
+        text-align: center;
+    }
+}
+
+// Page title
+.breadcrumb-container {
+    width: 100%;
+    margin: 0 auto;
+
+    .breadcrumb {
+        border-bottom: 1px solid $border-color-light;
+    }
+
+    &:empty+main {
+        margin-top: 5rem;
+    }
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1.3rem .2rem;
+    font-family: var(--wolmart-ptb-breadcrumb-font-family), var(--wolmart-body-font-family), sans-serif;
+    font-weight: var(--wolmart-ptb-breadcrumb-font-weight, var(--wolmart-body-font-weight));
+    font-size: var(--wolmart-ptb-breadcrumb-font-size, var(--wolmart-body-font-size));
+    line-height: var(--wolmart-ptb-breadcrumb-line-height, var(--wolmart-body-line-height));
+    letter-spacing: var(--wolmart-ptb-breadcrumb-letter-spacing, var(--wolmart-body-letter-spacing));
+    text-transform: var(--wolmart-ptb-breadcrumb-text-transform, var(--wolmart-body-text-transform));
+    color: var(--wolmart-ptb-breadcrumb-color, var(--wolmart-body-color));
+    background: transparent;
+
+    .delimiter,
+    .separator {
+        opacity: .4;
+        margin: 0 .35em;
+        font-size: 1.2em;
+
+        @include if-rtl() {
+            float: right;
+        }
+    }
+
+    a {
+        opacity: .7;
+        transition: color .3s, opacity .3s;
+    }
+
+    a:hover {
+        opacity: 1;
+        color: inherit;
+    }
+
+    &.home-icon {
+        >li:first-of-type>a::before {
+            font-family: 'wolmart';
+            content: "\e967";
+        }
+    }
+
+    .breadcrumb_wrapper & {
+        color: inherit;
+    }
+
+    .type-center & {
+        justify-content: center;
+    }
+
+    .error404 &,
+    .product-archive-page &,
+    .single-post &,
+    .single-product &,
+    .archive &,
+    .blog & {
+        border: none;
+    }
+
+    .breadcrumb-divider-active & {
+        border-bottom: 1px solid $border-color-light;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.woo-page-header .breadcrumb {
+    border-bottom: 0;
+}
+
+@include mq(lg) {
+    .page-title-bar.type-inline {
+        justify-content: space-between;
+        flex-direction: row;
+
+        .breadcrumb {
+            margin-top: 0;
+        }
+    }
+}
+
+@include mq(md, max) {
+    .page-title-bar .page-title {
+        font-size: 3rem;
+    }
+}

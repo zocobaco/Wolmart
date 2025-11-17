@@ -1,0 +1,157 @@
+/* -------------------------------------------
+	Filter
+---------------------------------------------- */
+
+.wolmart-filters ul {
+	list-style-type: none;
+	margin: 0;
+}
+
+.wolmart-filters {
+	display: flex;
+
+	>* {
+		margin-bottom: 1rem;
+	}
+
+	.btn-filter {
+		padding: 0 2em;
+		display: inline-flex;
+		align-items: center;
+		border-radius: 2px;
+		justify-content: center;
+	}
+
+	.select-ul-toggle {
+		position: relative;
+		display: flex;
+		align-items: center;
+		border: 1px solid var(--wolmart-light-color, $light-color);
+		padding: side-values(0.65em 3.05em 0.58em 1.07em);
+		margin-bottom: 0;
+		font-size: 1.3rem;
+		line-height: 1.5;
+		font-weight: 400;
+		height: 100%;
+		text-transform: capitalize;
+		border-radius: 2px;
+		cursor: pointer;
+	}
+
+	.wolmart-filter {
+		position: relative;
+
+		&::before {
+			content: '\e9a6';
+			font-family: 'wolmart';
+			position: absolute;
+			top: 50%;
+			#{$right}: 1.25em;
+			margin-top: 1px;
+			transform: translateY(-50%);
+			font-size: 1.2rem;
+			font-weight: 900;
+			z-index: 1;
+		}
+	}
+
+	ul,
+	ul::before {
+		content: '';
+		position: absolute;
+		border: 1px solid $border-color-light;
+	}
+
+	ul::before {
+		top: -6px;
+		#{$left}: 22px;
+		width: 11px;
+		height: 11px;
+		border-width: side-values(1px 0 0 1px);
+		background: #fff;
+		transform: rotate(45deg);
+	}
+
+	.select-ul ul {
+		top: 100%;
+		z-index: 100;
+		width: 21rem;
+		margin-top: 1rem;
+		padding: 1rem 1.4rem 1rem;
+		background: #fff;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity .3s;
+	}
+
+	.opened ul {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	ul li {
+		border-bottom: 1px solid $border-color-light;
+	}
+
+	ul li:last-child {
+		border-bottom: none;
+	}
+
+	ul a {
+		position: relative;
+		display: block;
+		padding: side-values(1rem 0 1rem 2.8rem);
+		color: var(--wolmart-dark-color, $dark-color);
+		transition: color .4s;
+
+		&:hover {
+			color: var(--wolmart-primary-color, $primary-color);
+			text-decoration: none;
+		}
+
+		&:focus {
+			text-decoration: none;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			border: 1px solid;
+			border-radius: 2px;
+			width: 18px;
+			height: 18px;
+			top: 50%;
+			#{$left}: 2px;
+			margin-#{$right}: 5px;
+			transform: translateY(-50%);
+			color: #999;
+			font-size: 0.7em;
+			font-weight: 900;
+			font-family: 'wolmart';
+			text-align: center;
+			text-indent: 1px;
+			line-height: 16px;
+		}
+	}
+
+	.chosen a::before {
+		content: "\e9aa";
+		color: #fff;
+		background-color: var(--wolmart-dark-color, $dark-color);
+		border-color: var(--wolmart-dark-color, $dark-color);
+	}
+
+	&.align-center {
+		justify-content: center;
+	}
+
+	&.align-right {
+		justify-content: flex-end;
+	}
+}
+
+@include mq(lg, max) {
+	.wolmart-filters {
+		flex-wrap: wrap;
+	}
+}

@@ -1,0 +1,129 @@
+/* 
+    Blog Page
+*/
+@import '../config';
+@import '../mixins';
+@import '../direction';
+
+/* Theme SCSS Framework */
+// @set_theme_configuration
+
+.blog:not(.breadcrumb-divider-active) .breadcrumb-container+main {
+    padding-top: 0;
+}
+
+.sidebar-fixed ~ .main-content .post-archive .post-title {
+    font-size: 1.9rem;
+}
+
+.post-archive {
+    transition: height .4s;
+    .post-details {
+        padding-left: .2rem;
+        padding-right: .2rem;
+    }
+    .post-cats {
+        margin-bottom: .5rem;
+    }
+    .post-title {
+        margin-bottom: .7rem;
+        white-space: normal;
+        font-size: 1.8rem ;
+        line-height: 1.5;
+    }
+    .post-content {
+        margin-bottom: 1.6rem;
+        line-height: 1.85;
+        -webkit-line-clamp: 3;
+        p {
+            display: inline;
+            margin-#{$right}: 1.4rem;
+        }
+    }
+    .btn-readmore {
+        position: relative;
+        border-bottom-width: 0px;
+    }
+    .btn::after {
+        margin-top: 4px;
+    }
+    // Post Large
+    .post-full {
+        .post-title {
+            margin-bottom: .4rem; // issue : pixel perfect 7px -> 4px
+            font-size: 2.4rem ;
+        }
+    }
+    // Post overlay
+    .post-mask {
+        .post-details {
+            padding: 0;
+            bottom: 2.8rem; 
+        }
+    }
+    .post-wrap:not(.grid-item) {
+        margin-bottom: 2.5rem;
+    }
+    .post-wrap:last-child {
+        margin-bottom: 0;
+    }
+    .pagination {
+        margin: 1rem 0;
+    }
+    .cols-lg-4  .comments-link {
+        display: none;
+    }
+}
+.blog-filter {
+    &:hover, &.active {
+        color: var(--wolmart-dark-color, $dark-color);
+    }
+    &:hover &::after,&::after {
+        background-color: var(--wolmart-dark-color, $dark-color);
+    }
+}
+@include mq(md) {
+    .list-type-posts {
+        &.posts .post-wrap {
+            margin-bottom: 6rem;
+        }
+        + .pagination {
+            margin-top: 0;
+        }
+        &:last-child .post-wrap:last-child {
+            margin-bottom: 1rem;
+        }
+    }
+}
+@include mq(md, max) {
+    .post-archive .post-wrap:not(.grid-item) {
+        margin-bottom: 2rem;
+    }
+}
+// Masonry Type
+.posts.masonry .post-wrap {
+    margin-bottom: 0;
+}
+.posts[data-post-type="mask"] {
+    margin-bottom: 4rem;
+}
+.posts.masonry {
+    margin-bottom: 5rem;
+}
+
+// Post List
+@include mq(xl) {
+    .post-archive .post-list {
+        .post-media {
+            width: calc(47% - 2rem);
+        }
+        .post-details {
+            width: 53%;
+        }
+    }
+}
+@include mq(md, max) {
+    .post-archive .post-full .post-title {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,404 @@
+/* -------------------------------------------
+    Grid
+---------------------------------------------- */
+.row {
+    --wolmart-col: 1;
+    --wolmart-col-half: 0;
+    --wolmart-gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% + 2 * var(--wolmart-gap));
+    margin-left: calc(-1 * var(--wolmart-gap));
+    margin-right: calc(-1 * var(--wolmart-gap));
+
+    > * {
+        position: relative;
+        width: calc(100% / ( var(--wolmart-col) + var(--wolmart-col-half) ));
+        padding-left: var(--wolmart-gap);
+        padding-right: var(--wolmart-gap);
+        flex: 0 0 auto;
+    }    
+}
+.gutter-lg {
+    --wolmart-gap: 15px;
+}
+.gutter-sm {
+    --wolmart-gap: 5px;
+}
+.gutter-xs {
+    --wolmart-gap: 1px;
+}
+.gutter-no {
+    --wolmart-gap: 0px;
+}
+
+@include cols-css();
+@if use(order-first) { .order-first { order: -1; } }
+@if use(order-last) { .order-last { order: 9; } }
+@include mq(xs) { @include cols-css(xs); }
+@include mq(sm) { @include cols-css(sm);
+    @if use(order-sm-auto) { .order-sm-auto { order: 0; } }
+    @if use(order-sm-first) { .order-sm-first { order: -1; }  }
+    @if use(order-sm-last) { .order-sm-last { order: 9; } }
+	}
+@include mq(md) { @include cols-css(md);
+	@if use(order-md-auto) { .order-md-auto { order: 0; } }
+	@if use(order-md-first) { .order-md-first { order: -1; } }
+	@if use(order-md-last) { .order-md-last { order: 9; } }
+}
+@include mq(lg) { @include cols-css(lg);
+    @if use(order-lg-auto) { .order-lg-auto { order: 0; }  }
+    @if use(order-lg-first) { .order-lg-first { order: -1; } }
+    @if use(order-lg-last) { .order-lg-last { order: 9; } }
+}
+@include mq(xl) { @include cols-css(xl); }
+@include col-css();
+@include mq(xs) { @include col-css(xs); }
+@include mq(sm) { @include col-css(sm); }
+@include mq(md) { @include col-css(md); }
+@include mq(lg) { @include col-css(lg); }
+@include mq(xl) { @include col-css(xl); }
+
+@include mq(xxl) {
+    .col-xxl-2 {
+        flex: 0 0 16.6666%;
+        max-width: 16.6666%;
+    }
+}
+
+.creative-grid {
+    .banner,
+    &.banner,
+    .product-category,
+    .product-category > a,
+    figure,
+    figure img,
+    .banner-img img { 
+        height: 100%; 
+    }
+
+    &.products {
+        .banner,
+        .banner-img {
+            height: auto;
+        }
+    }
+
+    .product-category .w-lazyload,
+    &:not(.products) .banner-img .w-lazyload {
+        height: 100% !important;
+		padding-top: 0 !important;
+    }
+
+    img {
+        object-fit: cover;
+    }
+
+    &.editor-mode > [class*='grid-item'] {
+        position: relative;
+        overflow: hidden;
+        border: 1px dashed rgba(34, 34, 34, .4);
+
+        &:before {
+            content: attr(data-grid-idx);
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            color: #fff;
+            font-size: 1.5rem;
+            line-height: 1;
+            z-index: 99;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            right: -4rem;
+            top: -4rem;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            background-color: #71d7f7;
+            opacity: .7;
+            z-index: 98;
+        }
+    }
+    &.row > * {
+        padding: 10px;
+    }
+    &.gutter-no > * {
+        padding: 0;
+    }
+    &.gutter-xs > * {
+        padding: 1px;
+    }
+    &.gutter-sm > * {
+        padding: 5px;
+    }
+    &.gutter-lg > * {
+        padding: 15px;
+    }
+}
+.grid-float {
+    display: block !important;
+    .grid-item {
+        float: $left;
+    }
+    &::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+.grid-gallery {
+    figure img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    figure.grid-item {
+        margin-bottom: calc(2 * var(--wolmart-gap));
+    }
+}
+
+// Grid presets
+.creative-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 25%);
+    grid-auto-rows: 1fr;
+    
+    &.preset-grid {
+        grid-auto-rows: auto;
+    }
+}
+.grid-layout-1 {
+    grid-template-columns: repeat(auto-fill, 20%);
+	> li:nth-child(7n + 1) {
+        grid-column-end: span 2;
+		grid-row-end: span 2;
+	}
+}
+.grid-layout-2 {
+	grid-template-columns: 25% 50% 25%;
+
+	> li:nth-child(5n + 2) {
+		grid-row-end: span 2;
+	}
+}
+.grid-layout-3 {
+    grid-template-columns: repeat(auto-fill, calc(100% / 6));
+	> li:nth-child(9n + 3) {
+        grid-column-end: span 2;
+        grid-row-end: span 2;
+	}
+}
+.grid-layout-4 {
+	grid-template-columns: 50% 25% 25%;
+
+	> li:nth-child(5n + 1) {
+		grid-row-end: span 2;
+	}
+}
+.grid-layout-5 {
+	grid-template-columns: 25% 25% 50%;
+
+	> li:nth-child(5n + 3) {
+		grid-row-end: span 2;
+	}
+}
+.grid-layout-6 {
+	grid-template-columns: 50% 25% 25%;
+
+	> li:nth-child(4n + 1) {
+		grid-row-end: span 2;
+	}
+	> li:nth-child(4n + 2) {
+		grid-row-end: span 2;
+	}
+}
+.grid-layout-7 {
+	grid-template-columns: 50% 25% 25%;
+
+	> li:nth-child(4n + 1) {
+		grid-row-end: span 2;
+	}
+	> li:nth-child(4n + 3) {
+		grid-row-end: span 2;
+	}
+}
+.grid-layout-8 {
+	grid-template-columns: 33.33% 33.33% 33.33%;
+
+	> li:nth-child(4n + 1) {
+		grid-column-end: span 2;
+	}
+
+	> li:nth-child(4n + 2) {
+		grid-row-end: span 2;
+	}
+}
+.grid-layout-9 {
+	grid-template-columns: 33.33% 33.33% 33.33%;
+
+	> li:nth-child(4n + 1) {
+		grid-row-end: span 2;
+	}
+	> li:nth-child(4n + 2) {
+		grid-column-end: span 2;
+	}
+}
+
+@media (max-width: 991px) {
+	.creative-grid {
+		grid-template-columns: repeat(auto-fill,50%);
+    }
+
+	.grid-layout-2 {
+		> li:nth-child(5n + 2) {
+			// grid-area: 2 / 1 / 3 / 3;
+			grid-row-start: 2;
+			grid-row-end: 3;
+			grid-column-start: 1;
+			grid-column-end: 3;
+		}
+	}
+    .grid-layout-3 {
+        > li:nth-child(9n + 3) {
+			grid-row-start: 3;
+			grid-row-end: 4;
+			grid-column-start: 1;
+			grid-column-end: 3;
+        }
+    }
+	.grid-layout-4 {
+		> li:nth-child(5n + 1) {
+			grid-column-end: span 2;
+		}
+	}
+
+	.grid-layout-5 {
+		> li:nth-child(5n) {
+			grid-column-end: span 2;
+		}
+	}
+
+	.grid-layout-6 {
+		>li:nth-child(4n+1) {
+			grid-column-end: span 2;
+		}
+	}
+
+	.grid-layout-7 {
+		>li:nth-child(4n+1) {
+			grid-column-end: span 2;
+		}
+	}
+
+	.grid-layout-8 {
+		>li:nth-child(4n+1) {
+			grid-column-end: span 2;
+		}
+	}
+
+	.grid-layout-9 {
+		>li:nth-child(4n+2) {
+			grid-column-end: span 2;
+			grid-row-start: 3;
+			grid-column-start: 1;
+		}
+	}
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    .grid-layout-1 {
+        grid-template-columns: repeat(auto-fill, calc(100% / 12));
+        > li {
+            grid-column-end: span 3;
+        }
+        > li:nth-child(7n + 1) {
+            grid-column-end: span 8;
+        }
+        > li:nth-child(7n + 2),
+        > li:nth-child(7n + 3) {
+            grid-column-end: span 4;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .grid-layout-1 {
+        > li {
+            grid-column-end: span 1;
+        }
+        > li:nth-child(7n + 1) {
+            grid-column-end: span 2;
+        }
+    }
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc( 100% + 20px );
+    margin: -10px;
+
+    .grid-item {
+        padding: 10px;
+        transform: translate3d(0,0,0);
+    }
+
+    &.gutter-sm {
+        width: calc( 100% + 10px );
+        margin: -5px;
+
+        .grid-item {
+            padding: 5px;
+        }
+    }
+    &.gutter-lg {
+        width: calc( 100% + 30px );
+        margin: -15px;
+        .grid-item {
+            padding: 15px;
+        }
+    }
+    &.gutter-xs {
+        width: calc(100% + 2px);
+        margin: -1px;
+        .grid-item {
+            padding: 1px;
+        }
+    }
+    &.gutter-no {
+        margin: 0;
+        .grid-item {
+            padding: 0;
+        }
+    }
+}
+
+@include mq(xl, 'max') {
+    .cols-xl-half {
+        --wolmart-col-half: 0.5;
+    }
+}
+@include mq(lg, 'max') {
+    .cols-lg-half {
+        --wolmart-col-half: 0.5;
+    }
+}
+@include mq(md, 'max') {
+    .cols-md-half {
+        --wolmart-col-half: 0.5;
+    }
+}
+@include mq(sm, 'max') {
+    .cols-sm-half {
+        --wolmart-col-half: 0.5;
+    }
+}
+@media(max-width: 576px) {
+    .cols-half {
+        --wolmart-col-half: 0.5;
+    }
+}

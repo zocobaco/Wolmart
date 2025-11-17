@@ -1,0 +1,436 @@
+.compare-page {
+    .main {
+        padding-top: 1rem;
+    }
+}
+
+.compare-popup {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 2rem 0;
+    background: #fff;
+    transition: transform .3s;
+    z-index: 3001;
+
+    &.show {
+        transform: translateY(-99%);
+
+        +.compare-popup-overlay {
+            opacity: .7;
+            visibility: visible;
+            transition: opacity .3s;
+        }
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+    }
+
+    h3 {
+        margin: 1rem 0 .2rem;
+        font-size: 2.4rem;
+        font-weight: 700;
+    }
+
+    .btn-dark {
+        --wolmart-dark-color: #454545;
+        --wolmart-dark-color-hover: #565656;
+    }
+}
+
+@media (min-height: 600px) and (min-width: 1200px) {
+    .compare-popup {
+        padding: 1rem 0;
+    }
+}
+
+.compare-clean {
+    margin: 1.4rem 1.92rem 1rem;
+    color: var(--wolmart-body-color, $body-color);
+}
+
+.compare-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s, visibility .3s;
+    z-index: 3000;
+}
+
+.compare-list {
+    margin: side-values(1rem auto 0 2.6vw);
+    max-width: 52%;
+    padding: 2rem;
+
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    figure {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    li {
+        position: relative;
+        width: 8vw;
+        width: 138px;
+        min-height: 106px;
+        height: auto;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &:empty:before {
+            content: '+';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            line-height: 5rem;
+            font-size: 3rem;
+            color: #eee;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            box-shadow: 2px 4px 15px rgba(0, 0, 0, .12);
+        }
+
+        &:empty:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            border: 1px solid $border-color-light;
+        }
+    }
+
+    .btn-remove {
+        position: absolute;
+        #{$right}: -1rem;
+        top: -1rem;
+        width: 1.9rem;
+        line-height: 1.9rem;
+        text-align: center;
+        border-radius: 50%;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .2);
+        background-color: #fff;
+        color: #666;
+        font-size: 1.2rem;
+    }
+
+    .wolmart-disable-mobile-slider &:not(.slider-container) .btn-remove {
+        #{$right}: .5rem;
+        top: -1rem;
+    }
+}
+
+.compare-heading {
+    text-align: center;
+
+    p {
+        margin-bottom: 0;
+        color: $grey-color;
+    }
+
+    mark {
+        color: inherit;
+        background: transparent;
+    }
+}
+
+.wolmart-compare-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    color: var(--wolmart-body-color, $body-color);
+
+    .compare-row {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .compare-col {
+        padding: 25px 0;
+        word-break: break-word;
+
+        >*:last-child {
+            margin-bottom: 0;
+        }
+
+        ul {
+            margin-top: 0;
+        }
+
+        &+.compare-col {
+            padding-#{$left}: 2rem;
+        }
+    }
+
+    .compare-field {
+        flex: 0 0 20%;
+        color: #999;
+        font-size: 14px;
+        text-align: $right;
+        padding-#{$right}: 5rem;
+    }
+
+    .compare-sku {
+        text-transform: uppercase;
+    }
+
+    .compare-value {
+        flex: 0 0 20%;
+
+        .swatch {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            margin-#{$right}: 8px;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+
+        .label-swatch {
+            width: auto;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 0;
+            padding: 0 0.8rem;
+            margin: 0 8px 8px 0;
+            font-size: 1.3rem;
+        }
+    }
+
+    .compare-row:nth-child(even) .compare-col {
+        background-color: #fbfbfb;
+    }
+
+    .compare-basic {
+        font-size: 1rem;
+        text-align: center;
+
+        .compare-field {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+    }
+
+    figure:hover .product-action-vertical {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .btn-product-icon {
+        border-color: $border-color-light;
+    }
+
+    .product-title {
+        display: block;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    .stock {
+        margin: 0;
+        background: transparent;
+        color: inherit;
+        font-weight: inherit;
+        padding: 0;
+    }
+
+    .woocommerce-Price-amount {
+        color: var(--wolmart-primary-color, $primary-color);
+    }
+
+    del {
+        color: #999;
+
+        .woocommerce-Price-amount {
+            color: inherit;
+        }
+    }
+
+    .compare-value[data-title="Availability"] {
+        color: $warning-color;
+
+        .stock {
+            color: $danger-color;
+        }
+    }
+
+    &.empty {
+        color: inherit;
+        text-align: center;
+
+        h2 {
+            font-size: inherit;
+            color: inherit;
+            margin: 22px 0;
+        }
+
+        .button {
+            margin-top: 1rem;
+            width: 20rem;
+            border-radius: 2px;
+        }
+    }
+}
+
+.compare-basic-info .remove_from_compare {
+    position: relative;
+    z-index: 1;
+}
+
+.compare-basic-info .remove_from_compare:not(:hover),
+.compare-basic-info .product-title:not(:hover) {
+    color: var(--wolmart-dark-color, $dark-color);
+}
+
+.compare-basic-info {
+    .compare-action {
+        display: inline-block;
+        padding: 5px;
+        margin-bottom: 2rem;
+        font-size: 1.7rem;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        color: #333;
+
+        &:hover {
+            color: var(--wolmart-primary-color, $primary-color);
+        }
+
+        i {
+            display: block;
+            font-weight: 600;
+        }
+
+        &:not(:first-child) {
+            margin-#{$left}: 1rem;
+        }
+
+        &.to-left,
+        &.to-right {
+            opacity: 0;
+            transition: transform .4s, opacity .4s;
+        }
+
+        &.to-left {
+            transform: translateX(40px);
+        }
+
+        &.to-right {
+            transform: translateX(-40px);
+        }
+    }
+
+    &:hover {
+
+        .to-left,
+        .to-right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+.compare-col {
+    position: relative;
+
+    &:nth-child(2) {
+        .to-#{$left} {
+            cursor: not-allowed;
+            color: #ccc;
+        }
+    }
+
+    &.last-col {
+        .to-#{$right} {
+            cursor: not-allowed;
+            color: #ccc;
+        }
+    }
+}
+
+@include mq(lg, 'max') {
+    .compare-popup .container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .compare-list {
+        margin: 0 0 1rem;
+        padding: 0 1rem;
+        flex: 0 0 100%;
+        justify-content: center;
+        max-width: 100%;
+        text-align: center;
+
+        .compare-slider {
+            display: inline-flex;
+            width: auto;
+            padding: 2rem 0;
+        }
+
+        >li {
+            width: 20vw;
+        }
+    }
+
+    .compare-heading>* {
+        display: inline;
+    }
+
+    .wolmart-compare-table {
+
+        .compare-value,
+        .compare-field {
+            flex: 0 0 33.33%;
+        }
+    }
+}
+
+@include mq(md, 'max') {
+    .wolmart-compare-table {
+
+        .compare-value,
+        .compare-field {
+            flex: 0 0 50%;
+        }
+    }
+}
+
+@include mq(xs, 'max') {
+    .compare-list>li {
+        min-height: 40px;
+    }
+
+    .compare-heading {
+        flex: 0 0 100%;
+        margin: 0 0 1rem;
+    }
+
+    .compare-heading>* {
+        display: block;
+    }
+}

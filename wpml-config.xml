@@ -1,0 +1,52 @@
+<wpml-config>
+    <admin-texts>
+        <key name="theme_mods_wolmart">
+            <key name="menu_labels" />
+            <key name="mobile_bar_menu_label" />
+            <key name="mobile_bar_home_label" />
+            <key name="mobile_bar_shop_label" />
+            <key name="mobile_bar_wishlist_label" />
+            <key name="mobile_bar_cart_label" />
+            <key name="mobile_bar_search_label" />
+            <key name="mobile_bar_top_label" />
+            <key name="ptb_delimiter" />
+            <key name="ptb_delimiter_icon" />
+            <key name="sales_popup_title" />
+            <key name="cookie_text" />
+            <key name="cookie_agree_btn" />
+            <key name="cookie_decline_btn" />
+            <key name="product_description_title" />
+            <key name="product_specification_title" />
+            <key name="product_reviews_title" />
+            <key name="product_vendor_info_title" />
+            <key name="product_tab_title" />
+            <key name="buy_now_text" />
+            <key name="product_related_title" />
+            <key name="product_upsells_title" />
+            <key name="product_fbt_title" />
+        </key>
+    </admin-texts>
+    <custom-fields>
+        <custom-field action="translate">title</custom-field>
+        <custom-field action="translate">subtitle</custom-field>
+        <custom-field action="translate">guide_text</custom-field>
+        <custom-field action="translate">guide_icon</custom-field>
+        <custom-field action="translate">label_text</custom-field>
+        <custom-field action="translate">wolmart_custom_tab_title_1st</custom-field>
+        <custom-field action="translate">wolmart_custom_tab_content_1st</custom-field>
+        <custom-field action="translate">wolmart_custom_tab_title_2nd</custom-field>
+        <custom-field action="translate">wolmart_custom_tab_content_2nd</custom-field>
+        <custom-field action="copy">page_css</custom-field>
+        <custom-field action="copy">page_js</custom-field>
+        <custom-field action="copy-once">wolmart_custom_labels</custom-field>
+        <custom-field action="copy-once">supported_images</custom-field>
+        <custom-field action="copy-once">featured_video</custom-field>
+        <custom-field action="copy-once">wolmart_product_video_popup_url</custom-field>
+        <custom-field action="copy-once">wolmart_product_360_view</custom-field>
+        <custom-field action="copy">ai_desc_none</custom-field>
+        <custom-field action="translate">prompt_topic</custom-field>
+        <custom-field action="copy">ai_content_type</custom-field>
+        <custom-field action="copy">ai_write_style</custom-field>
+        <custom-field action="translate">user_word</custom-field>
+    </custom-fields>
+</wpml-config>

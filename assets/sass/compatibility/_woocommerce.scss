@@ -1,0 +1,540 @@
+/* WooCommerce Plugin */
+
+.form-row [type="text"],
+.form-row [type="tel"],
+.form-row [type="password"],
+.form-row [type="email"],
+.form-row textarea {
+    display: block;
+    width: 100%;
+    min-height: 4.1rem;
+    padding: .85rem 2rem;
+    border: 1px solid $border-color-light;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--wolmart-body-color, $body-color);
+    background-color: transparent;
+    border-radius: 2px;
+    box-shadow: none;
+    outline: 0;
+}
+
+.woocommerce-form {
+    font-size: 1.3rem;
+
+    .form-row {
+        margin-bottom: 1.8rem;
+    }
+
+    label {
+        margin-bottom: 8px;
+    }
+}
+
+.button {
+    display: inline-block;
+    border: 2px solid #eee;
+    outline: 0;
+    border-radius: 0;
+    padding: 1.3rem 2.7rem;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+    transition: color 0.3s, border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+    white-space: nowrap;
+    cursor: pointer;
+
+    @include button-variant(var(--wolmart-primary-color, $primary-color), var(--wolmart-primary-color-hover, #2977d8)); // issue : duplicate
+
+    &.loading {
+        opacity: .3;
+    }
+
+    &[disabled] {
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+// Login Form
+.form-footer label {
+    margin-bottom: 0;
+}
+
+.lost_password {
+    margin-bottom: 0;
+
+    a {
+        color: $danger-color;
+    }
+}
+
+.woocommerce-privacy-policy-link {
+    color: var(--wolmart-primary-color, $primary-color);
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+form {
+    .submit-status {
+        margin: 2rem 0 0;
+        color: var(--wolmart-danger-color, $danger-color);
+    }
+}
+
+form.lost_reset_password {
+    width: 450px;
+    margin: 0 auto;
+    border: 1px solid #ebebeb;
+    padding: 5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.woocommerce>.login-popup {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+
+.woocommerce-form .button,
+.woocommerce-form-row .button {
+    display: block;
+    width: 100%;
+}
+
+.woocommerce-form-login {
+    p {
+        font-size: inherit;
+        line-height: 1.84;
+
+        &:empty:before {
+            content: none;
+        }
+    }
+
+    .form-row {
+        font-size: 1.3rem;
+        margin-bottom: 2.5rem;
+
+        label {
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        span {
+            vertical-align: middle;
+        }
+
+        .form-control {
+            height: 3.7rem;
+        }
+
+        .input-text {
+            background: #fff;
+        }
+
+        input {
+            margin-#{$right}: .5rem;
+
+            &[type="radio"] {
+                vertical-align: sub;
+            }
+        }
+    }
+
+    .form-footer {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+
+        p {
+            margin-bottom: 8px;
+            line-height: inherit;
+        }
+    }
+
+    .button {
+        padding: 1rem;
+    }
+
+    .lost-link {
+        text-align: $right;
+        color: $danger-color;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .social-login {
+        margin-bottom: 2.5rem;
+        color: #999;
+
+        p {
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+    }
+
+    .social-icon {
+        color: var(--wolmart-body-color, $body-color);
+
+        &.framed {
+            border-color: var(--wolmart-light-color, $light-color);
+        }
+    }
+
+    .custom-checkbox {
+        margin-bottom: 2.5rem;
+        line-height: initial;
+    }
+
+    .woocommerce-password-strength {
+        margin: 10px 0;
+        padding: 8px;
+        color: #fff;
+        text-align: center;
+        background: var(--wolmart-primary-color, $primary-color);
+
+        &.short {
+            background: $warning-color;
+        }
+
+        &.bad {
+            background: $danger-color;
+        }
+
+        &.good {
+            background: $success-color;
+        }
+    }
+
+    .woocommerce-password-hint {
+        font-size: 1.2rem;
+        line-height: 1.86;
+    }
+
+    .title {
+        font-size: 1.3rem;
+        font-weight: normal;
+        color: var(--wolmart-body-color, $body-color);
+        margin-bottom: 1.5rem;
+    }
+}
+
+// Sidebar Widgets
+.sidebar .widget .wc-layered-nav-term,
+.sidebar .widget .with-checkbox li,
+.sidebar .widget .yith-wcan-list li {
+    padding: 0;
+
+    >a,
+    &.empty span {
+        position: relative;
+        display: block;
+        padding: side-values(1rem 0 1rem 28px);
+
+        &:hover {
+            color: var(--wolmart-primary-color, $primary-color);
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            border: 1px solid;
+            border-radius: $corner-normal;
+            width: 18px;
+            height: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            #{$left}: 2px;
+            color: #999;
+            font-size: .7em;
+            font-weight: 900;
+            font-family: 'wolmart';
+            text-align: center;
+            line-height: 16px;
+
+            @include only-for-retina(1.5) {
+                text-indent: 0;
+            }
+        }
+    }
+}
+
+.sidebar .widget .wc-layered-nav-term.chosen>a::before,
+.sidebar .widget .with-checkbox li.chosen>a::before,
+.sidebar .widget .yith-wcan-list li.chosen>a::before {
+    content: "\e9aa";
+    color: #fff;
+    background-color: var(--wolmart-primary-color, $primary-color);
+    border-color: var(--wolmart-primary-color, $primary-color);
+}
+
+// Product Brands
+.sidebar .widget_product_brands .wc-layered-nav-term {
+    .product-brand-info {
+        display: flex;
+        align-items: center;
+
+        &:not(.no-image) {
+            padding-#{left}: 0;
+
+            &::before {
+                content: none;
+            }
+        }
+
+        figure {
+            width: 50px;
+            margin-#{$right}: 10px;
+        }
+
+        img {
+            max-width: 50px;
+            height: 30px;
+            object-fit: contain;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+        }
+    }
+
+    &:hover,
+    .product-brand-info label {
+        cursor: pointer;
+    }
+
+    &:hover .product-brand-info img,
+    &.chosen .product-brand-info img {
+        opacity: 1;
+    }
+}
+
+#yith-wcwl-popup-message {
+    display: none !important;
+}
+
+.woocommerce-message {
+    .button {
+        width: auto;
+    }
+}
+
+.woocommerce-product-gallery .woocommerce-product-gallery__trigger {
+    display: none;
+}
+
+// WCML
+.wcml-spinner {
+    display: none;
+}
+
+.entry-summary .product_meta .wcml_currency_switcher {
+    display: none;
+}
+
+// Woocommerce Info
+.main-content>.woocommerce-info {
+    padding-top: 1.8rem;
+}
+
+@include mq(lg) {
+    .left-sidebar.closed~.main-content>.woocommerce-info {
+        padding-#{$left}: 10rem;
+    }
+}
+
+// Sub Pages
+.woocommerce .alert {
+    // color: inherit;
+    margin-bottom: 2rem;
+
+    +.alert {
+        margin-top: -1rem;
+    }
+
+    i {
+        margin-#{$right}: 5px;
+    }
+}
+
+.woocommerce {
+
+    .alert-success a:not(.btn),
+    .alert-success i {
+        color: $success-color;
+    }
+
+    .alert-danger a:not(.btn),
+    .alert-danger i {
+        color: $danger-color;
+    }
+
+    .alert-info a:not(.btn),
+    .alert-info i {
+        color: $info-color;
+    }
+
+    .showcoupon+.btn-close,
+    .showlogin+.btn-close {
+        display: none;
+    }
+}
+
+// Overlay
+.blockOverlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff !important;
+    opacity: 0.6 !important;
+}
+
+.woocommerce-cart .blockMsg,
+.woocommerce-checkout .blockMsg {
+    opacity: 0;
+}
+
+.woocommerce .add_to_wishlist .blockOverlay {
+    background: transparent !important;
+}
+
+.woocommerce .blockUI.blockOverlay::before {
+    background: none;
+}
+
+// YITH Compare
+.yith_woocompare_colorbox #cboxTopCenter,
+.yith_woocompare_colorbox #cboxTopLeft,
+.yith_woocompare_colorbox #cboxTopRight,
+.yith_woocompare_colorbox #cboxMiddleLeft,
+.yith_woocompare_colorbox #cboxMiddleRight,
+.yith_woocompare_colorbox #cboxBottomLeft,
+.yith_woocompare_colorbox #cboxBottomCenter,
+.yith_woocompare_colorbox #cboxBottomRight {
+    background: transparent;
+    width: 0;
+    height: 0;
+}
+
+// Rating Form
+.comment-form-rating {
+    color: var(--wolmart-dark-color, $dark-color);
+    margin-bottom: 2.2rem;
+}
+
+.comment-respond .comment-form-cookies-consent {
+    margin-bottom: 2rem;
+}
+
+.stars {
+    display: inline-block;
+    margin: side-values(0 0 0 1rem);
+    line-height: 1;
+
+    .comment-respond & {
+        margin-bottom: 0;
+        vertical-align: 1px;
+    }
+
+    span {
+        display: flex;
+        position: relative;
+        height: 1.2rem;
+        font-size: 1.2rem;
+    }
+
+    span a {
+        color: var(--wolmart-light-color, $light-color);
+        text-indent: if-ltr(-9999px, 9999px);
+        width: 1.4rem;
+    }
+
+    a:before {
+        content: '';
+        position: absolute;
+        #{$left}: 0;
+        height: 14px;
+        line-height: 1;
+        font-family: 'wolmart';
+        text-indent: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        letter-spacing: 0.2em;
+    }
+
+    a.active:before,
+    a:hover:before {
+        content: "\e986" "\e986" "\e986" "\e986" "\e986";
+        color: #f77c29;
+    }
+
+    .star-1 {
+        z-index: 10;
+    }
+
+    .star-2 {
+        z-index: 9;
+    }
+
+    .star-3 {
+        z-index: 8;
+    }
+
+    .star-4 {
+        z-index: 7;
+    }
+
+    .start-5 {
+        z-index: 6;
+    }
+
+    .star-1:before {
+        width: 20%;
+    }
+
+    .star-2:before {
+        width: 40%;
+    }
+
+    .star-3:before {
+        width: 60%;
+    }
+
+    .star-4:before {
+        width: 80%;
+    }
+
+    .star-5:before {
+        content: "\e986" "\e986" "\e986" "\e986" "\e986";
+    }
+}
+
+@include mq('320px', 'max') {
+    .page-content .woocommerce-form-login .lost_password {
+        margin-left: 0;
+    }
+}
+
+.woocommerce-store-notice.demo_store {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 10;
+    width: 300px;
+    padding: 15px 10px;
+    margin: 0;
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+    background: #fff;
+    font-size: 13px;
+    text-align: center;
+}

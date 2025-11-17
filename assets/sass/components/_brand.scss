@@ -1,0 +1,102 @@
+/* -------------------------------------------
+	Brands
+------------------------------------------- */
+.brand-widget {
+    margin-bottom: 2rem;
+    .brand-name {
+        font-size: 1.6rem;
+        font-weight: 600;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+    .ratings-container {
+        line-height: 1;
+        margin-top: 1rem;
+        font-size: 1.2rem;
+    }
+}
+
+.brand-widget-2 {
+    .brand-product-media {
+        max-width: 19rem;
+        width: 100%;
+        height: auto;
+        margin: auto !important;
+        // background-color: $border-color;
+        border: 0px solid #fff;
+        img {
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+    &.brand-widget-circle .brand-product-media {
+        border-radius: 50%;
+        overflow: hidden;
+        transition: border-width .15s, box-shadow .15s;
+    }
+    .brand-name {
+        margin-top: 1.7rem;
+        letter-spacing: -.025em;
+        text-align: center;
+    }
+    .brand-product-media {
+        &:hover {
+            border-width: 8px;
+            box-shadow: 0 5px 15px 0 rgba(0,0,0,0.1);
+        }
+    }
+    .ratings-container {
+        margin-top: 2rem;
+        text-align: center;
+        .star-rating {
+            margin-#{$right}: 0;
+        }
+    }
+}
+
+.brand-widget-3 {
+    padding: 2rem;
+    border: 1px solid $border-color;
+    transition: border-color .35s;
+    &:hover {
+        border-color: var(--wolmart-primary-color, $primary-color);
+    }
+    .brand-info {
+        max-width: calc(100% - 7rem);
+        margin-#{$left}: 1rem;
+    }
+    .brand-detail {
+        display: flex;
+        align-items: center;
+    }
+    .brand-products {
+        margin-top: 2rem;
+    }
+    .brand-name {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 1.5rem;
+        text-overflow: ellipsis;
+        text-transform: capitalize;
+        margin-bottom: 0;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .brand-product-count {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: var(--wolmart-body-color, $body-color);
+        white-space: nowrap;
+    }
+    .brand-logo {
+        max-width: 7rem;
+        height: auto;
+        > img {
+            object-fit: cover;
+        }
+    }
+    .ratings-container {
+        margin-top: .5rem;
+    }
+}

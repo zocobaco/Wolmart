@@ -1,0 +1,16 @@
+@keyframes rotateOutUpLeft {
+    0% {
+        opacity: 1;
+        transform-origin: left bottom
+    }
+
+    to {
+        opacity: 0;
+        transform: rotate(-45deg);
+        transform-origin: left bottom
+    }
+}
+
+.rotateOutUpLeft {
+    animation-name: rotateOutUpLeft
+}

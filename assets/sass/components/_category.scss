@@ -1,0 +1,725 @@
+/* -------------------------------------------
+    Categories
+        Base
+        - Default Type
+        - Classic Type
+        - Icon Type
+        - Ellipse Type
+        - Group Type
+            - Image
+            - Icon
+        - Banner Type
+        - Badge Type
+        - Overlay Category
+        - Block Type
+---------------------------------------------- */
+
+// Base
+.product-category {
+    position: relative;
+    font-size: 1rem;
+
+    figure {
+        text-align: center;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    mark {
+        color: inherit;
+        background: transparent;
+        font-size: 1.2rem;
+        line-height: 1.2;
+    }
+
+    .btn {
+        color: inherit;
+    }
+
+    i {
+        display: inline-block;
+        font-size: 4.2rem;
+        color: var(--wolmart-body-color, $body-color);
+        margin-bottom: 1.5rem;
+        transition: transform .3s;
+    }
+
+    // (new)
+    &.content-left .category-content {
+        align-items: if-ltr(flex-start, flex-end);
+        text-align: left;
+    }
+
+    &.content-center .category-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    &.content-right .category-content {
+        align-items: if-ltr(flex-end, flex-start);
+        text-align: right;
+    }
+
+    //
+}
+
+.woocommerce-loop-category__title {
+    margin-bottom: .2rem;
+
+    font: {
+        size: 1.4rem;
+        weight: 600;
+    }
+
+    line-height: 1.2;
+    color: inherit;
+
+    a {
+        color: inherit;
+    }
+}
+
+.category-wrap {
+    margin-bottom: 2rem;
+}
+
+.category-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    transition: background .3s;
+}
+
+.cat-type-absolute {
+    .category-content {
+        cursor: pointer;
+        position: absolute;
+        bottom: 0;
+        #{$left}: 0;
+        width: auto;
+        min-height: 50px;
+    }
+}
+
+// Default Type
+@if use_component(category-type-default) {
+    .cat-type-default {
+        overflow: hidden;
+
+        .category-content {
+            padding: 1.8rem 0;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: #fff;
+            color: var(--wolmart-dark-color, $dark-color);
+        }
+
+        .woocommerce-loop-category__title {
+            margin-bottom: 0;
+        }
+
+        &.active,
+        &:hover {
+            .category-content {
+                background: var(--wolmart-primary-color, $primary-color);
+                color: #fff;
+            }
+        }
+
+        mark {
+            margin-bottom: .5rem;
+            transition: color .3s;
+        }
+    }
+}
+
+// Classic Type
+@if (use_component(category-type-classic) or use_component(category-type-classic2)) {
+    .cat-type-classic {
+        &.product {
+            color: #fff;
+
+            .category-content {
+                border-radius: 0;
+            }
+        }
+
+        mark {
+            display: block;
+            opacity: 0;
+            line-height: 0;
+            visibility: hidden;
+            transition: opacity .2s, line-height .2s, visibility .2s, padding .2s;
+        }
+
+        .woocommerce-loop-category__title {
+            margin-bottom: 0;
+            text-transform: uppercase;
+            transition: line-height .2s;
+        }
+
+        .category-content {
+            width: 100%;
+            height: 20%;
+            background-color: rgba(38, 38, 38, .8);
+        }
+
+        &.active,
+        &:hover {
+
+            .woocommerce-loop-category__title,
+            mark {
+                line-height: 1.3;
+            }
+
+            mark {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+
+        &.cat-type-classic-2 {
+            .category-content {
+                bottom: 2rem;
+                width: auto;
+                height: auto;
+                border-radius: corner-values(0 5rem 5rem 0);
+                padding: 1.3rem 3rem;
+                min-height: 0;
+            }
+
+            &.active,
+            &:hover {
+                .woocommerce-loop-category__title {
+                    line-height: 1.2;
+                }
+
+                .category-content {
+                    background: var(--wolmart-primary-color-alpha, rgba(red($primary-color), green($primary-color), blue($primary-color), .8));
+                }
+            }
+
+            .category-content:hover {
+                background-color: var(--wolmart-primary-color, $primary-color);
+            }
+
+        }
+    }
+}
+
+// Icon Type
+// Inline
+@if use_component(category-type-icon) {
+    .cat-type-icon {
+        color: var(--wolmart-dark-color, $dark-color);
+        text-align: center;
+
+        >a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2.4rem .5rem;
+            border: 1px solid $border-color-light;
+            width: 130px;
+            height: 130px;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 50%;
+            margin: side-values(0 auto 2rem auto) !important;
+            transition: box-shadow .3s, border-color .3s;
+        }
+
+        .w-lazyload {
+            background-color: transparent;
+        }
+
+        i {
+            font-size: 5rem;
+            margin: 0;
+        }
+
+        .woocommerce-loop-category__title {
+            margin: 0;
+            color: var(--wolmart-dark-color, $dark-color);
+        }
+
+        &.active,
+        &:hover {
+            >a {
+                border-color: transparent;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
+            }
+
+            .woocommerce-loop-category__title {
+                color: var(--wolmart-primary-color, $primary-color);
+            }
+        }
+
+        .active+.category-content .woocommerce-loop-category__title a {
+            color: var(--wolmart-primary-color, $primary-color);
+        }
+    }
+}
+
+// Ellipse Type
+@if use_component(category-type-ellipse) {
+    .cat-type-ellipse {
+        figure {
+            border-radius: 50%;
+            box-shadow: 0 0 50px 0 rgba(0, 0, 0, .1);
+            background: #fff;
+            overflow: hidden;
+
+            img {
+                padding: 12px;
+                border-radius: 50%;
+                transform: rotateZ(-10deg) translateX(-14px);
+                transition: transform .3s;
+            }
+        }
+
+        .woocommerce-loop-category__title {
+            color: var(--wolmart-dark-color, $dark-color);
+
+            &:hover {
+                color: var(--wolmart-primary-color, $primary-color);
+            }
+        }
+
+        mark {
+            color: var(--wolmart-body-color, $body-color);
+            text-transform: uppercase;
+        }
+
+        .category-content {
+            padding-top: 20px;
+        }
+
+        &.active figure img,
+        &:hover figure img {
+            transform: rotateZ(0);
+        }
+    }
+
+    .wolmart-rounded-skin .cat-type-ellipse.product-category {
+        overflow: visible;
+    }
+}
+
+// Ellipse Type 2
+@if use_component(category-type-ellipse2) {
+    .cat-type-ellipse2 {
+        figure {
+            border-radius: 50%;
+            overflow: hidden;
+            border: 0px solid #fff;
+            transition: border-width .1s, box-shadow .2s;
+        }
+
+        .category-content {
+            margin-top: 1.7rem;
+        }
+
+        .woocommerce-loop-category__title {
+            color: var(--wolmart-dark-color, $dark-color);
+            font-weight: 700;
+            letter-spacing: 0;
+
+            &:hover {
+                color: var(--wolmart-primary-color, $primary-color);
+            }
+        }
+
+        &.active figure,
+        &:hover figure {
+            border-width: 6px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .12);
+        }
+    }
+}
+
+// Group Type
+@if (use_component(category-type-group) or use_component(category-type-group2)) {
+
+    .cat-type-group,
+    .cat-type-group2 {
+        display: flex;
+        align-items: center;
+
+        >* {
+            flex: 1;
+        }
+    }
+}
+
+// Image Type
+@if use_component(category-type-group) {
+    .cat-type-group {
+        color: var(--wolmart-body-color, $body-color);
+        border: 1px solid $border-color-light;
+        padding: 1rem;
+
+        .category-content {
+            position: static;
+            padding: side-values(1rem 0 1rem 3rem);
+            background: transparent;
+            text-align: left;
+            align-items: if-ltr(flex-start, flex-end);
+            order: -1;
+        }
+
+        .woocommerce-loop-category__title {
+            margin-bottom: 1.5rem;
+            text-transform: none;
+
+            font: {
+                size: 1.6rem;
+                weight: 400;
+            }
+
+            color: var(--wolmart-dark-color, $dark-color);
+        }
+
+        .category-list {
+            font-size: 1.3rem;
+            line-height: 1.45;
+            margin-#{$left}: -.3rem;
+
+            li:not(:last-child) {
+                margin-bottom: .5rem;
+            }
+
+            a {
+                position: relative;
+                display: inline-block;
+                transition: none;
+
+                &:hover {
+                    color: var(--wolmart-primary-color, $primary-color);
+
+                    &:before {
+                        color: inherit;
+                    }
+                }
+
+                &:#{$before} {
+                    content: if-ltr('\e913', '\e912');
+                    font-family: 'wolmart';
+                    position: relative;
+                    top: 1px;
+                    margin-#{$right}: .3rem;
+                    color: var(--wolmart-dark-color, $dark-color);
+                }
+            }
+        }
+
+        &:hover {
+            .woocommerce-loop-category__title {
+                margin-bottom: 1.5rem;
+            }
+
+            .category-content {
+                background: transparent;
+            }
+        }
+    }
+
+    @include mq(md, 'max') {
+        .cat-type-group .category-content {
+            padding: side-values(1rem 0 1rem 1.5rem);
+        }
+    }
+}
+
+// Icon
+@if use_component(category-type-group2) {
+    .cat-type-group2 {
+        color: #fff;
+        background-color: var(--wolmart-primary-color, $primary-color);
+        overflow: hidden;
+
+        figure {
+            i {
+                display: inline-block;
+                font-size: 4.8rem;
+                transition: transform .3s;
+                color: #fff;
+            }
+        }
+
+        img {
+            margin-bottom: 1.5rem;
+        }
+
+        >a {
+            padding-#{$right}: 1rem;
+
+            &:hover i {
+                transform: translateY(-.5rem);
+                // animation-iteration-count: infinite;
+            }
+        }
+
+        .category-content {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            background: transparent;
+            text-align: left;
+            align-items: if-ltr(flex-start, flex-end);
+        }
+
+        .woocommerce-loop-category__title {
+            margin-bottom: 0;
+            text-align: center;
+            color: #fff;
+        }
+
+        .category-list {
+            font-size: 1.3rem;
+            line-height: 1.2;
+            text-align: $left;
+
+            li {
+                white-space: nowrap;
+
+                &:#{$before} {
+                    content: if-ltr('\e9a5', '\e9a4');
+                    padding-#{$right}: .8rem;
+                    font-family: 'wolmart';
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                    color: #999;
+                }
+
+                &:not(:last-child) {
+                    margin-bottom: .5rem;
+                }
+            }
+
+            a {
+                position: relative;
+                display: inline-block;
+                transition: text-decoration .3s;
+
+                &:hover {
+                    color: inherit;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        &.active,
+        &:hover {
+            .woocommerce-loop-category__title {
+                margin-bottom: 0;
+            }
+
+            .category-content {
+                background: transparent;
+            }
+        }
+    }
+
+    .product-archive .cat-type-group2 {
+        padding: 1rem;
+    }
+}
+
+
+// Banner Type
+@if use_component(category-type-banner) {
+    .cat-type-banner {
+        overflow: hidden;
+        color: var(--wolmart-dark-color, $dark-color);
+
+        &.text-white {
+            color: #fff;
+
+            .btn {
+                color: #fff;
+            }
+        }
+
+        .category-content {
+            top: 3.7rem;
+            #{$left}: 3.8rem;
+            bottom: auto;
+            align-items: flex-start;
+            z-index: 1;
+            background-color: transparent;
+            transition: top .3s, padding .3s;
+            min-height: 0;
+        }
+
+        .woocommerce-loop-category__title {
+            text-transform: none;
+            text-align: $left;
+
+            font: {
+                size: 2rem;
+                family: inherit;
+            }
+        }
+
+        mark {
+            visibility: visible;
+            opacity: 1;
+            font-size: 1.4rem;
+            line-height: 1.2;
+            transition: color .3s;
+            z-index: 1;
+        }
+
+        .btn {
+            position: absolute;
+            opacity: 0;
+            bottom: 0;
+            transition: transform .3s, opacity .3s;
+        }
+
+        &.active,
+        &:hover {
+            .category-content {
+                top: 3rem;
+                padding-bottom: 3rem;
+                background-color: transparent;
+            }
+
+            .btn {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+// Simple Type
+@if use_component(category-type-simple) {
+    .cat-type-simple {
+        .category-content {
+            padding: 1.7rem 0;
+
+            mark {
+                text-transform: uppercase;
+            }
+        }
+
+        .woocommerce-loop-category__title {
+            margin-bottom: .5rem;
+            color: var(--wolmart-dark-color, $dark-color);
+            text-transform: uppercase;
+
+            &:hover {
+                color: var(--wolmart-primary-color, $primary-color);
+            }
+        }
+    }
+}
+
+// Frame Type
+@if use_component(category-type-frame) {
+    .cat-type-frame {
+        color: var(--wolmart-dark-color, $dark-color);
+
+        .woocommerce-loop-category__title {
+            position: relative;
+            color: var(--wolmart-dark-color, $dark-color);
+            line-height: 1.6;
+            transition: transform .3s;
+        }
+
+        .btn {
+            position: absolute;
+            top: 100%;
+            transition: top .3s, transform .3s;
+        }
+
+        .category-content {
+            top: auto;
+            bottom: 1.2rem;
+            #{$right}: 0;
+            min-height: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        &:hover {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, .08);
+
+            .woocommerce-loop-category__title {
+                transform: translateY(-100%);
+            }
+
+            .btn {
+                top: 50%;
+                transform: translateY(-50%);
+                color: var(--wolmart-primary-color, $primary-color);
+            }
+        }
+    }
+}
+
+// Block Category
+@if use_component(cat-type-block) {
+    .cat-type-block {
+        color: var(--wolmart-dark-color, $dark-color);
+        margin-bottom: -.5rem;
+
+        >a {
+            color: inherit;
+        }
+
+        .woocommerce-loop-category__title {
+            margin: 0;
+            font-weight: 400;
+            line-height: 1.7rem;
+            text-transform: none;
+            transition: color .3s;
+        }
+
+        &.product-category {
+            >a {
+                display: flex;
+                align-items: center;
+            }
+
+            i {
+                margin: side_values(0 14px 0 0);
+                font-size: 2.2rem;
+                transition: color .3s;
+            }
+        }
+
+        &.active,
+        &:hover {
+            .woocommerce-loop-category__title {
+                color: var(--wolmart-primary-color, $primary-color);
+            }
+        }
+
+        .active i {
+            color: var(--wolmart-primary-color, $primary-color);
+        }
+    }
+}
+
+.filter-categories .active {
+    color: var(--wolmart-primary-color, $primary-color);
+}
+
+// In Creative Grid
+.grid-item {
+    >.product-category {
+        height: 100%;
+    }
+}

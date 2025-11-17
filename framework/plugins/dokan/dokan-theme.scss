@@ -1,0 +1,992 @@
+/* -------------------------------------------
+	Dokan vendor style
+---------------------------------------------- */
+
+@import '../../../assets/sass/config';
+@import '../../../assets/sass/mixins';
+@import '../../../assets/sass/direction';
+
+// Dokan Store
+@if use_component(dokan) {
+	.widget #dokan-form-contact-seller {
+		display: block;
+	}
+
+	.sidebar-content {
+		.dokan-category-menu {
+			border: 0;
+		}
+	}
+
+	.dokan-category-menu .cat-drop-stack>ul li a,
+	.dokan-category-menu #cat-drop-stack>ul li a {
+		font-size: inherit;
+	}
+
+	// Dokan elements
+	input[type='submit'].dokan-btn,
+	a.dokan-btn,
+	.dokan-btn {
+		display: inline-block;
+		padding: 9.5px 23px;
+		font-weight: 600;
+		font-size: 1.4rem;
+		text-transform: capitalize;
+		transition: color .3s, background-color .3s, border-color .3s;
+		border-radius: 3px !important;
+
+		&:hover,
+		&.active,
+		&:focus {
+			background-color: var(--wolmart-dark-color, $dark-color) !important;
+			color: #fff;
+			border-color: var(--wolmart-dark-color, $dark-color) !important;
+		}
+
+		&.dokan-btn-theme {
+			background-color: var(--wolmart-border-color-light, $border-color-light) !important;
+			border-color: var(--wolmart-border-color-light, $border-color-light) !important;
+			color: var(--wolmart-dark-color, $dark-color) !important;
+
+			&:hover,
+			&.active,
+			&:focus {
+				background-color: var(--wolmart-dark-color, $dark-color) !important;
+				border-color: var(--wolmart-dark-color, $dark-color) !important;
+				color: #fff !important;
+			}
+		}
+	}
+
+	.dokan-message,
+	.dokan-error {
+		background-color: transparent;
+		border-style: dashed;
+		border-color: #cacbcc;
+		border-top-width: 1px;
+		padding-#{$left}: 15px;
+		font-size: 1.4rem;
+
+		&:before {
+			content: none;
+		}
+
+		strong {
+			color: $success-color;
+		}
+
+		.dokan-close {
+			font-size: 1.8rem;
+		}
+	}
+
+	// Dokan alert
+	.dokan-alert-warning {
+		background-color: transparent;
+		border-color: $warning-color;
+		color: $warning-color;
+	}
+
+	.dokan-alert-success {
+		background-color: transparent;
+		border-color: $success-color;
+		color: $success-color;
+	}
+
+	// Dokan Table
+	.dokan-table>thead>tr>th,
+	.dokan-table>tbody>tr>th,
+	.dokan-table>tfoot>tr>th,
+	.dokan-table>thead>tr>td,
+	.dokan-table>tbody>tr>td,
+	.dokan-table>tfoot>tr>td {
+		vertical-align: middle;
+
+		// padding-left: 0;
+		&:first-child {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	.dokan-table {
+		>thead>tr>th {
+			border-bottom: 1px solid var(--wolmart-border-color-light, $border-color-light);
+		}
+	}
+
+	.dokan-table-striped>tbody>tr:nth-of-type(odd) {
+		background-color: transparent;
+	}
+
+	// Dokan label class
+	.dokan-label {
+		font-size: 1rem;
+		font-weight: 700;
+		padding: .6em;
+	}
+
+	.dokan-label-primary {
+		background-color: var(--wolmart-primary-color, $primary-color );
+	}
+
+	// Dokan Dashboard
+	.dokan-dashboard .dokan-dashboard-wrap .dokan-dashboard-content {
+		padding: 0;
+	}
+
+	.dokan-dashboard .sidebar-fixed.left-sidebar {
+		max-width: 31rem;
+		flex: 0 0 31rem;
+	}
+
+	.dokan-dashboard .dokan-dash-sidebar .sidebar-content ul.dokan-dashboard-menu li {
+		border-bottom: 0;
+	}
+
+	.dokan-dashboard .dokan-dash-sidebar .sidebar-content ul.dokan-dashboard-menu li,
+	.dokan-dashboard .dokan-dash-sidebar .sidebar-content ul.dokan-dashboard-menu li a {
+		color: var(--wolmart-dark-color, $dark-color) !important;
+		transition: color .3s, background-color .3s !important;
+	}
+
+	.dokan-dashboard .dokan-dash-sidebar .sidebar-content ul.dokan-dashboard-menu li:hover,
+	.dokan-dashboard .dokan-dash-sidebar .sidebar-content ul.dokan-dashboard-menu li.active {
+		background-color: var(--wolmart-primary-color, $primary-color ) !important;
+
+		a {
+			color: #fff !important;
+		}
+	}
+
+	.dokan-dashboard .dokan-dash-sidebar .sidebar-content ul.dokan-dashboard-menu li.dokan-common-links {
+		display: flex;
+		align-items: center;
+
+		&:hover {
+			background-color: transparent !important;
+		}
+
+		a {
+			flex: 1;
+			padding-top: 14px;
+			padding-bottom: 14px;
+			background-color: var(--wolmart-dark-color, $dark-color);
+			color: #fff !important;
+			text-align: center;
+
+			i {
+				padding-right: 0;
+			}
+
+			&:hover {
+				background-color: var(--wolmart-primary-color, $primary-color ) !important;
+			}
+		}
+	}
+
+	.dokan-dashboard .dokan-dash-sidebar.sidebar {
+		z-index: 1;
+	}
+
+	.dokan-dashboard .dokan-dash-sidebar ul.dokan-dashboard-menu li:hover:not(.active).has-submenu:after {
+		top: 2.3rem;
+		border-width: 10px 10px 10px 0;
+		margin-top: -10px;
+	}
+
+	.dokan-dashboard .dokan-dash-sidebar.sidebar,
+	.dokan-dashboard .dokan-dash-sidebar.sidebar .sidebar-content ul.dokan-dashboard-menu,
+	.dokan-dashboard .dokan-dash-sidebar.sidebar .sidebar-content #dokan-navigation>input:checked+ul.dokan-dashboard-menu,
+	.dokan-dashboard .dokan-dash-sidebar.sidebar .sidebar-content #dokan-navigation {
+		background-color: transparent !important;
+	}
+
+	.dokan-dashboard .dokan-dash-sidebar.sidebar ul.dokan-dashboard-menu li:not(.dokan-common-links) a {
+		padding: side-values(13.5px 0 13.5px 20px);
+
+		i {
+			padding: side-values(0 11px 0 0);
+		}
+	}
+
+	.dokan-dashboard .dokan-dash-sidebar ul.dokan-dashboard-menu,
+	.dokan-dashboard .dokan-dashboard-content article.dashboard-content-area .dashboard-widget {
+		border: 1px solid var(--wolmart-border-color-light, $border-color-light);
+		border-radius: 5px;
+	}
+
+	.dokan-dashboard .dokan-dash-sidebar ul.dokan-dashboard-menu li.settings i.pull-right {
+		padding-top: 0;
+	}
+
+	.dokan-product-listing .dokan-product-listing-area {
+		padding: 0;
+
+		.product-listing-top {
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			margin-bottom: 2rem;
+			padding-top: 1rem;
+
+			ul.dokan-listing-filter {
+				width: auto;
+				margin-bottom: 1rem;
+
+				li {
+					padding-#{$right}: 2.5rem;
+				}
+
+				.product-count {
+					margin-#{$left}: 1rem;
+				}
+			}
+
+			.dokan-add-product-link {
+				width: auto;
+				flex: 1;
+
+				a {
+					margin-bottom: 1.5rem;
+				}
+			}
+		}
+
+		.dokan-add-product-link {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+
+			a:not(:last-child) {
+				margin-#{$right}: 1rem;
+			}
+		}
+
+		.dokan-w12 {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			float: none;
+
+			.dokan-form-inline {
+				flex: 1;
+				margin-bottom: 1rem;
+
+				>* {
+					margin-bottom: 1rem;
+				}
+			}
+
+			.dokan-product-search-form {
+				position: relative;
+				flex: 0 0 22rem;
+				max-width: 22rem;
+
+				button {
+					position: absolute;
+					#{$right}: 0;
+					background-color: transparent;
+					font-size: 1.5rem;
+					padding: side-values(8px 13px 8px 13px);
+
+					&:hover,
+					&.active,
+					&.focus {
+						color: var(--wolmart-primary-color, $primary-color );
+						border-color: transparent !important;
+						background-color: transparent !important;
+					}
+				}
+			}
+		}
+	}
+
+	ul.subsubsub {
+		font-size: 1.4rem;
+		color: #333;
+
+		li {
+			border-right: 0;
+
+			&.active a {
+				color: #000;
+			}
+		}
+	}
+
+	.dokan-comments-wrap .dokan-btn.dokan-btn-theme,
+	.dokan-coupon-content .dokan-btn.dokan-btn-theme,
+	.dokan-dashboard .dokan-orders-area .dokan-btn-theme,
+	.dokan-dashboard .dokan-product-listing-area .dokan-btn-theme,
+	.dokan-edit-row input[type='submit'].dokan-btn-success,
+	.dokan-edit-row a.dokan-btn-success,
+	.dokan-btn-success {
+		padding: 12px 28px;
+		font-size: 14px;
+		color: var(--wolmart-dark-color, $dark-color) !important;
+		background: #eee !important;
+		border-color: #eee !important;
+		transition: 0.3s;
+		border-radius: 3px;
+
+		&.dokan-add-new-product {
+			background-color: var(--wolmart-dark-color, $dark-color) !important;
+			border-color: var(--wolmart-dark-color, $dark-color) !important;
+			color: #fff !important;
+		}
+
+		&:hover,
+		&.active,
+		&:focus {
+			color: #fff !important;
+			background-color: darken($dark-color, 7%) !important;
+			border-color: darken($dark-color, 7%) !important;
+		}
+	}
+
+	.dokan-dashboard .dokan-form-inline .dokan-btn,
+	.dokan-dashboard .dokan-form-group .dokan-btn,
+	.dokan-dashboard .dokan-settings-area .dokan-btn {
+		padding: 8px 23px;
+	}
+
+	.dokan-dashboard .dokan-dash-sidebar ul.dokan-dashboard-menu li.active:after {
+		#{$right}: 10px;
+		content: if-rtl('\e92b', '\e92c');
+		font-family: 'wolmart';
+		border: 0;
+		margin-top: auto;
+		transform: translateY(-50%);
+		#{$left}: auto;
+		top: 50%;
+		width: auto;
+		height: auto;
+		color: #fff;
+	}
+
+	@include if-rtl() {
+		ul.dokan-dashboard-menu .settings .pull-right {
+			float: none;
+		}
+	}
+
+	.dokan-dashboard .dokan-product-listing-area input[type='submit'] {
+		text-transform: uppercase;
+	}
+
+	.dokan-dashboard #dokan-product-list-table {
+		>thead>tr>th {
+			color: #333;
+			font-size: 1.6rem;
+			font-weight: 600;
+			padding-bottom: 1.5rem;
+		}
+
+		>tbody>tr {
+			border-top: 1px solid var(--wolmart-border-color-light, $border-color-light);
+			border-bottom: 1px solid var(--wolmart-border-color-light, $border-color-light);
+		}
+
+		td {
+			vertical-align: middle;
+		}
+	}
+
+	.dokan-dashboard h1.entry-title {
+		font-size: 2rem;
+		line-height: 2;
+	}
+
+	.dokan-product-edit header.dokan-dashboard-header h1.entry-title {
+		margin: 0;
+		padding: 15px 0;
+
+		span.dokan-label-primary {
+			font-size: 1rem;
+			padding: 3px 10px;
+		}
+	}
+
+	.dokan-product-listing [data-title=Image] {
+		padding: side-values(20px 0 20px 8px);
+	}
+
+	.dokan-product-listing [data-title=Name] {
+		a {
+			color: $body-color;
+			font-weight: 400;
+
+			&:hover {
+				color: var(--wolmart-primary-color, $primary-color);
+			}
+		}
+
+		.row-actions {
+			height: 0;
+			transition: height .4s;
+		}
+	}
+
+	.dokan-product-listing .dokan-product-listing-area table td img {
+		max-width: 54px;
+		max-height: 54px;
+	}
+
+	.dokan-product-listing .dokan-product-listing-area table.product-listing-table.dokan-table mark {
+		font-weight: 400;
+		background: transparent;
+	}
+
+	.dokan-product-listing .dokan-product-listing-area table.product-listing-table td.post-date {
+		font-size: 12px;
+		color: #666;
+		line-height: 1.8;
+	}
+
+	.dokan-product-listing .dokan-product-listing-area table.product-listing-table mark.instock {
+		color: var(--wolmart-secondary-color, $secondary-color);
+	}
+
+	.dokan-product-listing .dokan-table del,
+	.dokan-product-listing .dokan-table del span.amount {
+		font-weight: 400;
+		color: #999;
+	}
+
+	.dokan-product-listing .dokan-table span.amount {
+		color: var(--wolmart-dark-color, $dark-color);
+		font-size: 1.6rem;
+		font-weight: 600;
+		letter-spacing: -0.025em;
+	}
+
+	.dokan-dashboard #dokan-product-list-table {
+		tbody {
+			>tr:hover {
+				.row-actions {
+					height: auto;
+				}
+			}
+
+			td[data-title=Name] {
+				width: 16rem;
+			}
+
+			td[data-title=Date] {
+				width: 6rem;
+			}
+		}
+	}
+
+	.dokan-dashboard-product-listing-wrapper .dokan-form-group {
+		margin-bottom: 3rem;
+	}
+
+	// Dashboard menu icon
+
+	.dokan-dashboard-menu i.fas {
+
+		&.fa-caret-right {
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			margin-top: -1px;
+			font-family: 'wolmart' !important;
+			font-weight: 400 !important;
+
+			&:before {
+				content: '\e913';
+			}
+		}
+	}
+
+	.dokan-dashboard-menu i.fa {
+		font-family: 'wolmart' !important;
+
+		&.fa-tachometer::before {
+			content: '\e90b';
+		}
+
+		&.fa-briefcase::before {
+			content: '\e914';
+		}
+
+		&.fa-shopping-cart::before {
+			content: '\e951';
+		}
+
+		&.fa-upload::before {
+			content: '\e923';
+		}
+
+		&.fa-cog::before {
+			content: '\e919';
+		}
+
+		&.fa-external-link::before {
+			content: '\e922';
+		}
+
+		&.fa-user::before {
+			content: '\e98b';
+		}
+
+		&.fa-power-off::before {
+			content: '\e90c';
+		}
+
+		&.fa-long-arrow-left::before {
+			content: '\e92b';
+		}
+
+		&.fa-university::before {
+			content: '\e920';
+		}
+
+		&.fa-credit-card::before {
+			content: '\e90d';
+		}
+
+		&.fa-gift::before {
+			content: '\e963';
+		}
+
+		&.fa-line-chart::before {
+			content: '\e915';
+		}
+
+		&.fa-comments-o::before {
+			content: '\e985';
+		}
+
+		&.fa-heart::before {
+			content: '\e936';
+		}
+
+		&.fa-wrench::before {
+			content: '\e91f';
+		}
+
+		&.fa-life-ring::before {
+			content: '\e91e';
+		}
+
+		&.fa-undo::before {
+			content: '\e918';
+		}
+
+		&.fa-check::before {
+			content: '\e921';
+		}
+
+		&.fa-truck::before {
+			content: '\e989';
+		}
+
+		&.fa-gear::before {
+			content: '\e91a';
+		}
+
+		&.fa-share-alt-square::before {
+			content: '\e91b';
+		}
+
+		&.fa-globe::before {
+			content: '\e91c';
+		}
+	}
+
+	// Add new product
+	.dokan-add-new-product-popup h2 {
+		width: 100%;
+	}
+
+	.dokan-dashboard .select2-selection {
+		border: 1px solid #e1e1e1;
+		padding: side-values(0 20px 0 10px);
+		border-radius: 3px;
+		min-height: 3.8rem;
+	}
+
+	.dokan-dashboard .select2-container--default .select2-selection--single .select2-selection__rendered {
+		line-height: 38px;
+		color: var(--wolmart-body-color, $body-color);
+	}
+
+	.dokan-dashboard .select2-container--default .select2-selection--single .select2-selection__placeholder {
+		color: #666;
+		font-size: 1.3rem;
+	}
+
+	.dokan-dashboard .select2-container--default .select2-selection--single .select2-selection__arrow {
+		top: 6px;
+	}
+
+	.dokan-dashboard .select2-container--default .select2-search--inline .select2-search__field {
+		line-height: 3.8rem;
+		margin: 0;
+	}
+
+	#dokan-add-new-product-popup {
+		border-radius: 5px;
+	}
+
+	#dokan-add-new-product-form {
+		input[type="submit"] {
+			margin-bottom: 2rem;
+		}
+
+		.dokan-show-add-product-error {
+			width: 100%;
+			margin-bottom: 2rem;
+		}
+
+		.product-container-footer {
+			text-align: center;
+		}
+	}
+
+	// Edit product
+	.dokan-input-group-addon {
+		border: 1px solid #e1e1e1;
+		border-radius: 3px 0 0 3px;
+	}
+
+	.dokan-input-group-addon+input {
+		border: 1px solid #e1e1e1;
+		border-radius: 0 3px 3px 0;
+	}
+
+	.dokan-product-meta .dokan-form-group .select2-container {
+		margin-#{$left}: 0;
+	}
+
+	.product-edit-container {
+		padding-bottom: 1.5rem;
+
+		.dokan-product-edit-form input[type="submit"] {
+			background-color: var(--wolmart-dark-color, $dark-color) !important;
+			border-color: var(--wolmart-dark-color, $dark-color) !important;
+			color: #fff !important;
+
+			&:hover,
+			&.active,
+			&:focus {
+				background-color: darken($dark-color, 7%) !important;
+				border-color: darken($dark-color, 7%) !important;
+			}
+		}
+	}
+
+	.product-edit-container #dokan-product-images ul.product_images li.image a.action-delete {
+		padding-top: 50%;
+		line-height: 0;
+	}
+
+	.product-edit-container label.form-label,
+	.product-edit-container label.dokan-form-label {
+		display: block;
+		font-size: 1.4rem;
+		font-weight: 400;
+	}
+
+	.dokan-table thead {
+		color: var(--wolmart-dark-color, $dark-color);
+	}
+
+	.dokan-product-attribute-wrapper a {
+		margin-bottom: 1rem;
+	}
+
+	.dokan-edit-row .dokan-section-heading {
+		h2 {
+			font-size: 1.4rem;
+		}
+
+		p {
+			font-style: normal;
+		}
+
+		i {
+			margin-right: .5rem;
+		}
+
+		.dokan-section-toggle .fa {
+			font-size: 1.2rem;
+			margin-top: 0 !important;
+
+			&::before {
+				font-family: 'wolmart';
+			}
+
+			&.fa-flip-horizointal::before {
+				content: "\e910";
+			}
+
+			&.fa-flip-vertical::before {
+				content: "\e910";
+			}
+		}
+	}
+
+	// widget
+	.dokan-dashboard .dokan-dashboard-content article.dashboard-content-area .dashboard-widget .widget-title {
+		padding: 15px 0;
+		margin-bottom: 10px;
+		color: #333;
+		font-size: 1.6rem;
+		font-weight: 600;
+		letter-spacing: 0em;
+		border-bottom: 1px solid var(--wolmart-border-color-light, $border-color-light);
+
+		.pull-right a {
+			color: inherit;
+
+			&:hover {
+				color: var(--wolmart-primary-color, $primary-color);
+			}
+		}
+	}
+
+	.dokan-dashboard .dokan-dashboard-content article.dashboard-content-area .dashboard-widget.big-counter .count {
+		font-size: 1.6rem;
+		color: inherit;
+		letter-spacing: -.025em;
+	}
+
+	.dokan-dashboard .dashboard-widget.big-counter .list-inline li:last-child .count {
+		border-bottom: 0;
+	}
+
+	.dokan-dashboard .dokan-dashboard-content article.dashboard-content-area .dashboard-widget.big-counter .title {
+		font-size: 14px;
+	}
+
+	.dokan-dashboard .big-counter li {
+		color: #999;
+	}
+
+	.dokan-dashboard .big-counter li:first-child,
+	.dokan-dashboard .big-counter li:nth-child(2) {
+		color: var(--wolmart-dark-color, $dark-color);
+	}
+
+	.dokan-dashboard .chart-container table td,
+	.dokan-dashboard .chart-container table th {
+		padding: 2px 10px;
+		border-bottom: 0;
+	}
+
+	.dokan-dashboard .chart-container .legendLabel {
+		color: var(--wolmart-body-color, $body-color);
+		line-height: 1.2;
+		font-size: 1.4rem;
+	}
+
+	.dokan-dashboard .chart-container table tbody>tr:first-child td {
+		padding-top: 15px;
+	}
+
+	.dokan-dashboard .chart-container table tbody td:first-child {
+		padding-#{$left}: 15px;
+	}
+
+	.dokan-dashboard .dokan-dashboard-content article.dashboard-content-area .dashboard-widget .widget-title i {
+		color: inherit;
+		font-size: 19px;
+		font-weight: 400;
+	}
+
+	.dokan-dashboard .dokan-dashboard-content article.dashboard-content-area .dashboard-widget a {
+		display: block;
+		padding: 8px 0;
+		color: var(--wolmart-dark-color, $dark-color);
+		font-size: 14px;
+		line-height: 1;
+	}
+
+	.dokan-dashboard .dashboard-widget ul {
+		padding-inline-start: 0px;
+		margin-block-start: 0;
+	}
+
+	.dokan-dashboard .dokan-dashboard-content article.dashboard-content-area .dokan-dash-left {
+		padding-#{$right}: 20px;
+	}
+
+	// Dashboard Orders Area
+	.dokan-dashboard .dokan-orders-area .order-statuses-filter {
+		padding-inline-start: 0;
+		padding-left: 0;
+	}
+
+	.dokan-orders-content .dokan-orders-area .dokan-order-filter-serach {
+		padding: 10px 0;
+	}
+
+	.dokan-order-filter-serach .dokan-form-group input {
+		padding: 8px 10px !important;
+		border: 1px solid #e1e1e1;
+		border-radius: 3px;
+		font-size: 1.3rem;
+		color: $body-color;
+	}
+
+	// Settings
+	.dokan-form-horizontal .dokan-control-label {
+		font-weight: 400;
+		font-size: 1.4rem;
+		color: var(--wolmart-dark-color, $dark-color);
+		margin-bottom: 1rem;
+	}
+
+	.dokan-form-horizontal .dokan-form-group:last-child .dokan-w4 {
+		margin-#{$left}: 25% !important;
+	}
+
+	.dokan-settings-content .dokan-settings-area .dokan-address-fields label {
+		font-size: 1.4rem;
+		color: #666;
+	}
+
+	.dokan-settings-content .dokan-form-control {
+		font-size: 1.4rem;
+		height: 4.4rem;
+	}
+
+	.dokan-settings-content input[type="submit"].dokan-btn.dokan-btn-theme,
+	.dokan-settings-content a.dokan-btn.dokan-btn-default {
+		padding: 10px 23px;
+		background-color: var(--wolmart-dark-color, $dark-color) !important;
+		border-color: var(--wolmart-dark-color, $dark-color) !important;
+		color: #fff !important;
+		text-transform: uppercase;
+
+		i {
+			display: none;
+		}
+
+		&:hover,
+		&:focus,
+		&.active {
+			color: #fff !important;
+			background-color: darken($dark-color, 7%) !important;
+			border-color: darken($dark-color, 7%) !important;
+		}
+	}
+
+	.dokan-settings-content .dokan-settings-area .dokan-banner {
+		width: auto !important;
+		height: auto !important;
+		margin: 0 auto 4rem;
+		border: 1px dashed $border-color;
+		max-width: 50%;
+	}
+
+	.dokan-dashboard .dokan-dashboard-content article.dashboard-content-area .dashboard-widget {
+		padding: 0 2rem;
+	}
+
+	.dokan-form-horizontal .checkbox label {
+		position: relative;
+		padding-#{$left}: 2.5rem;
+		line-height: 1.8rem;
+
+		input[type="checkbox"] {
+			position: absolute;
+			#{$left}: 0;
+			margin-#{$right}: 5px;
+		}
+	}
+
+	.dokan-settings-content #dokan_address_country {
+		max-width: none;
+	}
+
+	.store-open-close {
+		.dokan-w6 {
+			width: 50% !important;
+		}
+
+		.dokan-form-group {
+			align-items: center;
+		}
+	}
+
+	.dokan-dashboard .dokan-dashboard-content .dokan-page-help {
+		font-style: normal;
+	}
+
+	.dokan-form-horizontal fieldset .dokan-form-group {
+		display: flex;
+		align-items: center;
+	}
+
+	.dokan-dashboard .select2-container.select2-container--open {
+		z-index: 3000;
+	}
+
+	// Single Vendor Page
+	.profile-frame .profile-info-box.profile-layout-default {
+		>img {
+			border-radius: 5px;
+		}
+
+		.profile-info-summery {
+			border-radius: side-values(5px 0 0 5px);
+		}
+	}
+
+	.store-cat-stack-dokan.cat-drop-stack ul {
+		min-height: none;
+		overflow: visible;
+	}
+
+	.store-cat-stack-dokan .parent-cat-wrap a {
+		border-bottom: none !important;
+	}
+
+	@include mq(xl) {
+		.dokan-single-store .profile-frame .profile-info-box.profile-layout-default img.profile-info-img {
+			position: static;
+		}
+
+		.dokan-single-store .profile-frame .profile-info-box.profile-layout-default .profile-info-summery-wrapper {
+			position: absolute;
+		}
+	}
+
+	@include mq(xl, max) {
+		.dokan-single-store .profile-frame .profile-info-box.profile-layout-default .profile-info-summery-wrapper .profile-info-summery {
+			margin-top: -50px;
+		}
+
+		.dokan-single-store .profile-frame .profile-info-box.profile-layout-layout1 .profile-info-summery-wrapper .profile-info-summery {
+			padding-top: 20px;
+		}
+	}
+
+	.dokan-single-store .profile-frame .profile-info-box.profile-layout-layout3 .profile-info-summery-wrapper .profile-info-summery .profile-info-head .profile-img {
+		margin-bottom: 1.2rem;
+	}
+
+	.dokan-single-store .profile-frame .profile-info-box.profile-layout-layout1 .profile-info-summery-wrapper {
+		padding-bottom: 30px;
+	}
+}
+
+.dokan-dashboard .dokan-dash-sidebar ul.dokan-dashboard-menu li.active ul.navigation-submenu {
+	border-bottom-color: var(--wolmart-primary-color, $primary-color );
+}
+
+.dokan-payment-settings-summary {
+	.payment-methods-listing-header {
+		h2 {
+			padding-#{$left}: 5px;
+			font-size: 16px;
+			font-weight: 500;
+		}
+	}
+}

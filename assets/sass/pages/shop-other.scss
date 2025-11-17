@@ -1,0 +1,2081 @@
+/* -------------------------------------------
+	Shop Subpages
+	- Shop Table
+	- Cart page
+	- Wishlist Page
+	- Account Page
+	- Checkout Page
+	- Order Pages
+---------------------------------------------- */
+
+@import '../config';
+@import '../mixins';
+@import '../direction';
+
+/* Theme SCSS Framework */
+// @set_theme_configuration
+
+// base
+mark {
+	color: inherit;
+	background: none;
+}
+
+.input-text::placeholder {
+	// issue: woocommerce.scss
+	color: inherit;
+}
+
+.form-row {
+	.input-text {
+		font-size: 1.4rem;
+		transition: background-color .3s, border-color .3s;
+		color: var(--wolmart-body-color, $body-color);
+		min-height: 4.4rem;
+	}
+
+	.input-text:focus {
+		border: 1px solid #999;
+	}
+
+	textarea {
+		padding-top: 1.5rem;
+	}
+
+	label:not(.checkbox) {
+		display: inline-block;
+		margin-bottom: 1rem;
+		font-size: 1.4rem;
+		line-height: .9;
+		// text-transform: capitalize;
+	}
+
+	.required {
+		text-decoration: none;
+	}
+}
+
+.select2-container {
+	margin-bottom: .4rem;
+}
+
+@include mq(sm) {
+
+	p.form-row-first,
+	p.form-row-last {
+		width: 50%;
+	}
+
+	.woocommerce-checkout .login {
+		.form-row-first {
+			padding-#{$right}: 10px;
+		}
+
+		.form-row-last {
+			padding-#{$left}: 10px;
+		}
+	}
+}
+
+.lost_reset_password .form-row {
+	width: 100%;
+}
+
+.cart-title,
+.woocommerce-checkout h3,
+.woocommerce-order-details__title,
+.yith-wcwl-share-title {
+	margin-bottom: 1rem;
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: .73;
+	letter-spacing: -0.01em;
+	text-transform: uppercase;
+}
+
+.woocommerce-MyAccount-navigation>ul,
+.woocommerce-shipping-methods,
+.wc_payment_methods,
+ul.shop_table,
+.woocommerce-error {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.wc_payment_methods {
+	.payment_box p {
+		margin-bottom: 0;
+	}
+}
+
+.cart-information,
+.woocommerce-checkout-review-order,
+.payment-box {
+	padding: 3rem;
+	// margin-bottom: 2rem;
+	border: 1px solid $border-color-light;
+	border-radius: 5px;
+	line-height: 2;
+}
+
+@include mq(xs, max) {
+
+	.cart-information,
+	.woocommerce-checkout-review-order,
+	.payment-box {
+		padding: 3rem 2rem;
+	}
+}
+
+.woocommerce-shipping-fields,
+.woocommerce-checkout-review-order {
+	margin-bottom: 3rem;
+}
+
+.shop_table,
+.woocommerce-checkout-review-order {
+	ul>li {
+		line-height: 1.4;
+		margin-bottom: 0;
+		padding-bottom: 1.8rem;
+	}
+
+	ul {
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+}
+
+.woo-page-header {
+	padding-top: 3rem;
+
+	.breadcrumb {
+		justify-content: center;
+		padding: 2rem 1rem;
+		font-family: var(--wolmart-body-font-family);
+		font-size: 2rem;
+		font-weight: 700;
+		letter-spacing: -.025em;
+		line-height: 1.8;
+		color: var(--wolmart-dark-color, $dark-color);
+
+		a {
+			opacity: 1;
+
+			&:hover,
+			&:focus {
+				color: var(--wolmart-primary-color, $primary-color);
+			}
+		}
+	}
+
+	.current {
+		a {
+			color: var(--wolmart-primary-color, $primary-color);
+		}
+
+		&+li {
+			color: var(--wolmart-body-color, $body-color);
+		}
+
+		.delimiter {
+			color: var(--wolmart-dark-color, $dark-color);
+		}
+	}
+
+	.disable {
+		color: var(--wolmart-body-color, $body-color);
+		pointer-events: none;
+	}
+
+	.delimiter {
+		margin: side-values(0 0.6rem 0 1rem);
+		opacity: 1;
+		font-family: 'wolmart';
+		font-size: 1em;
+		color: #999;
+
+		&::before {
+			content: if-ltr("\e913", "\e912");
+		}
+	}
+}
+
+@include mq(xs, max) {
+	.woo-page-header .breadcrumb {
+		font-size: 1.8rem;
+	}
+}
+
+// Shop Table
+.shop_table {
+	text-align: $left;
+	border-collapse: separate;
+
+	td,
+	th {
+		padding: side-values(1rem 0 .5rem);
+		border-top: 1px solid $border-color-light;
+		border-bottom: none;
+		vertical-align: middle;
+	}
+
+	>tbody {
+		border-bottom: 1px solid $border-color;
+	}
+
+	thead th {
+		padding: .3rem 0;
+		border-top: 0;
+		color: var(--wolmart-dark-color, $dark-color);
+		font-size: 1.6rem;
+		font-weight: 600;
+		line-height: 1.875;
+
+		&:last-child {
+			padding-#{$right}: 1rem;
+		}
+	}
+
+	.product-thumbnail {
+		position: relative;
+		// width: 11rem;
+		margin: auto;
+		// max-width: 11rem;
+	}
+
+	.product-price {
+		// max-width: 200px;
+		color: var(--wolmart-dark-color, $dark-color);
+		font-weight: 600;
+		white-space: nowrap;
+
+		del {
+			color: #aaa;
+		}
+	}
+
+	// .product-subtotal {
+	// width: 85px;
+	// }
+	.product-quantity {
+
+		// max-width: 135px;
+		.quantity-wrapper {
+			width: 100%;
+		}
+	}
+
+	.product-stock-status {
+		white-space: nowrap;
+	}
+
+	.product-name {
+		h3 {
+			font-size: 1.4rem;
+		}
+
+		.variation {
+			display: flex;
+			margin: 1rem 0 0;
+
+			dt {
+				float: none;
+			}
+
+			dd {
+				margin: 0;
+			}
+		}
+	}
+
+	.remove {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top: 10px;
+		#{$right}: 10px;
+		z-index: 3;
+		background: #fff;
+		color: var(--wolmart-dark-color, $dark-color);
+		font-size: 1.2rem;
+		line-height: 12px;
+		text-align: center;
+		border-radius: 50%;
+		box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.4);
+
+		&:hover {
+			color: var(--wolmart-primary-color, $primary-color);
+		}
+	}
+
+	.btn-link+.btn-link {
+		margin-#{$left}: .5rem;
+	}
+}
+
+// Cart Page
+.shop_table {
+	a.product-thumbnail {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.quantity-wrapper {
+		label {
+			display: none;
+		}
+	}
+}
+
+.woocommerce-cart-form__contents tbody,
+.cart-information tbody {
+	border-bottom: 0;
+}
+
+.shop_table .product-quantity .label,
+.cart_totals .woocommerce-shipping-totals th,
+.select2-selection__arrow b {
+	display: none;
+}
+
+.shipping-calculator-form {
+	select {
+		max-width: 100%;
+		color: var(--wolmart-body-color, $body-color);
+		border-color: #e3e3e3;
+	}
+}
+
+.woocommerce-cart-form__contents {
+	padding-top: 1.3rem;
+
+	td,
+	th {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+	}
+
+	td {
+		padding-#{$right}: 2rem;
+	}
+
+	thead th {
+		padding: .2rem 0 1.6rem;
+		font-size: 1.6rem;
+		font-weight: 600;
+		line-height: 1;
+		letter-spacing: -.025em;
+		text-transform: capitalize;
+		color: var(--wolmart-dark-color, $dark-color);
+	}
+
+	th.product-thumbnail {
+		width: 14.79%;
+	}
+
+	th.product-price {
+		width: 17.29%;
+	}
+
+	th.product-quantity {
+		width: 25.77%;
+	}
+
+	th.product-subtotal {
+		width: 14.79%;
+	}
+
+	td.product-price {
+		font-weight: 400;
+		font-size: 1.6rem;
+		color: var(--wolmart-body-color, $body-color);
+	}
+
+	.quantity {
+		max-width: 12rem;
+	}
+
+	td.product-subtotal {
+		font-weight: 600;
+		font-size: 1.6rem;
+		color: var(--wolmart-dark-color, $dark-color);
+	}
+
+	.actions {
+		padding: 0;
+	}
+}
+
+dl.variation {
+	dt {
+		float: left;
+		margin-#{$right}: 5px;
+		margin-top: -1px;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+}
+
+@include mq('lg', 'max') {
+	.woocommerce-cart-form {
+		margin-bottom: 2rem;
+	}
+}
+
+@include mq('md', 'max') {
+	.woocommerce-cart-form {
+		tbody {
+			display: block;
+		}
+
+		tr,
+		td {
+			display: block;
+		}
+
+		td.actions {
+			border-top: none;
+		}
+
+		.cart_item {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			padding: 4rem 2rem 2.5rem;
+			border: 1px solid #e1e1e1;
+			text-align: center;
+
+			td {
+				border: none;
+				padding: 0;
+				margin-bottom: 5px;
+				text-align: center;
+			}
+
+			+.cart_item {
+				border-top: none;
+			}
+
+			.product-remove {
+				position: absolute;
+				#{$right}: 15px;
+				top: 15px;
+			}
+		}
+	}
+
+	.woocommerce-cart-form__contents {
+		thead {
+			display: none;
+		}
+
+		.remove {
+			top: -8px;
+			#{$right}: -8px;
+		}
+	}
+
+	dl.variation {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 0;
+	}
+}
+
+// Cart Page - Information
+.cart_totals .woocommerce-shipping-methods {
+	margin-bottom: 1.1rem;
+
+	label {
+		font-size: 1.4rem;
+		color: var(--wolmart-body-color, $body-color);
+	}
+}
+
+.select2-container--default .select2-selection--single {
+	padding: 7px 6px;
+	height: auto;
+	border-color: $border-color-light;
+	background: #fff;
+	font-size: 1.4rem;
+	border-radius: 2px;
+
+	.shipping & {
+		background: #fff;
+	}
+
+	.select2-selection__rendered {
+		color: var(--wolmart-body-color, $body-color);
+	}
+}
+
+.select2-dropdown {
+	border-color: $border-color-light;
+}
+
+.select2-selection__arrow::before {
+	content: '\e910';
+	position: relative;
+	#{$right}: 4px;
+	font-family: 'wolmart';
+	font-size: 1.1rem;
+	font-weight: 400;
+	line-height: 41px;
+}
+
+.shipping input.input-text {
+	padding: .95rem 1.4rem;
+	background: #fff;
+	color: var(--wolmart-body-color, $body-color);
+	font-size: 1.4rem;
+}
+
+.cart-information .shipping p {
+	margin-bottom: .7rem;
+}
+
+.shop_table tfoot th,
+.cart-subtotal>th,
+.shipping>th {
+	font-weight: inherit;
+}
+
+.cart-subtotal {
+
+	th,
+	td {
+		border-top: 0;
+		font-size: 1.6rem;
+		font-weight: 600;
+		color: var(--wolmart-dark-color, $dark-color);
+	}
+}
+
+.order-total td,
+.cart-subtotal td,
+.cart_item>.product-total,
+.woocommerce-checkout-review-order-table [type="hidden"]+label {
+	text-align: $right;
+}
+
+.woocommerce-checkout-review-order-table {
+	.cart_item td:last-child {
+		display: block;
+	}
+
+	.cart_item>.product-name {
+		font-weight: 400;
+		color: var(--wolmart-body-color, $body-color);
+	}
+
+	.product-name .variation {
+		margin-top: 0;
+	}
+}
+
+.checkout-button {
+	width: 100%;
+	padding: 1em 5px;
+
+	&:#{$after} {
+		content: if-ltr('\e92c', '\e92b');
+		font-family: 'wolmart';
+		font-weight: 400;
+		margin-#{$left}: 3px;
+	}
+}
+
+#cart_coupon_box {
+	h5 {
+		font-size: 1.6rem;
+	}
+
+	input.form-control {
+		border-top: 0;
+		border-left: 0;
+		border-right: 0;
+		border-radius: 0;
+	}
+}
+
+.form-coupon {
+	max-width: 100%;
+	padding: 0;
+
+	.button {
+		border-width: 1px;
+	}
+}
+
+.cart-actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-bottom: 4rem;
+
+	.continue-shopping {
+		margin-#{$right}: auto;
+
+		&:#{$before} {
+			content: if-ltr('\e92b', '\e92c');
+			font-family: 'wolmart';
+			font-weight: 400;
+			font-size: 1.2em;
+			margin-#{$right}: 7px;
+			line-height: 0;
+			vertical-align: -.05em;
+		}
+	}
+
+	.clear-cart-button:not(:last-child) {
+		margin-#{$right}: 1rem;
+	}
+
+	.wc-action-btn {
+		border-width: 1px;
+	}
+
+	.btn {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	@media (max-width: 619px) {
+		.btn {
+			flex: 1;
+			margin-top: 0;
+		}
+
+		.continue-shopping {
+			flex: 0 0 100%;
+			margin: 2rem 0 1rem;
+		}
+
+	}
+}
+
+.cart-information {
+	th {
+		font-weight: 600;
+		font-size: 1.6rem;
+		color: var(--wolmart-dark-color, $dark-color);
+		letter-spacing: -.025em;
+	}
+
+	.woocommerce-shipping-totals h4 {
+		margin-bottom: 1rem;
+		font-size: 1.6rem;
+		font-weight: 600;
+		letter-spacing: -.025em;
+		color: var(--wolmart-dark-color, $dark-color);
+	}
+
+	p {
+		font-family: var(--wolmart-body-font-family);
+	}
+
+	.shop_table {
+		margin-bottom: 0;
+	}
+}
+
+.woocommerce-shipping-calculator {
+	.form-row-wide {
+		margin-bottom: 1.5rem;
+	}
+}
+
+.woocommerce-shipping-destination {
+	font-size: 1.5rem;
+	line-height: 1.4;
+
+	strong {
+		font-weight: 600;
+	}
+}
+
+.wc-proceed-to-checkout,
+.woocommerce-checkout-review-order {
+	.button {
+		border-radius: 3px;
+		border-color: var(--wolmart-dark-color, $dark-color);
+		background-color: var(--wolmart-dark-color, $dark-color);
+
+		&:hover,
+		&:focus {
+			border-color: #444;
+			background-color: #444;
+		}
+	}
+}
+
+.shipping-calculator-form {
+	display: block !important;
+
+	.button {
+		padding: 1.15rem 2.2rem;
+		border-radius: 2px;
+		border-width: 1px;
+	}
+}
+
+// Cart Page Empty
+.cart-empty-page {
+	i.cart-empty {
+		display: block;
+		margin-bottom: 3rem;
+		font-size: 8rem;
+		color: #aaa;
+	}
+
+	.woocommerce-info {
+		font-size: 1.6rem;
+		font-weight: 600;
+		color: #777;
+	}
+}
+
+// Cross Sell Page
+.cross-sells {
+	margin-top: 4rem;
+
+	h2 {
+		font-size: 2rem;
+	}
+}
+
+// Wishlist Page
+.wishlist_table {
+	border-collapse: collapse;
+
+	thead th {
+		padding-bottom: 1rem;
+	}
+
+	th {
+		text-transform: capitalize;
+	}
+
+	th,
+	td {
+		padding: 2rem 0;
+	}
+
+	.product-add-to-cart {
+		padding-#{$left}: 1rem;
+
+		.btn {
+			padding: .77em 2.08em;
+
+			&:first-child {
+				margin-#{$right}: 1rem;
+			}
+
+			&.btn-default {
+				border-width: 1px;
+				padding: .84em 2.08em;
+			}
+		}
+	}
+
+	&.mobile .product-add-to-cart .btn {
+		margin-#{$right}: 0;
+	}
+
+	td>* {
+		margin-#{$right}: 1rem;
+
+		&:last-child {
+			margin-#{$right}: 0;
+		}
+	}
+
+	td.product-thumbnail {
+		min-width: 12rem;
+		width: 9.68%;
+		padding-#{$right}: 2rem;
+	}
+
+	td.product-name {
+		width: 31.85%;
+		padding-right: 1rem;
+
+		a {
+			color: var(--wolmart-dark-color, $dark-color);
+		}
+
+		&:last-child {
+			width: auto;
+		}
+	}
+
+	.product-price {
+		width: 15.32%;
+		padding-#{$left}: 1rem;
+
+		>* {
+			margin-#{$right}: 0;
+		}
+	}
+
+	.product-stock-status {
+		width: 20.16%;
+		padding-#{$left}: 1rem;
+	}
+
+	.wishlist-empty {
+		border-bottom: 0;
+
+		td {
+			padding: 1rem;
+			text-align: center;
+			font-weight: 600;
+			border: 0;
+		}
+
+		.button {
+			margin-top: 1rem;
+			width: 20rem;
+		}
+	}
+
+	.product-thumbnail {
+		width: 11rem;
+		max-width: 11rem;
+	}
+}
+
+.wishlist-title {
+	padding: 1rem 0 .6rem;
+
+	h2 {
+		display: inline-block;
+		padding: side-values(1.5rem 1.2rem 1.5rem 0);
+		margin-bottom: 0;
+		vertical-align: middle;
+		margin-#{$right}: 1rem;
+		font-size: 2.4rem;
+		font-weight: 700;
+		letter-spacing: -.015em;
+
+		&:hover {
+			background-color: #f5f5f5;
+			text-decoration: none;
+		}
+	}
+
+	.show-title-form {
+		vertical-align: middle;
+	}
+}
+
+@include mq(lg) {
+	.wishlist-title:not(:hover) .show-title-form {
+		opacity: 0;
+	}
+}
+
+.wishlist-title,
+.hidden-title-form {
+
+	input,
+	.btn {
+		margin: side-values(1rem 1rem 1rem 0);
+		vertical-align: middle;
+	}
+}
+
+.hidden-title-form .form-control {
+	display: inline-block;
+	width: auto;
+	max-width: calc(100vw - 4rem);
+}
+
+.yes-js #yith-wcwl-form .hidden-title-form {
+	display: none;
+}
+
+.wishlist-out-of-stock {
+	color: var(--wolmart-secondary-color, #d26e4b);
+}
+
+.wishlist-in-stock {
+	color: var(--wolmart-primary-color, $primary-color);
+}
+
+.yith-wcwl-share {
+	display: flex;
+	align-items: center;
+	margin-top: 2rem;
+}
+
+.yith-wcwl-share-title {
+	line-height: 3rem;
+	margin: side-values(0 2rem 0 0);
+}
+
+ul.shop_table {
+	border: 1px solid $border-color;
+	text-align: center;
+
+	td.label {
+		padding: 5px;
+		text-align: $right;
+	}
+
+	td.value {
+		padding: 5px;
+		text-align: $left;
+	}
+
+	.product-name h3 {
+		margin-bottom: 1rem;
+	}
+
+	.product-thumbnail {
+		margin-bottom: 1rem;
+	}
+
+	li {
+		position: relative;
+		padding: 4rem 0;
+	}
+
+	>li:not(:first-child) {
+		border-top: 1px solid $border-color;
+	}
+
+	.product-remove {
+		position: absolute;
+		#{$right}: 1.5rem;
+		top: 1.5rem;
+		font-size: 1.7rem;
+
+		a {
+			padding: .5rem;
+		}
+	}
+
+	td {
+		border-top: 0;
+		width: 50%;
+	}
+
+	.product-add-to-cart {
+		margin-top: 1rem;
+	}
+
+	.wishlist-empty {
+		margin-top: 2rem;
+	}
+
+	&.mobile {
+		.remove {
+			#{$right}: -9px;
+			top: -9px;
+		}
+
+		.item-details {
+			margin-top: 2rem;
+		}
+	}
+}
+
+.shop_table.wishlist_view.mobile {
+	tr {
+		display: flex;
+		justify-content: center;
+	}
+
+	td {
+		width: auto;
+	}
+
+	table {
+		margin-bottom: 0;
+	}
+}
+
+.yith-wcwl-after-share-section {
+	margin-#{$left}: 15px;
+}
+
+// Account Page
+.woocommerce-account .page-wrapper .main {
+	padding-top: 4.2rem;
+}
+
+.woocommerce-MyAccount-navigation-link {
+	border-bottom: 1px solid $border-color-light;
+
+	>a {
+		display: block;
+		padding: 1.2rem 0;
+		color: var(--wolmart-dark-color, $dark-color);
+		font-weight: 600;
+		font-size: 1.6rem;
+
+		&:hover,
+		&.active {
+			color: var(--wolmart-primary-color, $primary-color);
+		}
+	}
+
+	&.is-active>a {
+		color: var(--wolmart-primary-color, $primary-color);
+	}
+}
+
+.woocommerce-MyAccount-content,
+.customer-details {
+	p {
+		line-height: 1.8;
+	}
+}
+
+.woocommerce-MyAccount-content p {
+	transition: color .3s;
+}
+
+.woocommerce-MyAccount-content .woocommerce-info .button {
+	margin-#{$right}: 2rem;
+}
+
+.woocommerce-MyAccount-content .myaccount-content {
+	padding-top: 5px;
+}
+
+.woocommerce-MyAccount-content-caption {
+	.icon-box-icon {
+		font-size: 2.5rem;
+		color: var(--wolmart-body-color, $body-color);
+	}
+
+	.icon-box-title {
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	&+p {
+		margin-top: -2rem;
+	}
+}
+
+// .myaccount-content a:not(.button):not(.btn) {
+// 	color: var(--wolmart-primary-color, $primary-color);
+
+// 	&:hover,
+// 	&:focus {
+// 		text-decoration: underline;
+// 	}
+// }
+.myaccount-content {
+	.greeting {
+		font-size: 1.6rem;
+
+		strong {
+			color: var(--wolmart-dark-color, $dark-color);
+			font-weight: 600;
+		}
+	}
+
+	.icon-box {
+		padding: 4rem 2rem;
+		border: 1px solid $border-color-light;
+		border-radius: 3px;
+		transition: all .4s;
+
+		.icon-box-icon {
+			font-size: 6rem;
+			font-weight: normal;
+			color: var(--wolmart-dark-color, $dark-color);
+			margin-bottom: 1.4rem;
+			line-height: 1;
+			transition: transform .4s, color .4s;
+
+			&::before {
+				font-family: 'wolmart';
+			}
+
+			p {
+				transition: color .4s;
+			}
+		}
+
+		&:hover {
+			box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+
+			.icon-box-icon {
+				transform: scale(1.1);
+				color: var(--wolmart-primary-color, $primary-color);
+			}
+
+			p {
+				color: var(--wolmart-primary-color, $primary-color);
+			}
+		}
+	}
+}
+
+@include mq('lg') {
+	.woocommerce-MyAccount-navigation {
+		flex: 0 0 31rem;
+		max-width: 31rem;
+	}
+
+	.woocommerce-MyAccount-content {
+		flex-basis: calc(100% - 31rem);
+		max-width: calc(100% - 31rem);
+	}
+}
+
+.password-input {
+	display: block;
+	position: relative;
+}
+
+.show-password-input {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	#{$right}: 0;
+	width: 2.5em;
+	color: var(--alpha-dark-color);
+	background-color: transparent;
+	border-width: 0;
+	transition: opacity .25s ease;
+	opacity: .8;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	&:before {
+		font-family: 'Font Awesome 5 Free';
+		content: "\f06e"
+	}
+
+	&.display-password:before {
+		content: "\f070"
+	}
+}
+
+// Order table
+.woocommerce-MyAccount-content .continue-shopping {
+	&:#{$after} {
+		content: if-ltr('\e92c', '\e92b');
+		font-family: 'wolmart';
+		font-weight: 400;
+		font-size: 1.2em;
+		margin-#{$left}: 7px;
+		line-height: 0;
+		vertical-align: -.05em;
+	}
+}
+
+.woocommerce-orders-table {
+	border-bottom: 1px solid $border-color-light;
+
+	thead th {
+		padding: .7rem 1rem;
+	}
+
+	th.woocommerce-orders-table__header-order-number {
+		width: 20.86%;
+	}
+
+	th.woocommerce-orders-table__header-order-date {
+		width: 20.21%;
+	}
+
+	th.woocommerce-orders-table__header-order-status {
+		width: 20%;
+	}
+
+	th.woocommerce-orders-table__header-order-total {
+		width: 25.48%;
+	}
+
+	td {
+		padding: 2.1rem 1rem;
+
+		a:not(.btn) {
+			color: var(--wolmart-body-color, $body-color);
+
+			&:hover {
+				color: var(--wolmart-primary-color, $primary-color);
+			}
+		}
+	}
+}
+
+// address
+.woocommerce-Address,
+.woocommerce-customer-details {
+
+	.woocommerce-column__title,
+	h2 {
+		margin-bottom: 1.7rem;
+		padding-bottom: 1.5rem;
+		font-size: 1.5rem;
+		font-weight: 600;
+		line-height: 1;
+		letter-spacing: -.025em;
+		text-transform: capitalize;
+		border-bottom: 1px solid $border-color;
+	}
+
+	address {
+		line-height: 2.15;
+	}
+}
+
+.woocommerce-Address header {
+	padding-#{$right}: 4rem;
+}
+
+.woocommerce-customer-details {
+	address {
+		.woocommerce-customer-details--phone {
+			margin-bottom: 3rem;
+		}
+
+		p {
+			font-family: inherit;
+		}
+	}
+
+	>address {
+		margin-bottom: 3rem;
+		padding-bottom: 4rem;
+		border-bottom: 1px solid #e1e1e1;
+	}
+}
+
+.address-table {
+
+	th,
+	td {
+		padding: .4rem 0;
+		font-size: 1.3rem;
+		font-weight: normal;
+		line-height: 1.6;
+		border: 0;
+	}
+
+	th {
+		width: 10rem;
+		color: #999;
+	}
+
+	td {
+		color: var(--wolmart-dark-color, $dark-color);
+	}
+}
+
+.woocommerce-edit_address-form h2 {
+	font-size: 1.5rem;
+}
+
+// account details
+.edit-account {
+	.woocommerce-form-row em {
+		font-style: normal;
+		font-size: smaller;
+	}
+
+	fieldset {
+		margin: 4rem 1rem 2rem;
+		padding: 1rem 0;
+	}
+
+	legend {
+		color: var(--wolmart-dark-color, $dark-color);
+		font-size: 1.8rem;
+		font-weight: 600;
+		letter-spacing: -.025em;
+	}
+
+	.wp-editor-wrap {
+		border: 0;
+	}
+}
+
+// Checkout Page
+.woocommerce-checkout-review-order-table {
+	margin-bottom: 0;
+}
+
+.page-content {
+	.lost_password {
+		margin-#{$left}: 2rem;
+	}
+}
+
+.checkout_coupon {
+	margin-bottom: 2rem;
+	padding: 3rem 3rem 2rem;
+	border: 1px solid $border-color-light;
+	border-top-width: 3px;
+	border-radius: 4px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+
+	.form-coupon {
+		height: auto;
+		margin-top: -1rem;
+	}
+
+	.form-control {
+		max-width: 23rem;
+		width: auto;
+	}
+
+	.form-control,
+	button {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.btn {
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+		padding-top: 1.4rem;
+		padding-bottom: 1.4rem;
+		border-color: $border-color-light;
+		background-color: $border-color-light;
+	}
+
+	@include mq(sm) {
+		.form-control {
+			margin-#{$right}: .5rem;
+		}
+	}
+
+	p {
+		color: var(--wolmart-body-color, $body-color);
+	}
+
+	.coupon-error-notice {
+		display: block;
+		margin-bottom: 1rem;
+	}
+}
+
+.woocommerce-checkout {
+	.woo-page-header {
+		margin-bottom: -5px;
+	}
+}
+
+.woocommerce-shipping-fields {
+	margin-bottom: 4rem;
+}
+
+.woocommerce-account-fields {
+	margin-bottom: 3.6rem;
+}
+
+.woocommerce-billing-fields {
+	margin-bottom: 2.2rem;
+
+	h3 {
+		margin-bottom: .8rem;
+	}
+
+	#billing_address_1_field {
+		margin-bottom: 1rem;
+	}
+}
+
+.woocommerce-shipping-fields h3 {
+	color: inherit;
+	font-size: 1.4rem;
+	font-weight: 400;
+	text-transform: none;
+}
+
+.woocommerce-account-fields {
+	margin-bottom: 2.2rem;
+}
+
+.woocommerce-billing-fields,
+.woocommerce-additional-fields {
+	h3 {
+		margin-bottom: 1.8rem;
+	}
+}
+
+.checkout-inline-error-message {
+	margin-bottom: 0;
+}
+
+.woocommerce-checkout-review-order {
+	#order_review_heading {
+		margin-bottom: 3rem;
+	}
+
+	.cart_item:first-child td {
+		border-top: 0;
+	}
+
+	thead {
+		th {
+			padding: 0 0 1.5rem;
+			line-height: 12px;
+			border-bottom: 1px solid $border-color-light;
+		}
+
+		.product-total {
+			text-indent: -9999px;
+		}
+	}
+
+	td,
+	th {
+		padding: 1.1rem 0 0;
+		border-top: none;
+	}
+
+	.cart-subtotal,
+	.order-total {
+
+		th,
+		td {
+			padding: .5rem 0;
+			color: var(--wolmart-dark-color, $dark-color);
+		}
+
+		.woocommerce-Price-amount {
+			font-size: 1.6rem;
+			font-weight: 600;
+			color: var(--wolmart-dark-color, $dark-color);
+		}
+	}
+
+	h4,
+	.cart-subtotal th,
+	.order-total th {
+		font-size: 1.6rem;
+		font-weight: 600;
+		color: var(--wolmart-dark-color, $dark-color);
+		line-height: 1;
+	}
+
+	.cart-subtotal {
+
+		th,
+		td {
+			padding: 1rem 0;
+		}
+	}
+
+	.order-total {
+
+		th,
+		td {
+			padding: 1.5rem 0;
+		}
+	}
+
+	.woocommerce-shipping-totals {
+		h4 {
+			margin-bottom: 1.5rem;
+			line-height: 1.2rem;
+		}
+	}
+
+	.product-name strong {
+		font-weight: inherit;
+	}
+
+	.place-order {
+		.button {
+			padding: .86em 0;
+		}
+	}
+}
+
+.woocommerce-checkout-payment {
+	padding-top: 3rem;
+	color: var(--wolmart-body-color, $body-color);
+
+	.wc_payment_methods {
+		border-bottom: 1px solid #e1e1e1;
+
+		li {
+			padding-bottom: 2.2rem;
+		}
+	}
+}
+
+.order-total {
+	color: var(--wolmart-dark-color, $dark-color);
+
+	th,
+	td {
+		padding: 2rem 0 1.6rem;
+		border-bottom: 1px solid $border-color-light;
+	}
+
+	strong {
+		font-weight: 600;
+		font-size: 1.6rem;
+		letter-spacing: -.01em;
+	}
+}
+
+.shipping+.order-total {
+
+	th,
+	td {
+		border-top: 1px solid $border-color-light;
+	}
+}
+
+.woocommerce-privacy-policy-text {
+	p {
+		padding-top: 2.3rem;
+		margin-bottom: 2.2rem;
+		font-size: 1.3rem;
+		font-family: var(--wolmart-body-font-family, 'sans-serif');
+		line-height: 1.85;
+		letter-spacing: .01em;
+	}
+}
+
+.woocommerce-terms-and-conditions-wrapper {
+	.custom-input .woocommerce-terms-and-conditions-checkbox-text {
+		line-height: 1.4;
+
+		&::before {
+			top: auto;
+			transform: none;
+		}
+	}
+}
+
+.woocommerce-form-coupon-toggle,
+.woocommerce-form-login-toggle {
+	margin-bottom: 0.8rem;
+
+	.showcoupon,
+	.showlogin {
+		color: var(--wolmart-dark-color, $dark-color);
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+}
+
+.woocommerce-form-coupon-toggle {
+	margin-bottom: 2.5rem;
+}
+
+.woocommerce-form-login-toggle+.woocommerce-form-login {
+	padding: 3rem;
+	border: 1px solid $border-color-light;
+	border-top-width: 3px;
+	border-radius: 4px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+
+	.button {
+		font-weight: 600;
+		font-size: 1.4rem;
+		padding: 0.929em 1.934em;
+		background-color: $light-grey;
+		border: 1px solid $light-grey;
+		border-radius: 4px;
+		color: var(--wolmart-dark-color, $dark-color);
+
+		&:hover {
+			border-color: #e1e1e1;
+			background-color: #e1e1e1;
+		}
+	}
+
+	p:not(.lost-password),
+	label {
+		color: var(--wolmart-body-color, $body-color);
+	}
+
+	.form-footer {
+		justify-content: flex-start;
+
+		.lost_password {
+			font-size: 1.4rem;
+			color: var(--wolmart-primary-color, $primary-color);
+
+			&:hover {
+				color: var(--wolmart-dark-color, $dark-color);
+			}
+
+			a {
+				color: inherit;
+			}
+		}
+	}
+}
+
+.cart_item>.product-name {
+	padding-#{$right}: 3rem;
+	color: var(--wolmart-dark-color, $dark-color);
+	font-size: 1.4rem;
+	font-weight: 500;
+}
+
+.wc_payment_method label {
+	position: relative;
+	font-weight: 400;
+	letter-spacing: -.025em;
+	cursor: pointer;
+	margin-#{$left}: 5px;
+}
+
+.payment_box {
+	// padding-top: .2rem;
+	padding-top: 0.7rem;
+	padding-#{$left}: 2.9rem;
+	letter-spacing: -0.025em;
+
+	p {
+		font-family: var(--wolmart-body-font-family, 'sans-serif');
+		line-height: 1.7;
+	}
+}
+
+.payment_method_paypal img {
+	vertical-align: middle;
+	max-width: 190px;
+}
+
+a.about_paypal {
+	margin-#{$left}: .8rem;
+	color: var(--wolmart-primary-color, $primary-color);
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.woocommerce-checkout-review-order .place-order,
+.payment-box {
+	.button {
+		width: 100%;
+	}
+}
+
+.checkout>div>.col-lg-4 {
+	padding-bottom: 4rem;
+}
+
+.woocommerce-checkout {
+	h3 {
+		margin-bottom: 2.7rem;
+	}
+
+	.woocommerce .login {
+		flex-wrap: wrap;
+		margin-bottom: 2rem;
+	}
+
+	.form-footer {
+		width: 100%;
+	}
+
+	.woocommerce .login .button {
+		width: auto;
+	}
+
+	.create-account p:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+// Order Details Page
+.order-failed {
+	font-size: 1.5rem;
+	letter-spacing: -.01em;
+}
+
+.order-failed-actions {
+	.button {
+		border-radius: 2px;
+
+		&+.button {
+			margin-#{$left}: .5rem;
+		}
+	}
+}
+
+.order-success {
+	text-align: center;
+	padding: 3.6rem 1.5rem;
+	border: 2px solid #e1e1e1;
+	font-size: 2.4rem;
+	font-weight: 700;
+	color: var(--wolmart-dark-color, $dark-color);
+
+	i {
+		margin-#{$right}: 1.4rem;
+		font-size: 1.167em;
+		vertical-align: middle;
+		color: $success-color, #a8c26e;
+	}
+}
+
+.woocommerce-order-overview {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-top: 3.2rem;
+	margin-bottom: 3rem;
+	list-style: none;
+	padding-#{$left}: 0;
+
+	.overview-item {
+		padding: 1rem;
+		flex-grow: 1;
+		font-size: 1.8rem;
+		line-height: 1.67;
+		text-align: center;
+
+		strong {
+			display: block;
+			color: var(--wolmart-dark-color, $dark-color);
+		}
+	}
+}
+
+@include mq(lg, max) {
+	.woocommerce-order-overview {
+		.overview-item {
+			font-size: 1.6rem;
+		}
+	}
+
+	.product-add-to-cart {
+		.btn {
+			margin-bottom: 1rem;
+		}
+	}
+}
+
+@include mq(md, max) {
+	.woocommerce-order-overview {
+		display: block;
+
+		.overview-item {
+			padding: 1rem 0;
+			text-align: left;
+
+			>span {
+				display: inline-block;
+				min-width: 50%;
+			}
+
+			strong {
+				display: inline-block;
+			}
+		}
+	}
+
+	.order-success {
+		padding: 1rem 2rem;
+		font-size: 1.8rem;
+	}
+
+	.wishlist_table .product-add-to-cart {
+		padding-left: 0;
+	}
+}
+
+@include mq(sm, max) {
+	.checkout_coupon .form-coupon {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+
+@include mq(xs, max) {
+	.woocommerce-order-overview {
+		.overview-item {
+			font-size: 1.4rem;
+		}
+	}
+}
+
+.woocommerce-order-details {
+	padding-top: 2rem;
+
+	h2 {
+		margin-bottom: 3rem;
+		font-size: 2rem;
+		line-height: .7;
+		letter-spacing: -.025em;
+	}
+
+	.order_details {
+		padding: 2.7rem 3rem .4rem;
+		border: 1px solid #e1e1e1;
+	}
+
+	.button {
+		padding: 1rem 1.8rem;
+		color: #fff;
+		border-color: var(--wolmart-dark-color, #333);
+		background-color: var(--wolmart-dark-color, #333);
+		border-radius: 3px;
+
+		&:hover {
+			color: #fff;
+			border-color: var(--wolmart-dark-color-hover, #444);
+			background-color: var(--wolmart-dark-color-hover, #444);
+		}
+	}
+
+	.order-actions .button {
+		border-color: $border-color-light;
+		background-color: $border-color-light;
+		color: var(--wolmart-dark-color, #333);
+		border-width: 1px;
+
+		&:hover {
+			border-color: var(--wolmart-dark-color, #333);
+			background-color: var(--wolmart-dark-color, #333);
+			color: #fff;
+		}
+	}
+
+	header {
+		padding: 2rem 0 0;
+	}
+
+	// Dokan compatibility
+	.dokan-info {
+		margin-bottom: 3rem;
+		line-height: 1.72;
+	}
+
+	thead th {
+		padding: 0 0 2.2rem;
+		border-bottom: 1px solid #e1e1e1;
+		font-size: 1.8rem;
+		line-height: 1;
+
+		&.product-total {
+			text-indent: -9999px;
+		}
+	}
+
+	tbody {
+		padding: 2rem 0 .4rem;
+
+		tr:first-child {
+			td {
+				padding-top: 3.5rem;
+			}
+		}
+
+		td {
+			border-top: 0;
+			padding: 1.5rem 0;
+			font-size: 1.4rem;
+			line-height: 1.43;
+		}
+
+		.product-name {
+			color: var(--wolmart-dark-color, $dark-color);
+			line-height: 1.72;
+		}
+	}
+
+	tfoot {
+		tr {
+			font-weight: 600;
+
+			&:first-child {
+
+				td,
+				th {
+					border-top: 0;
+				}
+			}
+
+			&:last-child {
+
+				td,
+				th {
+					padding: 2.25rem 0;
+				}
+
+				td {
+					font-size: 2rem;
+					font-weight: 700;
+					line-height: 1;
+					color: var(--wolmart-dark-color, $dark-color);
+				}
+			}
+		}
+
+		td,
+		th {
+			padding: 2rem 0;
+			line-height: 1.25;
+		}
+
+		th {
+			font-weight: 600;
+			font-size: 1.6rem;
+			letter-spacing: -.01em;
+			color: var(--wolmart-dark-color, $dark-color);
+		}
+	}
+
+	tbody,
+	tfoot {
+		td:last-child {
+			text-align: $right;
+		}
+	}
+
+	.order-again {
+		margin-top: 3rem;
+	}
+
+	.product-name a,
+	.order-number a {
+		color: inherit;
+	}
+}
+
+@include mq(xs, max) {
+	.woocommerce-order-details {
+		.order_details {
+			padding-left: 2rem;
+			padding-right: 2rem;
+		}
+	}
+}
+
+.woocommerce-order-details {
+	margin-bottom: 4.7rem;
+}
+
+.woocommerce-customer-details {
+	.addresses {
+		position: relative;
+		margin-bottom: 3rem;
+
+		&::after {
+			content: '';
+			display: block;
+			margin: 2rem auto 0;
+			width: calc(100% - 2rem);
+			height: 1px;
+			background-color: #e1e1e1;
+		}
+	}
+
+	.back-to-list {
+		margin-bottom: 2rem;
+		padding: 0.85em 1.2em;
+		border-radius: 2px;
+
+		&:#{$before} {
+			content: if-ltr('\e92b', '\e92c');
+			font-family: 'wolmart';
+			font-weight: 400;
+			font-size: 1.2em;
+			margin-#{$right}: .5rem;
+			line-height: 0;
+			vertical-align: -.05em;
+		}
+	}
+}
+
+// Account Orders Page
+.status {
+	display: inline-block;
+	padding: 1px 5px;
+	border-radius: 3px;
+	background: var(--wolmart-light-color, var(--wolmart-light-color, $light-color));
+	color: var(--wolmart-dark-color, $dark-color);
+	font-size: 1.2rem;
+}
+
+.status-pending,
+.status-processing {
+	color: #fff;
+	background: var(--wolmart-secondary-color, #d26e4b);
+}
+
+.status-completed {
+	color: #fff;
+	background: $success-color;
+}
+
+.status-cancelled,
+.status-refunded {
+	color: #fff;
+	background: var(--wolmart-dark-color, $dark-color);
+}
+
+.status-failed {
+	color: #fff;
+	background: $danger-color;
+}
+
+// Account Order Details Page
+.order_details td {
+	vertical-align: top;
+}
+
+.wc-item-meta {
+	padding-#{$left}: 2rem;
+	margin: 1rem 0 0;
+	border-#{$left}: 1px solid #e1e1e1;
+	text-transform: lowercase;
+	list-style: none;
+
+	p {
+		margin: 0;
+		line-height: 1;
+		display: inline-block;
+	}
+
+	.shop_table & li {
+		padding-bottom: 1rem;
+	}
+}
+
+.wc-item-meta-label {
+	color: var(--wolmart-dark-color, $dark-color);
+	font-weight: 400;
+}
+
+.woocommerce-thankyou-order-received.alert {
+	margin-top: 0;
+}
+
+// Login / Registe Form
+.woocommerce-form-login.register {
+	.woocommerce-privacy-policy-text p {
+		padding-top: 0;
+	}
+}
+
+// Page Header Space
+.main.pt-lg {
+	padding-top: 3rem;
+}

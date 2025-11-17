@@ -1,0 +1,51 @@
+/* -------------------------------------------
+	Widget 
+------------------------------------------- */
+
+.widgettitle,
+.widget-title {
+    margin-bottom: 2rem;
+    padding: 1.3rem 0;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+
+@if use(contact-info) {
+    .widget .contact-info {
+        label {
+            margin-#{$right}: 3px;
+        }
+        .work label {
+            display: block;
+            margin-bottom: 15px;
+        }
+    }
+
+    .contact-info label {
+        @include if-rtl {
+                float: right;
+        }
+    }
+
+    @include if-rtl {
+        .contact-info .work label {
+            float: none;
+        }
+    }
+}
+
+.widget .current-cat > a {
+    color: var(--wolmart-primary-color, $primary-color);
+}
+.widget {
+    .children {
+        padding-#{$left}: 1.3rem;    
+    }
+}
+
+.widget_search .search-wrapper.hs-simple .btn-search:hover {
+    color: var(--wolmart-primary-color, $primary-color);
+}

@@ -1,0 +1,429 @@
+/** Compatibility with WCFM Element **/
+
+@import '../../../assets/sass/config';
+@import '../../../assets/sass/mixins';
+@import '../../../assets/sass/direction';
+
+// Element
+form {
+
+    input[type=text],
+    input[type=eamil],
+    input[type=date],
+    input[type=password] {
+        min-height: 4rem;
+        padding: 0.85rem 2rem;
+        border: 1px solid #eee;
+        margin-#{$right}: 2rem;
+    }
+}
+
+// Dashboard
+.wolmart-wc-vendors-dashboard {
+    main {
+        padding-top: 1rem;
+    }
+
+    h2.title {
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        color: var(--wolmart-dark-color, $dark-color);
+    }
+
+    form input.btn,
+    .wcv-dashboard-navigation a.button {
+        border-radius: 3px;
+        padding: 1.2rem 2.2rem;
+        color: #fff;
+        background-color: var(--wolmart-primary-color, $primary-color);
+        transition: background-color .4s, border-color .4s;
+        // margin-left: 1rem;
+        border: 1px solid var(--wolmart-primary-color, $primary-color);
+
+        &:hover {
+            background-color: darken($color: $primary-color, $amount: 10%);
+            border-color: darken($color: $primary-color, $amount: 10%);
+        }
+    }
+
+    .wcv-dashboard-navigation ul {
+        padding-#{left}: 0;
+    }
+
+    .table {
+        width: 100%;
+
+        tr {
+            border: 1px solid $border-color-light;
+        }
+
+        th,
+        td {
+            padding: 1rem 2rem;
+            font-weight: 400;
+        }
+
+        th {
+            color: var(--wolmart-dark-color, $dark-color);
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+    }
+}
+
+// Register Form
+.woocommerce-form-login {
+    label .input-checkbox {
+        margin-#{$right}: 5px;
+    }
+}
+
+// Vendor Store 
+.wolmart-wc-vendor-shop {
+    .wcv-header-container {
+        position: relative;
+        margin-bottom: 2rem;
+
+        .wcv-store-address-container {
+            position: absolute;
+            bottom: 0;
+            min-height: 7rem;
+            opacity: .9;
+            margin-bottom: 0;
+        }
+
+        .wcv-store-header {
+            .social-icons {
+                padding-#{$left}: 0;
+
+                .social-icon {
+                    color: #fff !important;
+                }
+            }
+
+            .social-icons-container {
+                margin-top: 1rem;
+            }
+        }
+    }
+
+    #banner-wrap {
+        img {
+            width: 100%;
+            object-fit: cover;
+            height: 350px;
+        }
+    }
+
+    #inner-element {
+        display: flex;
+        flex-wrap: wrap;
+        left: 3rem;
+        top: 3rem;
+        right: auto;
+        background-color: transparent;
+
+        .store-info {
+            padding-top: 2rem;
+            text-align: left;
+        }
+
+        .store-brand {
+            margin-#{$right}: 4rem;
+        }
+
+        .store-icon {
+            width: 140px;
+            height: 140px;
+            margin-#{$right}: 0;
+        }
+
+        .store-name {
+            margin-bottom: 1rem;
+            font-size: 2.6rem;
+            color: #fff;
+            text-shadow: rgb(0 0 0 / 80%) 0 1px 0;
+        }
+
+        .wcv-verified-vendor {
+            margin-top: 1rem;
+            color: var(--wolmart-secondary-color, $secondary-color);
+            font-weight: 600;
+        }
+    }
+
+    .wcv-store-msg {
+        padding: side-values(1rem 4.5rem 1rem 2rem);
+        border: 1px dashed $border-color-light;
+        background-color: transparent;
+        color: var(--wolmart-danger-color, $danger-color);
+    }
+
+    .wcv-store-address-container {
+        padding: side-values(2rem 3rem 2rem 3rem);
+
+        .store-phone a {
+            float: none;
+        }
+
+        .store-address address,
+        .store-phone,
+        .wcv-verified-vendor {
+            margin-bottom: .5rem;
+            color: #fff;
+
+            i {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    }
+}
+
+// Store Settings
+.wolmart-wc-vendors-shop-settings {
+    form {
+
+        p,
+        p>* {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+// Single Product Compatibility
+.wolmart-wc-single-product {
+
+    .wcv-store-msg,
+    .wcvendors_ships_from {
+        display: none;
+    }
+
+    .wc-tab {
+        h3 {
+            font-size: 2rem;
+
+            &+div {
+                border-bottom: 1px solid $border-color-light;
+            }
+
+            &+h5 {
+                font-size: 1.4rem;
+                font-weight: normal;
+            }
+        }
+    }
+}
+
+// Product Loop
+.wcvendors_sold_by_in_loop {
+    font-size: 1.2rem;
+}
+
+// Store list
+.wcv-vendor-list-search {
+    #wcv-vendor-list-search {
+        margin-right: 1rem;
+        padding: 1.2rem 1.5rem;
+        border-radius: 3px;
+
+        &:focus {
+            &::placeholder {
+                opacity: 0;
+            }
+        }
+    }
+
+    .wcv-button {
+        padding: 1.3rem 2.5rem;
+        border: none;
+        border-radius: 3px;
+        background-color: var(--wolmart-primary-color, #222);
+        color: #fff;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+}
+
+.wcv_vendorslist {
+    margin: 0;
+    padding: 0;
+}
+
+.wcv_vendorslist.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 20px;
+}
+
+@media (max-width: 1199px) {
+    .wcv_vendorslist.list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-gap: 20px;
+    }
+}
+
+.wcv_vendorslist.list .vendor_list .vendor_list_avatar {
+    width: 90px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.wcv_vendorslist.grid {
+    max-width: 100%;
+    margin: 0;
+    padding-left: 0;
+}
+
+.wcv-vendor-list-filter .wcv-vendor-list-switch .wcv-vendor-list-switch-item:last-child {
+    margin-right: 0;
+}
+
+
+.wcv-vendor-list-filter .wcv-vendor-list-switch .wcv-vendor-list-switch-item {
+    color: #222;
+}
+
+.wcv-vendor-list-filter .wcv-vendor-list-switch .wcv-vendor-list-switch-item.active {
+    color: var(--wolmart-primary-color, #2879FE);
+}
+
+.wcv_vendorslist .vendor_list .vendor_list--shop-name {
+    min-height: 0;
+    font-size: 1.8rem;
+}
+
+.wcv_vendorslist .vendor_list {
+    border-radius: 3px;
+}
+
+.wcv_vendorslist.list .vendor_list {
+    align-items: flex-start;
+    margin-bottom: 0;
+}
+
+.wcv_vendorslist.grid .vendor_list .vendor_list_info {
+    padding: 1.5rem;
+}
+
+.wcv_vendorslist.grid .vendor_list .vendors_list--shop-link {
+    display: block;
+    border-radius: 3px;
+}
+
+.vendor_list_info .dashicons {
+    margin-right: .5rem;
+}
+
+.vendor-search-clear-button:hover {
+    text-decoration: none;
+}
+
+.vendor-search-result-text {
+    display: inline-block;
+    padding: 1rem 1.5rem 1rem 2rem;
+    background: #f2f3f5;
+    border-radius: 3px;
+
+    .vendor-search-clear-button {
+        margin-left: 1rem;
+    }
+}
+
+@include mq(md, max) {
+    .wcv-vendor-list-filter .search-vendors-toggle-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        width: 4.2rem;
+        height: 4.2rem;
+        border-radius: 3px;
+
+        span {
+            font-size: 2.4rem;
+            width: auto;
+            height: auto;
+        }
+    }
+}
+
+.wcv_vendorslist .vendor_list .vendors_list--shop-link {
+    border-radius: 3px;
+}
+
+// Store Settings
+.wolmart-wc-vendors-shop-settings {
+
+    h2,
+    h3 {
+        font-size: 2rem;
+        color: var(--wolmart-dark-color, $dark-color);
+    }
+
+    b {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: var(--wolmart-body-color, $body-color);
+        margin-bottom: 1.5rem;
+    }
+
+    .pv_paypal_container {
+        margin-bottom: 2rem;
+        border-bottom: 1px solid $border-color-light;
+    }
+
+    table td,
+    table td {
+        border-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        &:first-child {
+            padding-#{$left}: 0;
+        }
+
+        &:last-child {
+            padding-#{$right}: 0;
+        }
+    }
+
+    .btn {
+        border-radius: 3px;
+    }
+
+    form {
+        input[type='email'] {
+            display: block;
+            min-height: 4.1rem;
+            min-width: 32rem;
+            padding: 0.85rem 2rem;
+            border: 1px solid #eee;
+            font-size: 1.4rem;
+            line-height: 1.5;
+            font-weight: 400;
+            color: var(--wolmart-body-color, #666);
+            background-color: transparent;
+            border-radius: 2px;
+            box-shadow: none;
+            outline: 0;
+        }
+
+        textarea {
+            border: 1px solid #eee;
+        }
+    }
+}
+
+@media screen and (max-width: 567px) {
+    .wolmart-wc-vendor-shop {
+        #banner-wrap img {
+            height: 500px;
+        }
+
+        #inner-element {
+            flex-direction: column;
+        }
+    }
+}

@@ -1,0 +1,51 @@
+/* -------------------------------------------
+    Layout
+---------------------------------------------- */
+.container,
+.container-fluid {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container .container-fluid,
+.container-fluid .container-fluid {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+div.sticky-content > .container {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@include mq(xs, max) {
+    .container,
+    .container-fluid,
+    div.sticky-content > .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+.container-fluid {
+    max-width: var(--wolmart-container-fluid-width, 1820px);
+
+    .container {
+        max-width: calc( var(--wolmart-container-fluid-width, 1820px) - 40px );
+    }
+    .sticky-content > .container {
+        max-width: var(--wolmart-container-fluid-width, 1820px);
+    }
+}
+.container {
+    max-width: var(--wolmart-container-width, 1280px);
+}
+.divider {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1.9rem;
+    width: 1px;
+    background-color: $border-color;
+}

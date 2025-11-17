@@ -1,0 +1,1 @@
+@keyframes flipOutX{0%{animation-timing-function:ease-out;transform:perspective(400px)}to{opacity:0;transform:perspective(400px) rotateX(90deg)}}.flipOutX{animation-name:flipOutX;backface-visibility:visible!important}

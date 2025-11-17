@@ -1,0 +1,540 @@
+/* -------------------------------------------
+    Tab
+---------------------------------------------- */
+
+// Nav for Tabs
+@if use_component(tab) {
+    .nav-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #ebebeb;
+
+        .active>a,
+        .nav-link.active,
+        *:hover>.nav-link {
+            color: var(--wolmart-dark-color, $dark-color);
+        }
+
+        .nav-item:last-child .nav-link {
+            margin-#{$right}: 0;
+        }
+    }
+
+
+    .nav-link {
+        display: block;
+        margin-bottom: -.1rem;
+        margin-#{$right}: 1rem;
+        padding: 1.6rem .2rem;
+        color: var(--wolmart-dark-color, $dark-color);
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1;
+        text-align: center;
+        text-transform: uppercase;
+        border-radius: 0;
+        border: 0;
+        transition: border .35s, color .35s, background-color .35s;
+    }
+
+    // .nav > li:not(:last-child) {
+    //     margin-#{$right}: 3rem;
+    // }
+
+    .nav-fill>li {
+        flex: 1;
+    }
+
+    // Nav Filters
+    .nav-filters {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+        color: var(--wolmart-body-color, $body-color);
+
+        li:not(:last-child) {
+            margin-#{$right}: 1.5rem;
+        }
+    }
+
+    .nav-filter {
+        display: inline-block;
+        position: relative;
+        padding: .5rem 0;
+        font-size: 1.4rem;
+        line-height: 1;
+        transition: color .3s, background .3s, border .3s;
+
+        &.active,
+        .active>& {
+            color: var(--wolmart-primary-color, $primary-color);
+        }
+    }
+
+    .filter-underline {
+        .nav-filter {
+            transition: color .3s;
+
+            &.active,
+            &:hover {
+                &::after {
+                    background-color: var(--wolmart-primary-color, $primary-color);
+                    transform: scaleX(1);
+                }
+            }
+
+            &::after {
+                content: '';
+                display: block;
+                height: 2px;
+                border-bottom: 3px solid;
+                margin-top: 2px;
+                transform: scaleX(0);
+                transition: transform .4s;
+            }
+        }
+    }
+
+    // Tab Content
+    .tab-content {
+        position: relative;
+        width: 100%;
+
+        >.tab-pane {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            height: 0 !important;
+            opacity: 0;
+            z-index: -1;
+            visibility: hidden;
+        }
+
+        >.active {
+            position: relative;
+            visibility: visible;
+            height: auto !important;
+            opacity: 1;
+            z-index: auto;
+            transition: visibility .3s, opacity .3s;
+        }
+    }
+
+    .tab-pane {
+        padding: 2.3rem 0;
+        line-height: 1.72;
+        color: var(--wolmart-body-color, $body-color);
+    }
+
+    .tab-nav-simple {
+        .nav-link {
+            border-bottom: 2px solid transparent;
+            background-color: transparent;
+            // color: var(--wolmart-body-color, $body-color);    // by single product tab
+        }
+
+        .active>a,
+        .nav-link.active,
+        *:hover>.nav-link {
+            border-bottom-color: var(--wolmart-primary-color, $primary-color);
+        }
+    }
+
+    // Nav Center
+    .tab-nav-center .nav {
+        justify-content: center;
+    }
+
+    .tab-nav-right .nav {
+        justify-content: flex-end;
+    }
+
+    @include mq(xl, max) {
+        .tab-nav-lg-left .nav {
+            justify-content: flex-start;
+        }
+
+        .tab-nav-lg-center .nav {
+            justify-content: center;
+        }
+
+        .tab-nav-lg-right .nav {
+            justify-content: flex-end;
+        }
+    }
+
+    @include mq(lg, max) {
+        .tab-nav-md-left .nav {
+            justify-content: flex-start;
+        }
+
+        .tab-nav-md-center .nav {
+            justify-content: center;
+        }
+
+        .tab-nav-md-right .nav {
+            justify-content: flex-end;
+        }
+    }
+
+    @include mq(md, max) {
+        .tab-nav-sm-left .nav {
+            justify-content: flex-start;
+        }
+
+        .tab-nav-sm-center .nav {
+            justify-content: center;
+        }
+
+        .tab-nav-sm-right .nav {
+            justify-content: flex-end;
+        }
+    }
+
+    @include mq(sm, max) {
+        .tab-nav-xs-left .nav {
+            justify-content: flex-start;
+        }
+
+        .tab-nav-xs-center .nav {
+            justify-content: center;
+        }
+
+        .tab-nav-xs-right .nav {
+            justify-content: flex-end;
+        }
+    }
+
+
+    // Nav Boxed
+    .tab-nav-boxed {
+
+        // > .nav > li {
+        //     margin-#{$right}: 0;
+        // }
+        >ul a {
+            padding-left: 2.4rem;
+            padding-right: 2.4rem;
+        }
+    }
+
+    // Nav Round
+    @if use(tab-nav-round) {
+        .tab-nav-round {
+            >ul a {
+                margin-bottom: 0;
+                border-radius: 2.3rem;
+                background-color: #f2f3f5;
+            }
+        }
+    }
+
+    // Tab Boxed
+    @if use(tab-boxed) {
+        .tab-boxed {
+            .tab-pane {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+    }
+
+    // Tab Outline
+    @if use(tab-outline) {
+        .tab-outline {
+            .nav-tabs {
+                border-bottom: 0;
+            }
+
+            .nav-link {
+                padding-top: 1.4rem;
+                padding-bottom: 1.5rem;
+                border: 1px solid transparent;
+                border-top-width: 2px;
+            }
+
+            .active>a,
+            .nav-link.active,
+            *:hover>.nav-link {
+                border-color: #ebebeb;
+                border-top-color: var(--wolmart-primary-color, $primary-color);
+            }
+        }
+    }
+
+    @if use(tab-outline2) {
+        .tab-outline2 {
+            .nav {
+                position: relative;
+                z-index: 1;
+            }
+
+            .tab-content {
+                border: 1px solid #ebebeb;
+            }
+
+            .nav-tabs {
+                border-bottom: 0;
+            }
+
+            .nav-link {
+                padding-top: 1.5rem;
+                border: 1px solid transparent;
+            }
+
+            .active>a,
+            .nav-link.active,
+            *:hover>.nav .nav-link {
+                border-color: #ebebeb;
+                border-bottom-color: #fff;
+            }
+        }
+    }
+
+    .tab-nav-underline {
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            border-bottom: 2px solid transparent;
+            transform: scaleX(0);
+            transition: transform .3s, border-color .3s;
+        }
+
+        .nav-link.active::after,
+        .nav-item:hover .nav-link::after {
+            border-color: var(--wolmart-primary-color, $primary-color);
+            transform: scaleX(1);
+        }
+    }
+
+
+    // Tab Vertical
+
+    @if use(tab-vertical) {
+        .tab-vertical {
+            display: flex;
+
+            .nav-tabs {
+                flex-flow: column nowrap;
+                width: 27.8%;
+                border: 0;
+            }
+
+            .tab-content {
+                flex: 1;
+                padding-#{$left}: 2rem;
+                border-top: 1px solid $border-color-light;
+            }
+
+            >.nav>li {
+                margin-#{$right}: 0;
+            }
+
+            .nav-link {
+                position: relative;
+                padding-left: 2rem;
+                padding-right: 2rem;
+                width: 100%;
+                border: 1px solid transparent;
+                text-align: $left;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    #{$right}: 0;
+                    width: 2px;
+                    height: calc(100% - 6px);
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background-color: transparent;
+                    z-index: 1;
+                }
+            }
+
+            .tab-pane {
+                padding-top: 1.7rem;
+                padding-bottom: 1.7rem;
+            }
+
+            @if use(tab-simple) {
+                &.tab-simple {
+                    .nav-link {
+                        border-color: #eee;
+                        margin-#{$right}: -2px;
+
+                        &::after {
+                            content: '';
+                            display: block;
+                            position: absolute;
+                            #{$left}: 0;
+                            width: 2px;
+                            height: 100%;
+                            top: 50%;
+                            transform: translateY(-50%) scale(0);
+                            background-color: transparent;
+                            transition: transform .3s;
+                            z-index: 1;
+                        }
+                    }
+
+                    .active>a,
+                    .nav-link.active,
+                    *:hover>.nav-link {
+                        color: var(--wolmart-primary-color, $primary-color);
+
+                        &::after {
+                            background-color: var(--wolmart-primary-color, $primary-color);
+                            transform: translateY(-50%) scale(1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Tab Inverse
+
+    @if use(tab-inverse) {
+        .tab-inverse {
+            .tab-content {
+                border-color: #fff;
+                background: #fff;
+            }
+
+            .nav-tabs {
+                border: 0;
+            }
+
+            .nav-link {
+                margin: 0;
+                width: 100%;
+            }
+
+            .active>a,
+            .nav-link.active,
+            *:hover>.nav-link {
+                background-color: #fff;
+                border-color: #fff;
+            }
+
+            @if use(tab-simple) {
+                &.tab-simple {
+                    .nav-link {
+                        padding-top: 1.4rem;
+                        border-top: 2px solid transparent
+                    }
+
+                    .active>a,
+                    .nav-link.active,
+                    *:hover>.nav-link {
+                        border-top-color: var(--wolmart-primary-color, $primary-color);
+                    }
+                }
+            }
+        }
+    }
+
+    // Nav Background  ( Primary Color )
+
+    @if use(tab-nav-solid) {
+        .tab-nav-solid {
+            .nav-tabs {
+                border-bottom: 0;
+            }
+
+            .nav-link {
+                padding-bottom: 1.6rem;
+                border: 0
+            }
+
+            .active>a,
+            .nav-link.active,
+            *:hover>.nav-link {
+                color: #fff;
+                background-color: var(--wolmart-primary-color, $primary-color);
+                border-color: var(--wolmart-primary-color, $primary-color);
+            }
+        }
+    }
+
+    // Responsive
+
+    @include mq(md, max) {
+        .nav-link {
+            font-size: 1.4rem;
+        }
+
+        @if use(tab-vertical) {
+            .tab-vertical {
+                flex-flow: column nowrap;
+
+                .tab-content,
+                .nav-tabs {
+                    width: 100%;
+                }
+
+                .nav-tabs {
+                    border: 0;
+                }
+
+                .tab-content {
+                    padding-#{$left}: 0;
+                }
+
+                // @if use(tab-simple) {
+                //     &.tab-simple {
+                //         .nav-link {
+                //             &::after {
+                //                 height: 2px;
+                //                 width: 100%;
+                //                 background-color: transparent;
+                //                 top: calc(100% - 2px);
+                //                 transform: scale(0);
+                //             }
+                //         }
+                //         .active > a,
+                //         .nav-link.active,
+                //         *:hover > .nav-link {
+                //             &::after {
+                //                 transform: scale(1);
+                //             }
+                //         }
+                //     }
+                // }
+            }
+        }
+
+        .tab-nav-boxed {
+            .nav-link {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    }
+
+    @include mq(xs, max) {
+        @if use(tab-nav-round) {
+            .tab-nav-round {
+                .nav-link {
+                    margin-bottom: .5rem;
+                }
+            }
+
+            // .nav-tabs .nav-item {
+            //     margin: 0.5rem;
+            // }
+        }
+    }
+}
